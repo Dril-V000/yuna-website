@@ -326,6 +326,19 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3rem 2r
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--green);color:#05050f;padding:.7rem 1.4rem;border-radius:10px;font-weight:700;font-size:.85rem;opacity:0;transition:opacity .3s,transform .3s;z-index:300;pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
+/* ── PAYPAL HOSTED BUTTONS ── */
+.paypal-plan-button{
+  margin-top:1.2rem;
+  width:100%;
+  min-height:44px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.paypal-plan-button > div{
+  width:100%;
+}
+
 /* ── RESPONSIVE ── */
 @media(max-width:820px){
   nav{padding:.9rem 1rem}
@@ -671,7 +684,7 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3rem 2r
   <div class="price-grid">
     <div class="prc">
       <div class="pname b">BASIC</div>
-      <div class="pprice">10 <span>USDT</span></div>
+      <div class="pprice">$10 <span>USD</span></div>
       <div class="pdesc">Lifetime license · One device</div>
       <div class="pdiv"></div>
       <ul class="pfeats">
@@ -684,12 +697,14 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3rem 2r
         <li><span class="cx">✗</span><span class="fd">Direct support</span></li>
         <li><span class="cx">✗</span><span class="fd">Done-for-you personality setup</span></li>
       </ul>
-      <a href="#contact" class="btn-pln bb">Get Basic</a>
+      <div class="paypal-plan-button">
+        <div id="paypal-container-KKXAYU67ZVMR2"></div>
+      </div>
     </div>
     <div class="prc hot">
       <div class="popular">⭐ Most popular</div>
       <div class="pname p">PRO</div>
-      <div class="pprice">15 <span>USDT</span></div>
+      <div class="pprice">$15 <span>USD</span></div>
       <div class="pdesc">Lifetime license · One device</div>
       <div class="pdiv"></div>
       <ul class="pfeats">
@@ -702,7 +717,9 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3rem 2r
         <li><span class="ck">✓</span><b>Direct support — we solve your issues</b></li>
         <li><span class="ck">✓</span><b>We set up your personality prompt for you</b></li>
       </ul>
-      <a href="#contact" class="btn-pln bp">Get Pro</a>
+      <div class="paypal-plan-button">
+        <div id="paypal-container-5XJJ8XDLXC2RS"></div>
+      </div>
     </div>
   </div>
   <div class="nc-block">
@@ -1076,5 +1093,17 @@ function copyToClipboard(id){
   init();
 })();
 </script>
+<!-- PayPal Hosted Buttons -->
+<script src="https://www.paypal.com/sdk/js?client-id=BAAzMZURqi9KGWrbHOv8rh4EJrbE7dYBtTSs7SUBLJTvfswfaS0gefw78sZ2EVsbM6W53_82w968qEQQIg&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+<script>
+  paypal.HostedButtons({
+    hostedButtonId: "KKXAYU67ZVMR2",
+  }).render("#paypal-container-KKXAYU67ZVMR2");
+
+  paypal.HostedButtons({
+    hostedButtonId: "5XJJ8XDLXC2RS",
+  }).render("#paypal-container-5XJJ8XDLXC2RS");
+</script>
+
 </body>
 </html>
