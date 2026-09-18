@@ -354,11 +354,8 @@ section{padding:5rem 2rem}
 .proof-btn.email{background:rgba(100,181,246,.08);border:1px solid var(--border2);color:var(--accent)}
 .pay-footer-note{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:1.2rem;font-size:.74rem;color:var(--text3);flex-wrap:wrap;text-align:center}
 .pay-footer-note .sep{opacity:.4}
+.payment-proof-note{margin:.65rem 0 0;text-align:center;font-size:.72rem;line-height:1.55;color:var(--text3)}
 
-/* "already paid" shortcut — sends the buyer to #thank-you */
-.paid-link{display:block;width:100%;margin-top:.75rem;background:transparent;border:1px dashed rgba(52,211,153,.35);color:var(--green);font-family:inherit;font-size:.78rem;font-weight:600;padding:.6rem;border-radius:9px;cursor:pointer;transition:background .2s,border-color .2s,transform .15s}
-.paid-link:hover{background:rgba(52,211,153,.07);border-color:rgba(52,211,153,.65)}
-.paid-link:active{transform:scale(.99)}
 
 /* ── FAQ ── */
 #faq{background:var(--bg)}
@@ -882,7 +879,7 @@ body.ty-mode > #thank-you{display:flex !important}
           <div class="pp-brand">
             <span class="pp-brand-left"><span class="pp-lock">🔒</span> Secure checkout via</span>
             <span class="pp-logo"><span class="pp-b">Pay</span><span class="pp-p">Pal</span></span>
-            <span class="pp-secure-tag">✓ Verified</span>
+            <span class="pp-secure-tag">✓ PayPal checkout</span>
           </div>
           <div id="pp-basic-wrap">
             <div class="paypal-btn-area" id="paypal-wrap-basic">
@@ -897,13 +894,13 @@ body.ty-mode > #thank-you{display:flex !important}
             </div>
           </div>
           <div class="trust-row">
-            <span class="trust-pill">🛡️ Buyer Protection</span>
-            <span class="trust-pill">⚡ Instant delivery</span>
-            <span class="trust-pill">🔒 SSL encrypted</span>
+            <span class="trust-pill">🛡️ PayPal payment</span>
+            <span class="trust-pill">📩 Manual key delivery</span>
+            <span class="trust-pill">🔒 HTTPS connection</span>
           </div>
         </div>
-        <div class="secure-row">🔒 Protected by PayPal · ⚡ Key delivered within minutes</div>
-        <button class="paid-link" type="button" onclick="goThankYou()">✓ Payment completed? Claim your key →</button>
+        <div class="secure-row">🔒 PayPal handles the payment securely · 📩 Keys are delivered manually after payment verification.</div>
+        <p class="payment-proof-note">After paying, use the PayPal confirmation/transaction ID when contacting support. The thank-you page does not verify payment by itself.</p>
       </div>
     </div>
 
@@ -942,16 +939,15 @@ body.ty-mode > #thank-you{display:flex !important}
         <div class="nw-final">Wrong network = permanent loss. We cannot recover funds.</div>
       </div>
       <div class="proof-box">
-        <div class="proof-note">After sending, share your <strong>transaction hash + chosen plan</strong> and your key arrives within minutes.</div>
+        <div class="proof-note">After sending, share your <strong>transaction hash + chosen plan</strong>. The key is sent after the payment is verified.</div>
         <div class="proof-actions">
           <a href="https://discord.gg/ARg6yujhdc" target="_blank" rel="noopener noreferrer" class="proof-btn discord">💬 Send via Discord</a>
           <a href="mailto:code7kjt@proton.me?subject=YUNA%20USDT%20Payment%20Proof" class="proof-btn email">📧 Send via Email</a>
         </div>
-        <button class="paid-link" type="button" onclick="goThankYou()">✓ Already sent it? Claim your key →</button>
       </div>
     </div>
 
-    <div class="pay-footer-note">🔒 Key delivered within minutes <span class="sep">·</span> One device <span class="sep">·</span> Lifetime access</div>
+    <div class="pay-footer-note">🔒 Manual key delivery after payment verification <span class="sep">·</span> One device <span class="sep">·</span> Lifetime access</div>
   </div>
 </section>
 
@@ -1018,7 +1014,7 @@ body.ty-mode > #thank-you{display:flex !important}
   <div class="ty-card">
     <div class="ty-check">✓</div>
     <h2 class="ty-title">Thank you for your purchase!</h2>
-    <p class="ty-sub">Your payment has been received. Licence keys are delivered <strong>manually</strong> — here's exactly how to claim yours.</p>
+    <p class="ty-sub">After completing payment, contact the team with your payment confirmation. Licence keys are delivered <strong>manually after verification</strong> — here's exactly how to claim yours.</p>
 
     <div class="ty-steps">
       <div class="ty-step">
@@ -1039,7 +1035,7 @@ body.ty-mode > #thank-you{display:flex !important}
         <div class="ty-num">3</div>
         <div>
           <h3>Receive your key</h3>
-          <p>We'll send your activation key within minutes — via Discord DM, or by email if you prefer.</p>
+          <p>After the payment is verified, we'll send your activation key via Discord DM, or by email if you prefer.</p>
         </div>
       </div>
     </div>
