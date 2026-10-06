@@ -853,7 +853,7 @@ body.ty-mode > #thank-you{display:flex !important}
       </button>
       <button class="pay-tab" id="tab-usdt" type="button" onclick="switchPay('usdt')" role="tab" aria-selected="false" aria-controls="panel-usdt">
         <span class="pay-tab-icon usdt">₮</span>
-        <span style="text-align:left">USDT Crypto<small>TRC20 only</small></span>
+        <span style="text-align:left">USDT Crypto<small>ERC20 only</small></span>
       </button>
     </div>
 
@@ -922,19 +922,19 @@ body.ty-mode > #thank-you{display:flex !important}
       <div class="step-label">2 · Send exact amount</div>
       <div class="amount-due"><span class="ad-label">👉 Send exactly</span><span class="ad-value" id="usdt-total-label">10 USDT</span></div>
       <div class="wallet-box">
-        <div class="wallet-meta"><span class="wallet-net">TRC20</span><span class="wallet-hint">Tron Network · USDT only</span></div>
+        <div class="wallet-meta"><span class="wallet-net">ERC20</span><span class="wallet-hint">Ethereum Network · USDT only</span></div>
         <div class="wallet-line">
-          <code class="wallet-address" id="trc20-addr">TF2U8K6rwo9JuDFStJEd6yW95S2w5qcX96</code>
+          <code class="wallet-address" id="usdt-addr">0xFb63Df8F135215C53fd8a8d6F78A986c5949798F</code>
           <button class="wallet-copy" type="button" onclick="copyWallet()">⧉ Copy</button>
         </div>
       </div>
       <div class="network-warn">
         <div class="nw-head">⚠️ Read before sending</div>
-        <div class="nw-ok">✅ Only: USDT on Tron Network (TRC20)</div>
+        <div class="nw-ok">✅ Only: USDT on Ethereum Network (ERC20)</div>
         <ul class="nw-list">
-          <li>Not ERC20 (Ethereum) · Not BEP20 (BNB Chain)</li>
+          <li>Not TRC20 (Tron) · Not BEP20 (BNB Chain)</li>
           <li>Not Polygon, Solana, or any other network</li>
-          <li>Not TRX, BNB, ETH, or any other token</li>
+          <li>Not ETH, TRX, BNB, or any other token</li>
         </ul>
         <div class="nw-final">Wrong network = permanent loss. We cannot recover funds.</div>
       </div>
@@ -1028,7 +1028,7 @@ body.ty-mode > #thank-you{display:flex !important}
         <div class="ty-num">2</div>
         <div>
           <h3>Send your payment proof</h3>
-          <p>PayPal receipt / transaction ID — or your <strong>USDT (TRC20) tx hash</strong> — plus the plan you bought: <strong>Basic $10</strong> or <strong>Pro $15</strong>.</p>
+          <p>PayPal receipt / transaction ID — or your <strong>USDT (ERC20) tx hash</strong> — plus the plan you bought: <strong>Basic $10</strong> or <strong>Pro $15</strong>.</p>
         </div>
       </div>
       <div class="ty-step">
@@ -1042,7 +1042,7 @@ body.ty-mode > #thank-you{display:flex !important}
 
     <div class="ty-actions">
       <a class="ty-btn ty-discord" href="https://discord.gg/ARg6yujhdc" target="_blank" rel="noopener noreferrer">💬 Open Discord &amp; claim your key</a>
-      <a class="ty-btn ty-mail" href="mailto:code7kjt@proton.me?subject=YUNA%20Purchase%20%E2%80%94%20Licence%20Key%20Request&body=Hi%2C%20I%20just%20purchased%20YUNA.%0A%0APlan%3A%20(Basic%20%2F%20Pro)%0APayment%20method%3A%20(PayPal%20%2F%20USDT%20TRC20)%0ATransaction%20ID%20%2F%20Hash%3A%20%0A%0AThanks!">📧 Email us instead</a>
+      <a class="ty-btn ty-mail" href="mailto:code7kjt@proton.me?subject=YUNA%20Purchase%20%E2%80%94%20Licence%20Key%20Request&body=Hi%2C%20I%20just%20purchased%20YUNA.%0A%0APlan%3A%20(Basic%20%2F%20Pro)%0APayment%20method%3A%20(PayPal%20%2F%20USDT%20ERC20)%0ATransaction%20ID%20%2F%20Hash%3A%20%0A%0AThanks!">📧 Email us instead</a>
     </div>
 
     <div class="ty-note">
@@ -1109,7 +1109,7 @@ function showToast(msg){
 
 /* ── COPY WALLET ── */
 function copyWallet(){
-  const el=document.getElementById('trc20-addr');
+  const el=document.getElementById('usdt-addr');
   if(!el)return;
   const text=el.textContent.trim();
   const btn=document.querySelector('.wallet-copy');
