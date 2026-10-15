@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dril-v000.github.io/yuna-website/sitemap.xml
