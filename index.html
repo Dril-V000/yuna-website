@@ -201,7 +201,14 @@ section{padding:5rem 2rem}
 .cl-items{padding:1.4rem;display:flex;flex-direction:column;gap:.85rem}
 .cli{display:flex;gap:.75rem;align-items:flex-start}
 .cldot{width:7px;height:7px;border-radius:50%;margin-top:.57rem;flex-shrink:0}
-.fix{background:var(--green)}.new{background:var(--accent)}
+.fix{background:var(--green)}.new{background:var(--accent)}.cldot.soon{background:var(--amber)}
+.vbadge.soon{background:linear-gradient(135deg,var(--amber),#f59e0b)}
+.cl-box.upcoming{border-color:rgba(251,191,36,.28);box-shadow:0 0 40px rgba(251,191,36,.06)}
+.cl-box+.cl-box{margin-top:1.4rem}
+.new-tag{display:inline-block;background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.28);color:var(--green);font-size:.65rem;padding:.08rem .45rem;border-radius:4px;margin-left:.3rem;font-weight:600;vertical-align:middle}
+.soon-tag{display:inline-block;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.25);color:var(--amber);font-size:.65rem;padding:.08rem .45rem;border-radius:4px;margin-left:.3rem;font-weight:600;vertical-align:middle}
+.ca-m{background:linear-gradient(135deg,rgba(167,139,250,.25),rgba(15,15,30,.9));border:1px solid rgba(167,139,250,.4)}
+.cl-privacy{max-width:680px;margin:1.6rem auto 0;text-align:center;color:var(--text2);font-size:.85rem}
 .cli p{font-size:.84rem;color:var(--text2)}
 .cli strong{color:var(--text);font-weight:600}
 
@@ -479,7 +486,7 @@ body.ty-mode > #thank-you{display:flex !important}
     <li><a href="https://discord.gg/ARg6yujhdc" target="_blank" rel="noopener noreferrer">Discord</a></li>
     <li><a href="https://www.youtube.com/@code7kjt" target="_blank" rel="noopener noreferrer">YouTube</a></li>
   </ul>
-  <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.1.2v" target="_blank" rel="noopener noreferrer" class="nav-cta">⬇ Download</a>
+  <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.2v" target="_blank" rel="noopener noreferrer" class="nav-cta">⬇ Download</a>
 </nav>
 
 <!-- HERO -->
@@ -488,7 +495,7 @@ body.ty-mode > #thank-you{display:flex !important}
   <div class="glow g2"></div>
   <div class="glow g3"></div>
   <div style="position:relative">
-    <div class="hero-badge"><div class="badge-dot"></div>Version 1.1.2 — Now Available</div>
+    <div class="hero-badge"><div class="badge-dot"></div>Version 1.2 — Now Available</div>
     <h1>
       <span class="h1-1">Your AI companion</span>
       <span class="h1-2">with a living face</span>
@@ -496,7 +503,7 @@ body.ty-mode > #thank-you{display:flex !important}
     <p class="hero-sub">Voice conversations, real-time animation, full local privacy. YUNA runs entirely on your machine — no cloud, no subscription, no compromise.</p>
     <div class="hero-btns">
       <a href="#pricing" class="btn-primary">🔑 Get Licence</a>
-      <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.1.2v" target="_blank" rel="noopener noreferrer" class="btn-secondary">⬇ Download YUNA v1.1.2</a>
+      <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.2v" target="_blank" rel="noopener noreferrer" class="btn-secondary">⬇ Download YUNA v1.2</a>
       <a href="#video-section" class="btn-secondary">▶ Watch Demo</a>
     </div>
   </div>
@@ -633,7 +640,13 @@ body.ty-mode > #thank-you{display:flex !important}
     <div class="fc"><div class="ficon it">🔒</div><h3>Zero data collection</h3><p>YUNA never collects, sends, or stores any personal information. Everything stays on your machine.</p></div>
     <div class="fc"><div class="ficon ia">⚙️</div><h3>Simple, readable settings</h3><p>No hidden options or confusing toggles — every setting is labeled clearly.</p></div>
     <div class="fc"><div class="ficon ic">🔊</div><h3>Rich voice library</h3><p>Dozens of natural voices across multiple TTS engines — find the one that feels right.</p></div>
-    <div class="fc"><div class="ficon ip">🎌</div><h3>Custom Live2D models <span style="display:inline-block;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.25);color:var(--amber);font-size:.65rem;padding:.08rem .45rem;border-radius:4px;margin-left:.3rem;font-weight:600;vertical-align:middle">Soon</span></h3><p>Upload or choose your own character model. Existing users get it free on release.</p></div>
+    <div class="fc"><div class="ficon ip">🎌</div><h3>Custom Live2D models <span class="new-tag">New in v1.2</span></h3><p>Upload your own Live2D model with thumbnail support, or choose one from your library. Existing users get it free on release.</p></div>
+    <div class="fc"><div class="ficon ib">🧠</div><h3>Choose your preferred AI model <span class="new-tag">New in v1.2</span></h3><p>Pick the AI model you like best and switch whenever you want — local with Ollama or via your own API key.</p></div>
+    <div class="fc"><div class="ficon ip">🎭</div><h3>Exclusive speech &amp; idle animations <span class="new-tag">New in v1.2</span></h3><p>New speech and idle animations made for YUNA, so she feels even more alive while talking and while waiting.</p></div>
+    <div class="fc"><div class="ficon it">💭</div><h3>Better memory for multiple characters <span class="new-tag">New in v1.2</span></h3><p>Improved memory handling so each character keeps its own context and conversations stay coherent.</p></div>
+    <div class="fc"><div class="ficon ia">🌑</div><h3>Premium black theme <span class="new-tag">New in v1.2</span></h3><p>A refined black theme with an improved UI — cleaner, darker, and easier on the eyes.</p></div>
+    <div class="fc"><div class="ficon ic">🔊</div><h3>Edge TTS compatibility fixes <span class="new-tag">New in v1.2</span></h3><p>Better compatibility with Edge TTS voices for a smoother, more reliable voice experience.</p></div>
+    </div>
   </div>
 </section>
 
@@ -663,7 +676,7 @@ body.ty-mode > #thank-you{display:flex !important}
   <div class="ctr">
     <div class="stag">Characters</div>
     <h2 class="stitle">Meet your companions</h2>
-    <p class="ssub">Two built-in personalities, full custom support, and more coming</p>
+    <p class="ssub">Two built-in personalities, full custom support — and MAJO joins in v1.2</p>
   </div>
   <div class="chars-grid">
     <div class="char-card">
@@ -687,6 +700,13 @@ body.ty-mode > #thank-you{display:flex !important}
       <div class="char-desc">Build a personality from scratch — name it, define how it talks, set its tone and behavior. Edit the prompt directly in settings.</div>
       <div class="char-tags"><span class="ctag a">Custom name</span><span class="ctag a">Custom prompt</span><span class="ctag a">Custom style</span></div>
     </div>
+    <div class="char-card">
+      <div class="char-avatar ca-m">🧙‍♀️</div>
+      <div class="char-name">Majo</div>
+      <div class="char-type">New character · Available now</div>
+      <div class="char-desc">A brand-new companion joining the family with YUNA v1.2.</div>
+      <div class="char-tags"><span class="ctag p">New in v1.2</span></div>
+    </div>
   </div>
   <div class="mode-row">
     <div class="mode-box"><div>🧠</div><div class="mn">Smart</div><div class="ms">Analytical, precise, detailed answers</div></div>
@@ -699,8 +719,26 @@ body.ty-mode > #thank-you{display:flex !important}
 <section id="changelog">
   <div class="ctr">
     <div class="stag">Changelog</div>
-    <h2 class="stitle">What's new in v1.1.2</h2>
+    <h2 class="stitle">What's new in v1.2</h2>
   </div>
+  <div class="cl-box">
+    <div class="cl-head">
+      <span class="vbadge">v1.2</span>
+      <span class="cl-head-t">Major Update</span>
+      <span class="cl-head-d">2026</span>
+    </div>
+    <div class="cl-items">
+      <div class="cli"><div class="cldot new"></div><p><strong>New:</strong> 🧠 Choose your preferred AI model.</p></div>
+      <div class="cli"><div class="cldot new"></div><p><strong>New:</strong> 🎭 Exclusive speech and idle animations for YUNA.</p></div>
+      <div class="cli"><div class="cldot new"></div><p><strong>New:</strong> 🧙‍♀️ New character: MAJO.</p></div>
+      <div class="cli"><div class="cldot new"></div><p><strong>New:</strong> 📦 Custom Live2D model uploads with thumbnail support.</p></div>
+      <div class="cli"><div class="cldot new"></div><p><strong>New:</strong> 🌑 Premium black theme and improved UI.</p></div>
+      <div class="cli"><div class="cldot new"></div><p><strong>Improved:</strong> 💭 Better memory handling for multiple characters.</p></div>
+      <div class="cli"><div class="cldot fix"></div><p><strong>Fixed:</strong> 🔊 Edge TTS compatibility fixes.</p></div>
+      <div class="cli"><div class="cldot fix"></div><p><strong>Improved:</strong> ⚡ General performance improvements and bug fixes.</p></div>
+    </div>
+  </div>
+  <p class="cl-privacy">🔒 Local AI. Private by design. More customization, a better experience.</p>
   <div class="cl-box">
     <div class="cl-head">
       <span class="vbadge">v1.1.2</span>
@@ -971,7 +1009,7 @@ body.ty-mode > #thank-you{display:flex !important}
   <h2>Ready to meet Yuna?</h2>
   <p>A voice AI with a living face — fully local, yours forever.</p>
   <div class="hero-btns">
-    <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.1.2v" target="_blank" rel="noopener noreferrer" class="btn-primary">⬇ Download YUNA v1.1.2</a>
+    <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.2v" target="_blank" rel="noopener noreferrer" class="btn-primary">⬇ Download YUNA v1.2</a>
     <a href="https://discord.gg/ARg6yujhdc" target="_blank" rel="noopener noreferrer" class="btn-secondary">💬 Join Discord</a>
   </div>
 </section>
