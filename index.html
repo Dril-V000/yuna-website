@@ -356,12 +356,22 @@ section{padding:6rem 2rem;position:relative}
 .payment-box::before{content:'';position:absolute;top:0;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,rgba(100,181,246,.8),rgba(167,139,250,.8),transparent)}
 .payment-box-title{font-size:.86rem;font-weight:800;color:var(--text);text-align:center;letter-spacing:.5px}
 .payment-box-sub{font-size:.79rem;color:var(--text3);text-align:center;margin:.3rem 0 1.5rem}
-.pay-tabs{display:flex;background:rgba(5,5,15,.6);border:1px solid var(--border);border-radius:16px;padding:6px;gap:6px;max-width:460px;margin:0 auto 1.6rem}
+.pay-tabs{display:flex;background:rgba(5,5,15,.6);border:1px solid var(--border);border-radius:16px;padding:6px;gap:6px;max-width:680px;margin:0 auto 1.6rem}
 .pay-tab{flex:1;display:flex;align-items:center;justify-content:center;gap:.6rem;padding:.75rem .5rem;border-radius:11px;border:1px solid transparent;background:transparent;color:var(--text2);font-family:'Inter',sans-serif;font-size:.86rem;font-weight:600;cursor:pointer;transition:all .22s}
 .pay-tab small{display:block;font-size:.68rem;font-weight:500;opacity:.7}
 .pay-tab-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;transition:transform .2s}
 .pay-tab-icon.pp{background:rgba(100,181,246,.15);border:1px solid rgba(100,181,246,.3)}
 .pay-tab-icon.usdt{background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.3)}
+.pay-tab-icon.kofi{background:rgba(244,114,182,.15);border:1px solid rgba(244,114,182,.3)}
+.auto-badge{display:inline-block;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3);color:var(--green);font-size:.62rem;font-weight:800;padding:.08rem .45rem;border-radius:5px;margin-left:.35rem;vertical-align:middle;letter-spacing:.4px}
+.kofi-box{background:rgba(5,5,15,.5);border:1px solid var(--border);border-radius:14px;padding:1.4rem;text-align:center}
+.kofi-steps{list-style:none;display:flex;flex-direction:column;gap:.65rem;text-align:left;margin:0 0 1.3rem;font-size:.83rem;color:var(--text2);line-height:1.6}
+.kofi-steps li{display:flex;gap:.65rem;align-items:flex-start}
+.kofi-steps b{color:var(--text)}
+.kofi-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;width:100%;max-width:440px;background:linear-gradient(135deg,#29abe0,#a78bfa);color:#04040c;padding:.95rem 1.5rem;border-radius:12px;font-weight:800;font-size:.92rem;text-decoration:none;box-shadow:0 10px 30px rgba(41,171,224,.3);transition:transform .25s,box-shadow .25s}
+.kofi-btn:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(41,171,224,.5)}
+.kofi-note{margin-top:1rem;font-size:.73rem;color:var(--text3);line-height:1.6}
+
 .pay-tab:hover{color:var(--text);background:rgba(255,255,255,.04)}
 .pay-tab:hover .pay-tab-icon{transform:scale(1.08)}
 .pay-tab.active{background:var(--card2);border-color:var(--border2);color:var(--text);box-shadow:0 4px 20px rgba(0,0,0,.4)}
@@ -575,6 +585,18 @@ body.ty-mode > #thank-you{display:flex !important}
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none}
 }
+
+.kofi-box{padding:1.8rem 1.6rem;background:linear-gradient(180deg,rgba(41,171,224,.07),rgba(167,139,250,.05));border-color:rgba(100,181,246,.3);text-align:left}
+.kofi-top{display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem}
+.kofi-rec{font-size:.7rem;font-weight:800;color:var(--amber);letter-spacing:.4px}
+.kofi-price{font-family:'Space Grotesk',sans-serif;font-size:2.6rem;font-weight:700;line-height:1.05;color:var(--text);margin-bottom:.6rem}
+.kofi-price span{display:block;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:500;color:var(--text3);margin-top:.35rem}
+.kofi-lead{font-size:.88rem;color:var(--text2);line-height:1.7;margin-bottom:1.2rem}
+.kofi-steps li i{width:24px;height:24px;border-radius:50%;background:var(--grad-main);color:#04040c;font-style:normal;font-weight:800;font-size:.72rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.kofi-support{display:flex;gap:.7rem;align-items:flex-start;background:rgba(244,114,182,.07);border:1px solid rgba(244,114,182,.28);border-radius:12px;padding:.9rem 1rem;margin:0 0 1.2rem;font-size:.82rem;color:var(--text2);line-height:1.65}
+.kofi-support b{color:#f9a8d4}
+.kofi-btn{max-width:none}
+.kofi-note{text-align:center}
 </style>
 
 <script src="https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"></script>
@@ -978,10 +1000,14 @@ body.ty-mode > #thank-you{display:flex !important}
   <!-- PAYMENT -->
   <div class="payment-box">
     <p class="payment-box-title">Choose payment method</p>
-    <p class="payment-box-sub">Pay securely with PayPal, or send USDT crypto — key delivered within minutes.</p>
+    <p class="payment-box-sub">Ko-fi gives you an instant key by email — PayPal and USDT are also available.</p>
 
     <div class="pay-tabs" role="tablist">
-      <button class="pay-tab active" id="tab-pp" type="button" onclick="switchPay('pp')" role="tab" aria-selected="true" aria-controls="panel-pp">
+      <button class="pay-tab active" id="tab-kofi" type="button" onclick="switchPay('kofi')" role="tab" aria-selected="true" aria-controls="panel-kofi">
+        <span class="pay-tab-icon kofi">☕</span>
+        <span style="text-align:left">Ko-fi<small>Instant key · email</small></span>
+      </button>
+      <button class="pay-tab" id="tab-pp" type="button" onclick="switchPay('pp')" role="tab" aria-selected="false" aria-controls="panel-pp">
         <span class="pay-tab-icon pp">🅿️</span>
         <span style="text-align:left">PayPal<small>Card · instant</small></span>
       </button>
@@ -991,7 +1017,7 @@ body.ty-mode > #thank-you{display:flex !important}
       </button>
     </div>
 
-    <div class="pay-panel active" id="panel-pp" role="tabpanel">
+    <div class="pay-panel" id="panel-pp" role="tabpanel">
       <div class="step-label">1 · Select your plan</div>
       <div class="plan-selector">
         <button class="plan-option selected" type="button" id="pp-plan-basic" onclick="selectPlan('pp','basic')">
@@ -1079,7 +1105,23 @@ body.ty-mode > #thank-you{display:flex !important}
       </div>
     </div>
 
-    <div class="pay-footer-note">🔒 Manual key delivery after payment verification <span class="sep">·</span> One device <span class="sep">·</span> Lifetime access</div>
+    <div class="pay-panel active" id="panel-kofi" role="tabpanel">
+      <div class="kofi-box">
+        <div class="kofi-top"><span class="auto-badge">⚡ INSTANT DELIVERY</span><span class="kofi-rec">★ Recommended</span></div>
+        <div class="kofi-price">From $10 <span>USD · lifetime · 1 device</span></div>
+        <p class="kofi-lead">Pay on Ko-fi and your licence key arrives in your inbox automatically — no waiting for manual verification.</p>
+        <ul class="kofi-steps">
+          <li><i>1</i><span>Click the button and complete your purchase on Ko-fi.</span></li>
+          <li><i>2</i><span><b>Your key is emailed to you instantly</b> — check spam if it's late.</span></li>
+          <li><i>3</i><span>Open YUNA, paste the key, start talking.</span></li>
+        </ul>
+        <div class="kofi-support">💜 <span><b>Pay what you want.</b> $10 is the minimum — any extra you add is pure support that helps keep YUNA alive, updated and growing. Thank you!</span></div>
+        <a href="https://ko-fi.com/s/45662d5cc0" target="_blank" rel="noopener noreferrer" class="kofi-btn">☕ Get my key on Ko-fi →</a>
+        <p class="kofi-note">Want Pro extras (direct support &amp; personality setup)? Contribute $15 or more and tell us on Discord with your Ko-fi receipt.</p>
+      </div>
+    </div>
+
+    <div class="pay-footer-note">⚡ Instant key via Ko-fi <span class="sep">·</span> Manual delivery for PayPal/USDT <span class="sep">·</span> One device <span class="sep">·</span> Lifetime access</div>
   </div>
 
   <!-- DONATE -->
@@ -1303,13 +1345,14 @@ function fallbackCopy(el,done){
 
 /* ── PAYMENT TABS ── */
 function switchPay(id){
-  const isPP=id==='pp';
-  document.getElementById('tab-pp').classList.toggle('active',isPP);
-  document.getElementById('tab-usdt').classList.toggle('active',!isPP);
-  document.getElementById('tab-pp').setAttribute('aria-selected',isPP?'true':'false');
-  document.getElementById('tab-usdt').setAttribute('aria-selected',isPP?'false':'true');
-  document.getElementById('panel-pp').classList.toggle('active',isPP);
-  document.getElementById('panel-usdt').classList.toggle('active',!isPP);
+  ['pp','usdt','kofi'].forEach(function(k){
+    var on=(k===id);
+    var tab=document.getElementById('tab-'+k);
+    var panel=document.getElementById('panel-'+k);
+    if(tab){tab.classList.toggle('active',on);tab.setAttribute('aria-selected',on?'true':'false');}
+    if(panel)panel.classList.toggle('active',on);
+  });
+  if(id==='pp'&&typeof window.__renderPP==='function'){window.__renderPP(document.getElementById('pp-plan-pro').classList.contains('selected')?'pro':'basic');}
 }
 
 /* ── PLAN SELECTION ── */
@@ -1535,16 +1578,7 @@ checkThankYouHash();
     if(which==='pro')renderPro();
     else renderBasic();
   };
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',renderBasic);
-  }else{
-    var tries=0;
-    var t=setInterval(function(){
-      tries++;
-      if(typeof paypal!=='undefined'&&paypal.HostedButtons){clearInterval(t);renderBasic();}
-      else if(tries>40){clearInterval(t);renderBasic();}
-    },250);
-  }
+  /* PayPal renders when its tab is opened (hidden panels break sizing) */
 })();
 </script>
 
