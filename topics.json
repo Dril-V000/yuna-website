@@ -1,0 +1,97 @@
+[
+  {
+    "title": "Getting Started With Ollama on Windows: A Step-by-Step Guide",
+    "keyword": "ollama windows setup",
+    "tags": ["ollama", "windows", "ai", "tutorial"]
+  },
+  {
+    "title": "Best Small LLMs You Can Run Offline in 2026",
+    "keyword": "small language models offline",
+    "tags": ["llm", "ollama", "ai", "machinelearning"]
+  },
+  {
+    "title": "Why Cloud AI Chats Are Not Private and What Developers Can Do About It",
+    "keyword": "cloud ai privacy",
+    "tags": ["privacy", "ai", "security", "ollama"]
+  },
+  {
+    "title": "Running Ollama Without a GPU: What to Expect on CPU-Only Machines",
+    "keyword": "ollama cpu only",
+    "tags": ["ollama", "llm", "performance", "hardware"]
+  },
+  {
+    "title": "Adding Persistent Memory to a Local Chatbot With SQLite",
+    "keyword": "local ai chatbot memory",
+    "tags": ["python", "sqlite", "chatbot", "ai"]
+  },
+  {
+    "title": "Building a Simple Offline Voice Assistant in Python",
+    "keyword": "offline voice assistant python",
+    "tags": ["python", "voice", "ai", "tutorial"]
+  },
+  {
+    "title": "Speech-to-Text on Your Own Machine With Whisper",
+    "keyword": "local speech to text whisper",
+    "tags": ["whisper", "python", "speech", "ai"]
+  },
+  {
+    "title": "Offline Text-to-Speech: Choosing a Local TTS Engine",
+    "keyword": "offline text to speech",
+    "tags": ["tts", "python", "voice", "opensource"]
+  },
+  {
+    "title": "Live2D in Python: Rendering an Animated Avatar for Desktop Apps",
+    "keyword": "live2d python avatar",
+    "tags": ["live2d", "python", "gamedev", "avatar"]
+  },
+  {
+    "title": "Quantization Explained: Running 7B Models on Modest Hardware",
+    "keyword": "llm quantization gguf",
+    "tags": ["llm", "quantization", "ollama", "machinelearning"]
+  },
+  {
+    "title": "Using the Ollama REST API From Python",
+    "keyword": "ollama api python",
+    "tags": ["ollama", "python", "api", "tutorial"]
+  },
+  {
+    "title": "Offline AI: Making Your Assistant Work Without an Internet Connection",
+    "keyword": "offline ai assistant",
+    "tags": ["ai", "offline", "ollama", "privacy"]
+  },
+  {
+    "title": "Setting Up a Python Environment for Local AI on Windows",
+    "keyword": "python environment windows ai",
+    "tags": ["python", "windows", "ai", "beginners"]
+  },
+  {
+    "title": "Choosing Context Window Sizes for Local Models Without Running Out of RAM",
+    "keyword": "llm context window memory usage",
+    "tags": ["llm", "ollama", "performance", "memory"]
+  },
+  {
+    "title": "Self-Hosting AI for Privacy: A Practical Threat Model for Developers",
+    "keyword": "self hosted ai privacy",
+    "tags": ["privacy", "selfhosted", "ai", "security"]
+  },
+  {
+    "title": "Prompt Design for Small LLMs: Getting Consistent Output From 3B Models",
+    "keyword": "prompt engineering small llm",
+    "tags": ["llm", "prompt", "ollama", "ai"]
+  },
+  {
+    "title": "Building Long-Term Memory for Local LLMs With Embeddings",
+    "keyword": "llm embeddings long term memory",
+    "tags": ["embeddings", "llm", "python", "ai"]
+  },
+  {
+    "title": "Streaming Responses From a Local LLM Into a Desktop App",
+    "keyword": "streaming llm responses python",
+    "tags": ["python", "ollama", "streaming", "desktop"]
+  },
+  {
+    "title": "Lip Sync and Expressions: Driving an Avatar From AI Text Output",
+    "keyword": "avatar lip sync ai",
+    "tags": ["avatar", "ai", "python", "animation"]
+  }
+]

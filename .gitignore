@@ -1,0 +1,30 @@
+# ─── Secrets (NEVER commit) ────────────────────────────────────────────
+.env
+.env.local
+*.env
+
+# ─── Publisher state (NEVER commit) ────────────────────────────────────
+published.json
+published.json.tmp
+publisher.log
+drafts/
+topics.json.local
+
+# ─── Python ────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+
+# ─── OS ────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Editors ───────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
