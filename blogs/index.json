@@ -1,20 +1,17 @@
 {
   "posts": [
     {
-      "slug": "welcome-to-yuna",
-      "title": "Welcome to the YUNA Blog",
-      "date": "2026-01-15",
+      "slug": "how-to-install-ollama-on-windows-11-complete-setup-guide-2026",
+      "title": "How to Install Ollama on Windows 11: Complete Setup Guide (2026)",
+      "date": "2026-01-27",
       "author": "Code-7",
-      "excerpt": "Why we built YUNA, and what to expect on this blog — from release notes to tutorials.",
-      "tags": ["announcement", "welcome"]
-    },
-    {
-      "slug": "whats-new-in-v1-2",
-      "title": "What's new in YUNA v1.2",
-      "date": "2026-01-10",
-      "author": "Code-7",
-      "excerpt": "MAJO, custom Live2D uploads, AI model selection, premium black theme — the biggest update yet.",
-      "tags": ["release", "v1.2"]
+      "excerpt": "Learn how to install Ollama on Windows 11 with this complete technical setup guide. Run large language models locally on your machine today.",
+      "tags": [
+        "ollama",
+        "windows",
+        "tutorial",
+        "ai"
+      ]
     }
   ]
 }
