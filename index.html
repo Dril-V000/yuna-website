@@ -117,6 +117,12 @@ h1{font-size:clamp(2.6rem,6vw,4.8rem);font-weight:900;line-height:1.05;margin-bo
 .btn-secondary{background:rgba(255,255,255,.03);border:1px solid var(--border2);color:var(--text);padding:.9rem 2.1rem;border-radius:11px;font-weight:500;font-size:.95rem;text-decoration:none;transition:all .25s;backdrop-filter:blur(10px);display:inline-flex;align-items:center;gap:.45rem}
 .btn-secondary:hover{border-color:var(--accent);background:rgba(100,181,246,.08);transform:translateY(-2px)}
 
+.vt-badge{display:inline-flex;align-items:center;gap:.6rem;flex-wrap:wrap;justify-content:center;margin-top:1.6rem;padding:.6rem 1.2rem;border-radius:100px;background:rgba(0,255,136,.08);border:1px solid #00ff88;color:#00ff88;font-size:.82rem;font-weight:600;text-decoration:none;box-shadow:0 0 22px rgba(0,255,136,.28);transition:transform .2s,box-shadow .2s,background .2s}
+.vt-badge:hover{transform:translateY(-2px);background:rgba(0,255,136,.14);box-shadow:0 0 34px rgba(0,255,136,.5)}
+.vt-badge .vt-score{background:#00ff88;color:#04140c;font-weight:800;padding:.1rem .6rem;border-radius:100px;font-size:.78rem}
+.vt-badge .vt-link{text-decoration:underline;text-underline-offset:3px;opacity:.9}
+.vt-wrap{display:flex;justify-content:center}
+@media(max-width:600px){.vt-badge{font-size:.76rem;padding:.55rem 1rem}}
 /* ── APP MOCK ── */
 .mock-section{padding:1rem 2rem 5rem;display:flex;justify-content:center;position:relative}
 .mock-frame{border:1px solid rgba(100,181,246,.35);border-radius:16px;overflow:hidden;max-width:1000px;width:100%;box-shadow:0 0 0 1px rgba(167,139,250,.1),0 0 100px rgba(100,181,246,.15),0 50px 120px rgba(0,0,0,.9);background:#0e0e22;transition:transform .4s ease,box-shadow .4s ease}
@@ -609,6 +615,82 @@ body.ty-mode > #thank-you{display:flex !important}
 .kofi-support b{color:#f9a8d4}
 .kofi-btn{max-width:none}
 .kofi-note{text-align:center}
+
+/* ── SECURITY / FALSE FLAG SECTION ── */
+.security-box {
+  max-width: 720px;
+  margin: 3rem auto 0;
+  background: linear-gradient(180deg, rgba(52,211,153,.06), rgba(100,181,246,.04));
+  border: 1px solid rgba(52,211,153,.3);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all .3s;
+}
+.security-box:hover {
+  border-color: rgba(52,211,153,.5);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0,0,0,.4), 0 0 30px rgba(52,211,153,.1);
+}
+.security-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(52,211,153,.15);
+  border: 1px solid rgba(52,211,153,.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  box-shadow: 0 0 20px rgba(52,211,153,.2);
+}
+.security-content {
+  flex: 1;
+}
+.security-content h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: .4rem;
+}
+.security-content p {
+  font-size: .85rem;
+  color: var(--text2);
+  line-height: 1.6;
+  margin-bottom: .8rem;
+}
+.security-stats {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.s-stat {
+  background: rgba(0,0,0,.3);
+  border: 1px solid var(--border);
+  padding: .4rem .8rem;
+  border-radius: 8px;
+  font-size: .75rem;
+  font-weight: 600;
+  color: var(--text2);
+}
+.s-stat strong {
+  color: var(--green);
+  font-size: .9rem;
+  margin-right: .3rem;
+}
+.s-stat.warn strong {
+  color: var(--amber);
+}
+@media(max-width: 600px) {
+  .security-box { flex-direction: column; text-align: center; gap: 1rem; }
+  .security-stats { justify-content: center; }
+}
+
 </style>
 
 <script src="https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"></script>
@@ -650,6 +732,14 @@ body.ty-mode > #thank-you{display:flex !important}
       <a href="#pricing" class="btn-primary">🔑 Get Licence</a>
       <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.2v" target="_blank" rel="noopener noreferrer" class="btn-secondary">⬇ Download YUNA v1.2</a>
       <a href="#video-section" class="btn-secondary">▶ Watch Demo</a>
+    </div>
+    <div class="vt-wrap">
+      <a class="vt-badge" href="https://www.virustotal.com/gui/file/fd3ea96ad259d0440dd46f42520630160c9646910d1fdb79c0d0051d156e2f6c" target="_blank" rel="noopener noreferrer" aria-label="VirusTotal scan report: 1 of 67 engines flagged, false positive">
+        <span>✅ VirusTotal scan</span>
+        <span class="vt-score">1 / 67</span>
+        <span>1 false positive — 66 engines report it clean</span>
+        <span class="vt-link">View report ↗</span>
+      </a>
     </div>
   </div>
 </section>
