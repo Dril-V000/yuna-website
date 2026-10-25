@@ -6,6 +6,13 @@
       "stars": 5,
       "text": "YUNA stands out because it feels more interactive and personal. The animated different personality modes make it feel less like a chatbot and more like a real companion. It's built on the open source, Open, LLM, VTuber project and wraps it into an easy download and chat package. Setup is simple, and I like that it supports lots of AI models local Ollama, plus OpenAI, Claude, Gemini and more and many voices. The conversation memory keeps chats feeling natural. It can run fully on your own computer if you use a local model and a local voice note the default voice uses Microsoft's online TTS, so switch that if privacy is the goal.",
       "screenshot": "./preview/review-lordshadow.png"
+    },
+    {
+      "name": "Amelia Thornton",
+      "role": "Verified User",
+      "stars": 5,
+      "text": "It's good. Just a few more things to be corrected.",
+      "screenshot": "./preview/review-amelia.png"
     }
   ]
 }
