@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Install Ollama on Windows 11: Complete Setup Guide (2026) | YUNA Blog</title>
+<meta name="description" content="Learn how to install Ollama on Windows 11 with this complete technical setup guide. Run large language models locally on your machine today.">
+<link rel="canonical" href="https://yunaai.online/blog/how-to-install-ollama-on-windows-11-complete-setup-guide-2026/">
+<link rel="icon" href="/favicon.ico">
+<meta name="theme-color" content="#04040c">
+<meta property="og:title" content="How to Install Ollama on Windows 11: Complete Setup Guide (2026) | YUNA Blog">
+<meta property="og:description" content="Learn how to install Ollama on Windows 11 with this complete technical setup guide. Run large language models locally on your machine today.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://yunaai.online/blog/how-to-install-ollama-on-windows-11-complete-setup-guide-2026/">
+<meta property="og:site_name" content="YUNA">
+<meta property="og:image" content="https://yunaai.online/preview/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Install Ollama on Windows 11: Complete Setup Guide (2026) | YUNA Blog">
+<meta name="twitter:description" content="Learn how to install Ollama on Windows 11 with this complete technical setup guide. Run large language models locally on your machine today.">
+<meta name="twitter:image" content="https://yunaai.online/preview/og-image.png">
+<link rel="stylesheet" href="/assets/pages.css">
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How to Install Ollama on Windows 11: Complete Setup Guide (2026)", "description": "Learn how to install Ollama on Windows 11 with this complete technical setup guide. Run large language models locally on your machine today.", "image": "https://yunaai.online/preview/og-image.png", "author": {"@type": "Person", "name": "Code-7"}, "publisher": {"@type": "Organization", "name": "YUNA", "url": "https://yunaai.online/"}, "mainEntityOfPage": "https://yunaai.online/blog/how-to-install-ollama-on-windows-11-complete-setup-guide-2026/", "datePublished": "2026-01-27", "dateModified": "2026-01-27"}</script>
+</head>
+<body>
+<nav><a class="logo" href="/">YUNA</a><a href="/#features">Features</a><a href="/ai-models/">AI Models</a><a href="/requirements/">Requirements</a><a href="/faq/">FAQ</a><a href="/blog/">Blog</a><a class="cta" href="/#pricing">Get YUNA</a></nav>
+<main class="wrap">
+<p class="meta"><a href="/blog/">&larr; All posts</a></p><article><h1>How to Install Ollama on Windows 11: Complete Setup Guide (2026)</h1><p class="meta">2026-01-27 &middot; Code-7 <span class="meta">#ollama</span> <span class="meta">#windows</span> <span class="meta">#tutorial</span> <span class="meta">#ai</span></p><div class="md"><p>Running large language models locally has shifted from an experimental hobby to a standard part of the modern developer workflow. Whether you want to test prompt engineering offline, integrate AI into a local application without paying per-token API costs, or keep sensitive data on your own hardware, Ollama provides one of the cleanest runtimes for this task. </p>
+<p>This guide walks you through the technical process to install ollama windows 11, configure your environment, and run your first local model using the command line and an API client.</p>
+<h2 id="system-requirements-and-prerequisites">System Requirements and Prerequisites</h2>
+<p>Before downloading any binaries, you need to ensure your Windows 11 machine meets the hardware and software prerequisites for running large language models efficiently. While Ollama can run on a CPU, inference speeds will be slow unless you have a dedicated graphics card with adequate Video RAM (VRAM).</p>
+<p>For an optimal experience, your system should meet the following specifications:
+- Operating System: Windows 11 (64-bit), updated to the latest build with WSL 2 support enabled if you plan on advanced containerized workflows, though the native Windows installer operates independently.
+- Processor: Modern multi-core CPU (Intel Core i5/i7/i9 12th gen or newer, or AMD Ryzen 5/7/9 5000 series or newer).
+- Memory (RAM): Minimum 16GB RAM for running 7B and 8B parameter models. 32GB RAM is recommended if you intend to run larger 13B or 34B models comfortably alongside your regular desktop applications.
+- Graphics (GPU): NVIDIA GPU with Compute Capability 6.1 or higher (GTX 10-series or newer, RTX series preferred) with the latest CUDA drivers installed, or an AMD GPU with ROCm support where applicable.</p>
+<p>Make sure your graphics drivers are up to date before proceeding. If you have an NVIDIA card, verify your CUDA version by running <code>nvidia-smi</code> in your terminal.</p>
+<h2 id="downloading-and-running-the-installer">Downloading and Running the Installer</h2>
+<p>The installation process for Windows 11 is straightforward thanks to the official standalone installer. </p>
+<p>Follow these steps to complete the base installation:</p>
+<ol>
+<li>Navigate to the official Ollama website and locate the download section for Windows.</li>
+<li>Download the <code>OllamaSetup.exe</code> installer file to your local machine.</li>
+<li>Run the installer executable. You may receive a User Account Control (UAC) prompt asking for permission to make changes to your device. Click yes to continue.</li>
+<li>Follow the setup wizard prompts. The installer unpacks the necessary binaries, adds the <code>ollama</code> CLI tool to your system PATH environment variable, and starts the Ollama background service automatically.</li>
+</ol>
+<p>Once the installation finishes, you should see the Ollama icon in your Windows system tray (the notification area on the bottom right of your taskbar). This indicates that the background daemon is running and listening for local requests on port 11434.</p>
+<p>Open a new PowerShell or Windows Terminal window and verify the installation by checking the CLI version:</p>
+<pre><code class="language-powershell">ollama --version
+</code></pre>
+<p>If the terminal returns the installed version number without throwing command-not-found errors, your environment is correctly configured.</p>
+<h2 id="pulling-and-running-your-first-model">Pulling and Running Your First Model</h2>
+<p>With the runtime installed and the background service active, you can now download and execute language models. Ollama uses a library system similar to Docker images. You pull a model tag from the repository, and the runtime handles the weight quantization and context management.</p>
+<p>To download and run a standard model like Meta's Llama 3 or Google's Gemma, use the <code>run</code> command in your terminal. For instance, to run the Llama 3 8B model, execute:</p>
+<pre><code class="language-powershell">ollama run llama3
+</code></pre>
+<p>When you execute this command for the first time, Ollama contacts the remote registry, downloads the model manifest and weight layers in chunks, and loads them into your system memory or VRAM. Depending on your internet connection speed, this download may take a few minutes as model files typically range from 4GB to 5GB in size.</p>
+<p>Once the download completes, the terminal transitions into an interactive chat prompt. You can type natural language queries directly into the console. For example:</p>
+<pre><code class="language-text">&gt;&gt;&gt; Write a python function to parse a json log file and extract error codes.
+</code></pre>
+<p>The model processes the request locally, utilizing your hardware resources entirely offline. To exit the interactive session and return to the standard PowerShell prompt, type <code>/exit</code> or press <code>Ctrl+D</code>.</p>
+<h2 id="managing-models-and-integrating-via-api">Managing Models and Integrating via API</h2>
+<p>Beyond the interactive terminal, Ollama runs a local HTTP server on port 11434, making it accessible to external applications, scripts, and development tools. </p>
+<p>You can manage your downloaded models using standard CLI commands:
+- List all locally stored models: <code>ollama list</code>
+- Inspect model details and parameters: <code>ollama show llama3</code>
+- Remove a model to free up disk space: <code>ollama rm llama3</code></p>
+<p>To verify that the local API server is responding, you can send a standard curl request from a second terminal window:</p>
+<pre><code class="language-powershell">curl http://localhost:11434/api/generate -d '{
+  &quot;model&quot;: &quot;llama3&quot;,
+  &quot;prompt&quot;: &quot;Why is the sky blue?&quot;,
+  &quot;stream&quot;: false
+}'
+</code></pre>
+<p>This returns a JSON payload containing the generated response, execution statistics, and token counts. Developers can easily hook this endpoint into custom Python scripts using the <code>requests</code> library or official SDKs, enabling local AI capabilities within custom desktop tools, automation scripts, and backend services without exposing data to third-party cloud providers.</p>
+<h2 id="a-practical-option-for-windows-users">A Practical Option for Windows Users</h2>
+<p>When you want to expand beyond CLI interactions and are looking for a practical option for Windows users who want a local AI companion with a Live2D face, you can explore <a href="https://ko-fi.com/s/45662d5cc0">YUNA</a>, which integrates smoothly with local backends like Ollama to provide an interactive desktop experience.</p>
+<hr />
+<p>Disclosure: I am the developer of YUNA, the software mentioned in the last section.</p></div></article>
+<div class="cta-box"><strong>YUNA: local AI companion with a Live2D face</strong><br>
+<span class="meta">Runs offline on Windows. Pay once, from $10.</span><br>
+<a class="btn" href="/#pricing">See pricing</a></div>
+</main>
+<footer><a href="/">Home</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/faq/">FAQ</a> &middot;
+<a href="https://discord.gg/ARg6yujhdc" rel="noopener">Discord</a> &middot;
+<a href="https://ko-fi.com/code7" rel="noopener">Support</a><br>&copy; 2026 YUNA</footer>
+</body>
+</html>
