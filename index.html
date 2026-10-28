@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+/* YUNA-EARLY-GUARD : يمنع وميض thank-you عند الفتح المباشر */
+(function(){
+  if (location.hash === '#thank-you' && !window.__paid) {
+    var paid = false;
+    try { paid = sessionStorage.getItem('yuna_paid') === '1'; } catch(e){}
+    if (!paid) {
+      document.documentElement.style.visibility = 'hidden';
+      document.addEventListener('DOMContentLoaded', function(){
+        try { history.replaceState(null, '', location.pathname + location.search); } catch(e){}
+        document.documentElement.style.visibility = '';
+      });
+    }
+  }
+})();
+</script>
 <meta charset="UTF-8">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18495616667"></script>
@@ -49,7 +65,7 @@
   --text:#eef1ff;--text2:#9aa3cc;--text3:#5a6390;
   --green:#34d399;--amber:#fbbf24;--red:#f87171;--pink:#f472b6;
   --basic:#38bdf8;--pro:#a78bfa;
-  --discord:#5865F2;--:#FF0000;
+  --discord:#5865F2;--youtube:#FF0000;
   --shadow-sm:0 4px 16px rgba(0,0,0,.35);
   --shadow-md:0 12px 40px rgba(0,0,0,.55);
   --shadow-lg:0 30px 80px rgba(0,0,0,.7);
@@ -356,10 +372,7 @@ section{padding:6rem 2rem;position:relative}
 .contact-card:hover{border-color:var(--border2);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.5)}
 .contact-card:hover::before{opacity:1}
 .contact-card.discord:hover{border-color:var(--discord);box-shadow:0 20px 50px rgba(88,101,242,.2)}
-.contact-card:hover{
-  border-color:#FF0000;
-  box-shadow:0 20px 50px rgba(255,0,0,.15);
-}
+.contact-card.youtube:hover{border-color:var(--youtube);box-shadow:0 20px 50px rgba(255,0,0,.15)}
 .contact-icon{font-size:2.2rem;margin-bottom:.8rem;transition:transform .3s}
 .contact-card:hover .contact-icon{transform:scale(1.15)}
 .contact-card h3{font-size:1rem;font-weight:700;margin-bottom:.4rem}
@@ -515,7 +528,7 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3.5rem 
 .fsocials a{display:inline-flex;align-items:center;gap:.45rem;font-size:.81rem;font-weight:700;text-decoration:none;padding:.5rem 1.1rem;border-radius:9px;transition:all .22s}
 .fsocials a:hover{transform:translateY(-2px)}
 .fs-discord{background:rgba(88,101,242,.18);border:1px solid rgba(88,101,242,.45);color:#8891ff}
-.fs-{background:rgba(255,0,0,.15);border:1px solid rgba(255,0,0,.4);color:#ff6060}
+.fs-youtube{background:rgba(255,0,0,.15);border:1px solid rgba(255,0,0,.4);color:#ff6060}
 .legal-links{display:flex;gap:1.5rem;justify-content:center;margin:1.1rem 0 1.3rem;flex-wrap:wrap}
 .legal-links a{font-size:.76rem;color:var(--text3);text-decoration:none;transition:color .2s}
 .legal-links a:hover{color:var(--accent)}
@@ -1018,9 +1031,6 @@ body.ty-mode > #thank-you{display:flex !important}
 </section>
 
 <!-- PRICING -->
-<!-- Reviews -->
-<div id="reviews"></div>
-
 <section id="pricing" class="reveal">
   <div class="ctr">
     <div class="stag">Pricing</div>
@@ -1386,7 +1396,6 @@ document.querySelectorAll('#navLinks a').forEach(a=>{
   });
 });
 
-/* ── SCROLL TO TOP ── */
 (function(){
   const btn=document.getElementById('scroll-top');
   let ticking=false;
@@ -1401,7 +1410,6 @@ document.querySelectorAll('#navLinks a').forEach(a=>{
   },{passive:true});
 })();
 
-/* ── SCROLL REVEAL ── */
 (function(){
   const els=document.querySelectorAll('.reveal');
   if(!('IntersectionObserver' in window)){
@@ -1419,7 +1427,6 @@ document.querySelectorAll('#navLinks a').forEach(a=>{
   els.forEach(el=>io.observe(el));
 })();
 
-/* ── TOAST ── */
 function showToast(msg){
   const t=document.getElementById('toast');
   if(msg)t.textContent=msg;
@@ -1428,7 +1435,6 @@ function showToast(msg){
   t._timer=setTimeout(()=>t.classList.remove('show'),1800);
 }
 
-/* ── COPY WALLET ── */
 function copyWallet(){
   const el=document.getElementById('usdt-addr');
   if(!el)return;
@@ -1457,7 +1463,6 @@ function fallbackCopy(el,done){
   }catch(_){showToast('Copy failed — select manually');}
 }
 
-/* ── PAYMENT TABS ── */
 function switchPay(id){
   ['pp','usdt','kofi'].forEach(function(k){
     var on=(k===id);
@@ -1466,10 +1471,18 @@ function switchPay(id){
     if(tab){tab.classList.toggle('active',on);tab.setAttribute('aria-selected',on?'true':'false');}
     if(panel)panel.classList.toggle('active',on);
   });
-  if(id==='pp'&&typeof window.__renderPP==='function'){window.__renderPP(document.getElementById('pp-plan-pro').classList.contains('selected')?'pro':'basic');}
+  if(id==='pp'){
+    var _p = (typeof window.loadPayPal==='function')
+      ? window.loadPayPal()
+      : Promise.resolve();
+    _p.then(function(){
+      if(typeof window.__renderPP==='function'){
+        window.__renderPP(document.getElementById('pp-plan-pro').classList.contains('selected')?'pro':'basic');
+      }
+    }).catch(function(){});
+  }
 }
 
-/* ── PLAN SELECTION ── */
 function selectPlan(method,plan){
   if(method==='pp'){
     document.getElementById('pp-plan-basic').classList.toggle('selected',plan==='basic');
@@ -1477,7 +1490,7 @@ function selectPlan(method,plan){
     document.getElementById('pp-basic-wrap').style.display=plan==='basic'?'block':'none';
     document.getElementById('pp-pro-wrap').style.display=plan==='pro'?'block':'none';
     document.getElementById('pp-total-label').textContent=plan==='basic'?'$10 USD · Basic':'$15 USD · Pro';
-    if(plan==='pro'&&typeof window.__renderPP==='function'){window.__renderPP('pro');}
+    if(typeof window.__renderPP==='function'){window.__renderPP(plan==='pro'?'pro':'basic');}
   }else{
     document.getElementById('usdt-plan-basic').classList.toggle('selected',plan==='basic');
     document.getElementById('usdt-plan-pro').classList.toggle('selected',plan==='pro');
@@ -1485,7 +1498,6 @@ function selectPlan(method,plan){
   }
 }
 
-/* ── THANK-YOU ROUTING ── */
 function showThankYou(){
   document.body.classList.add('ty-mode');
   const ty=document.getElementById('thank-you');
@@ -1515,7 +1527,6 @@ window.addEventListener('DOMContentLoaded',checkThankYouHash);
 checkThankYouHash();
 </script>
 
-<!-- LIVE2D -->
 <script>
 (function(){
   'use strict';
@@ -1561,8 +1572,8 @@ checkThankYouHash();
 
   function placeModel(){
     if(!model)return;
-    const size=resizeCanvas();
-    const pw=size.w,ph=size.h;
+    const pw=Math.max(1,Math.floor(panel.clientWidth));
+    const ph=Math.max(1,Math.floor(panel.clientHeight));
     app.renderer.resize(pw,ph);
     const bounds=typeof model.getLocalBounds==='function'?model.getLocalBounds():{width:1,height:1};
     const mw=Math.max(1,Math.abs(bounds.width));
@@ -1631,7 +1642,7 @@ checkThankYouHash();
       if(!response.ok)throw new Error('Model file not found ('+response.status+'). Put yuna.model3.json beside this HTML file.');
       const modelJson=await response.json();
       if(!modelJson||!modelJson.FileReferences)throw new Error('yuna.model3.json is not a valid Cubism model file.');
-      model=await PIXI.live2d.Live2DModel.from(MODEL,{autoInteract:false,autoUpdate:true,ticker:PIXI.Ticker.shared});
+      model=await PIXI.live2d.Live2DModel.from(MODEL,{autoInteract:false,autoUpdate:true});
       app.stage.addChild(model);
       placeModel();
       animate();
@@ -1647,8 +1658,26 @@ checkThankYouHash();
 })();
 </script>
 
-<!-- PAYPAL -->
-<script src="https://www.paypal.com/sdk/js?client-id=BAAzMZURqi9KGWrbHOv8rh4EJrbE7dYBtTSs7SUBLJTvfswfaS0gefw78sZ2EVsbM6W53_82w968qEQQIg&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+
+<script>
+window.__paypalLoading = null;
+window.__paypalLoaded  = false;
+
+window.loadPayPal = function(){
+  if (window.__paypalLoaded)  return Promise.resolve();
+  if (window.__paypalLoading) return window.__paypalLoading;
+
+  window.__paypalLoading = new Promise(function(resolve, reject){
+    var s = document.createElement('script');
+    s.src = 'https://www.paypal.com/sdk/js?client-id=BAAzMZURqi9KGWrbHOv8rh4EJrbE7dYBtTSs7SUBLJTvfswfaS0gefw78sZ2EVsbM6W53_82w968qEQQIg&components=hosted-buttons&disable-funding=venmo&currency=USD';
+    s.async = true;
+    s.onload  = function(){ window.__paypalLoaded = true; resolve(); };
+    s.onerror = function(){ reject(new Error('PayPal SDK failed to load')); };
+    document.head.appendChild(s);
+  });
+  return window.__paypalLoading;
+};
+</script>
 <script>
 (function(){
   var rendered={};
@@ -1692,39 +1721,62 @@ checkThankYouHash();
     if(which==='pro')renderPro();
     else renderBasic();
   };
-  /* PayPal renders when its tab is opened (hidden panels break sizing) */
 })();
 </script>
 
 <script>
-/* YUNA-GADS-FIX : Google Ads tracking for the thank-you page */
-function trackThankYou(){
-  if(!window.__paid || window.__tyTracked) return;
-  if(typeof gtag!=='function') return;
-  window.__tyTracked=true;
-  gtag('event','page_view',{
-    page_title:'Thank you! — YUNA',
-    page_location:location.origin+location.pathname+'#thank-you'
-  });
+(function(){
+  if (typeof window.showThankYou === 'function' && !window.showThankYou.__wrapped) {
+    var _orig = window.showThankYou;
+    window.showThankYou = function(){
+      _orig.apply(this, arguments);
+      try {
+        if (typeof gtag === 'function' && !window.__tyTracked) {
+          window.__tyTracked = true;
+          gtag('event', 'page_view', {
+            page_title: 'Thank you! — YUNA',
+            page_location: location.origin + location.pathname + '#thank-you'
+          });
+        }
+      } catch(e){ /* لا نكسر الصفحة بسبب analytics */ }
+    };
+    window.showThankYou.__wrapped = true;
+  }
 
-}
-
-function showThankYou(){
-  document.body.classList.add('ty-mode');
-  const ty=document.getElementById('thank-you');
-  if(ty)ty.setAttribute('aria-hidden','false');
-  document.title='Thank you! — YUNA';
-  window.scrollTo(0,0);
-  trackThankYou();
-}
-
-function goThankYou(){
-  window.__paid=true;
-  if(location.hash==='#thank-you'){ showThankYou(); }
-  else{ location.hash='#thank-you'; }
-}
+  if (typeof window.goThankYou === 'function' && !window.goThankYou.__wrapped) {
+    var _origGo = window.goThankYou;
+    window.goThankYou = function(){
+      window.__paid = true;
+      try { sessionStorage.setItem('yuna_paid','1'); } catch(e){}
+      _origGo.apply(this, arguments);
+    };
+    window.goThankYou.__wrapped = true;
+  }
+})();
 </script>
 
 <script src="./reviews.js"></script>
+<script>
+
+(function(){
+  function guard(){
+    var _paid = window.__paid || (function(){ try { return sessionStorage.getItem('yuna_paid')==='1'; } catch(e){ return false; } })();
+    if (location.hash === '#thank-you' && !_paid){
+      try {
+        history.replaceState(null, '', location.pathname + location.search);
+      } catch(e){ location.hash = ''; }
+      document.body.classList.remove('ty-mode');
+      var ty = document.getElementById('thank-you');
+      if (ty) ty.setAttribute('aria-hidden', 'true');
+    }
+  }
+  window.addEventListener('DOMContentLoaded', guard);
+  window.addEventListener('hashchange', function(){
+    if (location.hash === '#thank-you' && !window.__paid) {
+      setTimeout(guard, 0);
+    }
+  });
+})();
+</script>
 </body>
 </html>
