@@ -12,27 +12,26 @@
 </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YUNA — Your Local AI Companion with a Living Face</title>
+<title>Offline AI Companion for Windows with Live2D Face | YUNA</title>
 
 <link rel="icon" type="image/x-icon" href="./favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="./preview/favicon-32.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./preview/favicon-32x32.png">
 
-<meta name="description" content="YUNA v1.2 — Local AI companion with a Living Face. Voice conversations, Live2D animation, 100% private. Pay once from $10.">
-<meta name="keywords" content="AI companion, local AI, offline AI, Live2D, voice AI, Ollama, AI friend, AI assistant">
+<meta name="description" content="YUNA is a local AI companion with voice chat and a Live2D animated face. Runs offline on Windows, 100% private, no subscription. Pay once from $10.">
 <meta name="author" content="Code-7">
 <meta name="theme-color" content="#05050f">
 
-<meta property="og:title" content="YUNA v1.2 — Your Local AI Companion">
+<meta property="og:title" content="Offline AI Companion for Windows with Live2D Face | YUNA">
 <meta property="og:description" content="Voice AI with a living face. 100% local, private, from $10 lifetime.">
-<meta property="og:image" content="./preview/og-image.png">
+<meta property="og:image" content="https://yunaai.online/preview/og-image.png">
 <meta property="og:url" content="https://yunaai.online/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="YUNA">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="YUNA v1.2 — Your Local AI Companion">
+<meta name="twitter:title" content="Offline AI Companion for Windows with Live2D Face | YUNA">
 <meta name="twitter:description" content="Voice AI with a living face. 100% local, from $10.">
-<meta name="twitter:image" content="./preview/og-image.png">
+<meta name="twitter:image" content="https://yunaai.online/preview/og-image.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -696,6 +695,8 @@ body.ty-mode > #thank-you{display:flex !important}
 <script src="https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/pixi.js@6.5.10/dist/browser/pixi.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/pixi-live2d-display@0.4.0/dist/cubism4.min.js"></script>
+<link rel="canonical" href="https://yunaai.online/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "YUNA", "applicationCategory": "MultimediaApplication", "operatingSystem": "Windows 10, Windows 11", "description": "Local AI companion with voice conversation and a Live2D animated face. Runs offline, no subscription.", "url": "https://yunaai.online/", "image": "https://yunaai.online/preview/og-image.png", "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": "10", "highPrice": "15"}}</script>
 </head>
 <body>
 
@@ -710,6 +711,7 @@ body.ty-mode > #thank-you{display:flex !important}
     <li><a href="#characters">Characters</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#faq">FAQ</a></li>
+    <li><a href="/blog/">Blog</a></li>
     <li><a href="https://ko-fi.com/code7" target="_blank" rel="noopener noreferrer">Donate</a></li>
     <li><a href="https://discord.gg/ARg6yujhdc" target="_blank" rel="noopener noreferrer">Discord</a></li>
   </ul>
@@ -1283,6 +1285,13 @@ body.ty-mode > #thank-you{display:flex !important}
     <a href="#contact">Contact & Purchase</a>
     <a href="#faq">FAQ</a>
   </div>
+  <div class="flinks">
+    <a href="/ai-models/">AI Models Guide</a>
+    <a href="/requirements/">System Requirements</a>
+    <a href="/faq/">Full FAQ</a>
+    <a href="/reviews/">Reviews</a>
+    <a href="/blog/">Blog</a>
+  </div>
   <div class="legal-links">
     <a href="https://github.com/Dril-V000/yuna-AI/blob/main/TOS.md" target="_blank" rel="noopener noreferrer">Terms of Service</a>
     <a href="https://github.com/Dril-V000/yuna-AI/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">License</a>
@@ -1488,7 +1497,7 @@ function hideThankYou(){
   document.body.classList.remove('ty-mode');
   const ty=document.getElementById('thank-you');
   if(ty)ty.setAttribute('aria-hidden','true');
-  document.title='YUNA v1.2 — Your Local AI Companion with a Living Face';
+  document.title='Offline AI Companion for Windows with Live2D Face | YUNA';
   if(location.hash==='#thank-you'){
     history.replaceState(null,'',location.pathname+location.search);
   }
