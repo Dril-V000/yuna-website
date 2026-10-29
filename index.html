@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
 <script>
-/* YUNA-EARLY-GUARD : يمنع وميض thank-you عند الفتح المباشر */
+/*
+ * USDT payment option removed as a precaution to reduce
+ * potential trust and reputation issues with website
+ * security and protection services.
+ */
 (function(){
   if (location.hash === '#thank-you' && !window.__paid) {
     var paid = false;
@@ -18,7 +22,7 @@
 })();
 </script>
 <meta charset="UTF-8">
-<!-- Google tag (gtag.js) -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18495616667"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -77,13 +81,11 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple
 [id]{scroll-margin-top:84px}
 img,svg{max-width:100%;display:block}
 
-/* ── SCROLLBAR ── */
 ::-webkit-scrollbar{width:10px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--accent),var(--accent2));border-radius:8px;border:2px solid var(--bg)}
 ::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,var(--accent3),var(--accent4))}
 
-/* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:.85rem 2.5rem;background:rgba(4,4,12,.82);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid var(--border);transition:padding .3s ease,background .3s ease}
 nav.scrolled{padding:.65rem 2.5rem;background:rgba(4,4,12,.95)}
 .nav-logo{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:5px;position:relative}
@@ -99,7 +101,6 @@ nav.scrolled{padding:.65rem 2.5rem;background:rgba(4,4,12,.95)}
 .nav-toggle{display:none;background:transparent;border:1px solid var(--border2);color:var(--text);width:42px;height:42px;border-radius:10px;font-size:1.3rem;cursor:pointer;align-items:center;justify-content:center;transition:background .2s}
 .nav-toggle:hover{background:var(--card)}
 
-/* ── HERO ── */
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:8rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 800px 500px at 50% 0%,rgba(100,181,246,.08),transparent 70%);pointer-events:none}
 .glow{position:absolute;border-radius:50%;filter:blur(110px);pointer-events:none;will-change:transform}
@@ -138,7 +139,7 @@ h1{font-size:clamp(2.6rem,6vw,4.8rem);font-weight:900;line-height:1.05;margin-bo
 .vt-badge .vt-link{text-decoration:underline;text-underline-offset:3px;opacity:.9}
 .vt-wrap{display:flex;justify-content:center}
 @media(max-width:600px){.vt-badge{font-size:.76rem;padding:.55rem 1rem}}
-/* ── APP MOCK ── */
+
 .mock-section{padding:1rem 2rem 5rem;display:flex;justify-content:center;position:relative}
 .mock-frame{border:1px solid rgba(100,181,246,.35);border-radius:16px;overflow:hidden;max-width:1000px;width:100%;box-shadow:0 0 0 1px rgba(167,139,250,.1),0 0 100px rgba(100,181,246,.15),0 50px 120px rgba(0,0,0,.9);background:#0e0e22;transition:transform .4s ease,box-shadow .4s ease}
 .mock-frame:hover{transform:translateY(-4px);box-shadow:0 0 0 1px rgba(167,139,250,.15),0 0 120px rgba(100,181,246,.2),0 60px 140px rgba(0,0,0,.95)}
@@ -206,31 +207,26 @@ h1{font-size:clamp(2.6rem,6vw,4.8rem);font-weight:900;line-height:1.05;margin-bo
 .char-nav{position:absolute;bottom:58px;left:50%;transform:translateX(-50%);width:24px;height:24px;border-radius:50%;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:9px;color:rgba(255,255,255,.5);z-index:10}
 .char-subtitle{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);white-space:nowrap;background:rgba(0,0,0,.7);backdrop-filter:blur(14px);padding:8px 24px;border-radius:10px;font-size:.85rem;color:#fff;font-weight:500;letter-spacing:.3px;border:1px solid rgba(100,181,246,.2);z-index:10;box-shadow:0 4px 20px rgba(0,0,0,.5)}
 
-/* ── STATS ── */
 .stats-bar{display:flex;justify-content:center;gap:4rem;flex-wrap:wrap;padding:3rem 2rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:linear-gradient(180deg,var(--bg2),var(--bg));position:relative}
 .stats-bar::before{content:'';position:absolute;top:0;left:20%;right:20%;height:1px;background:linear-gradient(90deg,transparent,rgba(100,181,246,.5),transparent)}
 .stat{text-align:center;position:relative}
 .stat-num{font-family:'Space Grotesk',sans-serif;font-size:2.4rem;font-weight:700;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1}
 .stat-label{font-size:.8rem;color:var(--text3);margin-top:.3rem;font-weight:500}
 
-/* ── SHARED SECTION ── */
 section{padding:6rem 2rem;position:relative}
 .stag{display:inline-block;background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.25);color:var(--accent2);font-size:.73rem;font-weight:700;padding:.28rem .85rem;border-radius:100px;margin-bottom:1rem;letter-spacing:1.5px;text-transform:uppercase}
 .stitle{font-size:clamp(1.9rem,4vw,3rem);font-weight:800;margin-bottom:1rem;line-height:1.15;letter-spacing:-.025em;color:var(--text)}
 .ssub{color:var(--text2);font-size:1rem;max-width:520px;line-height:1.7}
 .ctr{text-align:center}.ctr .ssub{margin:0 auto}
 
-/* ── REVEAL ANIMATION ── */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
-/* ── VIDEO ── */
 #video-section{background:var(--bg2)}
 .video-wrap{max-width:900px;margin:3rem auto 0;border-radius:18px;overflow:hidden;border:1px solid var(--border2);box-shadow:0 0 80px rgba(100,181,246,.12),0 50px 100px rgba(0,0,0,.75);transition:transform .3s,box-shadow .3s}
 .video-wrap:hover{transform:translateY(-4px);box-shadow:0 0 100px rgba(100,181,246,.18),0 60px 120px rgba(0,0,0,.85)}
 .video-wrap iframe{display:block;width:100%;aspect-ratio:16/9;border:none}
 
-/* ── FEATURES ── */
 #features{background:var(--bg)}
 .feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.3rem;max-width:1150px;margin:3.5rem auto 0}
 .fc{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.6rem;transition:all .3s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
@@ -247,7 +243,6 @@ section{padding:6rem 2rem;position:relative}
 .fc h3{font-size:.98rem;font-weight:700;margin-bottom:.45rem;color:var(--text);line-height:1.35}
 .fc p{font-size:.84rem;color:var(--text2);line-height:1.65}
 
-/* ── PROVIDERS ── */
 #providers{background:var(--bg2)}
 .providers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:1.1rem;max-width:950px;margin:3rem auto 0}
 .pcard{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.3rem 1rem;text-align:center;transition:all .3s}
@@ -259,7 +254,6 @@ section{padding:6rem 2rem;position:relative}
 .ollama-note{margin-top:1.5rem;max-width:950px;margin-left:auto;margin-right:auto;background:linear-gradient(135deg,rgba(100,181,246,.08),rgba(167,139,250,.05));border:1px solid rgba(100,181,246,.2);border-radius:12px;padding:1.1rem 1.3rem;font-size:.85rem;color:var(--text2);display:flex;gap:.8rem;align-items:center;line-height:1.65}
 .ollama-note strong{color:var(--accent3)}
 
-/* ── CHARACTERS ── */
 #characters{background:var(--bg)}
 .chars-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:1.3rem;max-width:950px;margin:3.5rem auto 0}
 .char-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.6rem;transition:all .3s;position:relative;overflow:hidden}
@@ -286,7 +280,6 @@ section{padding:6rem 2rem;position:relative}
 .mn{font-size:.86rem;font-weight:700;margin-bottom:.25rem;color:var(--text)}
 .ms{font-size:.76rem;color:var(--text3);line-height:1.55}
 
-/* ── CHANGELOG ── */
 #changelog{background:var(--bg2)}
 .cl-box{max-width:720px;margin:3rem auto 0;background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .3s}
 .cl-box:hover{border-color:var(--border2);box-shadow:0 20px 50px rgba(0,0,0,.4)}
@@ -309,7 +302,6 @@ section{padding:6rem 2rem;position:relative}
 .cli p{font-size:.85rem;color:var(--text2);line-height:1.65}
 .cli strong{color:var(--text);font-weight:600}
 
-/* ── HOW ── */
 #how{background:var(--bg)}
 .steps{max-width:720px;margin:3.5rem auto 0;display:flex;flex-direction:column;gap:1.6rem}
 .step{display:flex;gap:1.3rem;align-items:flex-start;padding:1.2rem;background:var(--card);border:1px solid var(--border);border-radius:14px;transition:all .3s}
@@ -318,7 +310,6 @@ section{padding:6rem 2rem;position:relative}
 .step h3{font-size:.98rem;font-weight:700;margin-bottom:.35rem;color:var(--text)}
 .step p{font-size:.84rem;color:var(--text2);line-height:1.65}
 
-/* ── SPECS ── */
 #specs{background:var(--bg2)}
 .specs-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;max-width:720px;margin:3.5rem auto 0}
 .spec-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;transition:all .3s}
@@ -333,7 +324,6 @@ section{padding:6rem 2rem;position:relative}
 .os-chip:hover{border-color:var(--border2);color:var(--accent3)}
 .spec-rec{max-width:720px;margin:1.3rem auto 0;background:linear-gradient(135deg,rgba(100,181,246,.06),rgba(167,139,250,.04));border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.3rem;font-size:.83rem;color:var(--text2);line-height:1.65}
 
-/* ── PRICING ── */
 #pricing{background:var(--bg)}
 .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.6rem;max-width:760px;margin:3.5rem auto 0}
 .prc{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2.2rem;position:relative;transition:all .35s cubic-bezier(.4,0,.2,1)}
@@ -364,7 +354,6 @@ section{padding:6rem 2rem;position:relative}
 .vchip{background:var(--card);border:1px solid var(--border);border-radius:100px;padding:.4rem 1.05rem;font-size:.78rem;color:var(--text2);transition:all .2s}
 .vchip:hover{border-color:var(--border2);color:var(--accent3)}
 
-/* ── CONTACT ── */
 #contact{background:var(--bg2)}
 .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.3rem;max-width:860px;margin:3.5rem auto 0}
 .contact-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.8rem;text-align:center;text-decoration:none;color:var(--text);transition:all .3s;position:relative;overflow:hidden}
@@ -381,7 +370,6 @@ section{padding:6rem 2rem;position:relative}
 .discord .contact-cta{background:rgba(88,101,242,.18);border-color:rgba(88,101,242,.45);color:#8891ff}
 .contact-card:hover .contact-cta{transform:scale(1.05)}
 
-/* ── PAYMENT ── */
 .payment-box{max-width:800px;margin:3rem auto 0;background:linear-gradient(180deg,rgba(100,181,246,.07),rgba(167,139,250,.04) 40%,rgba(5,5,15,0));border:1px solid var(--border);border-radius:22px;padding:2rem;position:relative;overflow:hidden}
 .payment-box::before{content:'';position:absolute;top:0;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,rgba(100,181,246,.8),rgba(167,139,250,.8),transparent)}
 .payment-box-title{font-size:.86rem;font-weight:800;color:var(--text);text-align:center;letter-spacing:.5px}
@@ -391,7 +379,6 @@ section{padding:6rem 2rem;position:relative}
 .pay-tab small{display:block;font-size:.68rem;font-weight:500;opacity:.7}
 .pay-tab-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;transition:transform .2s}
 .pay-tab-icon.pp{background:rgba(100,181,246,.15);border:1px solid rgba(100,181,246,.3)}
-.pay-tab-icon.usdt{background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.3)}
 .pay-tab-icon.kofi{background:rgba(244,114,182,.15);border:1px solid rgba(244,114,182,.3)}
 .auto-badge{display:inline-block;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3);color:var(--green);font-size:.62rem;font-weight:800;padding:.08rem .45rem;border-radius:5px;margin-left:.35rem;vertical-align:middle;letter-spacing:.4px}
 .kofi-box{background:rgba(5,5,15,.5);border:1px solid var(--border);border-radius:14px;padding:1.4rem;text-align:center}
@@ -432,7 +419,6 @@ section{padding:6rem 2rem;position:relative}
 .pay-amount-line strong{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;color:var(--text)}
 .pay-amount-line .due{color:var(--text3);font-size:.76rem}
 
-/* PayPal checkout */
 .pp-checkout{background:#f6f8fc;border:1px solid #e2e8f5;border-radius:15px;padding:1rem 1rem .8rem;color:#0f1f3d;box-shadow:inset 0 1px 0 #fff,0 12px 36px rgba(0,0,0,.4)}
 .pp-brand{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-bottom:.75rem;padding:0 .2rem}
 .pp-brand-left{display:flex;align-items:center;gap:.55rem;font-size:.79rem;font-weight:700;color:#0f1f3d}
@@ -452,24 +438,6 @@ section{padding:6rem 2rem;position:relative}
 .trust-row{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-top:.8rem}
 .trust-pill{display:inline-flex;align-items:center;gap:.4rem;font-size:.69rem;font-weight:600;color:#33415e;background:#fff;border:1px solid #e2e8f5;border-radius:100px;padding:.3rem .75rem;white-space:nowrap}
 .secure-row{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:.9rem;font-size:.73rem;color:var(--text3)}
-.amount-due{display:flex;align-items:center;justify-content:space-between;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.3);border-radius:11px;padding:.8rem 1.1rem;margin-bottom:.9rem}
-.amount-due .ad-label{font-size:.73rem;color:var(--text2);font-weight:700;letter-spacing:.6px;text-transform:uppercase}
-.amount-due .ad-value{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--green)}
-.wallet-box{background:var(--card2);border:1px solid var(--border);border-radius:11px;padding:.85rem .9rem;display:flex;flex-direction:column;gap:.7rem;margin-bottom:.9rem}
-.wallet-meta{display:flex;align-items:center;gap:.55rem}
-.wallet-net{font-size:.66rem;font-weight:800;color:#04040c;background:var(--green);letter-spacing:.9px;padding:.2rem .55rem;border-radius:6px;text-transform:uppercase}
-.wallet-hint{font-size:.71rem;color:var(--text3)}
-.wallet-line{display:flex;align-items:center;gap:.7rem;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:.6rem .65rem .6rem .9rem}
-.wallet-address{font-family:'Space Grotesk',monospace;font-size:.75rem;color:var(--accent3);flex:1;word-break:break-all;line-height:1.55}
-.wallet-copy{background:var(--grad-main);border:none;color:#04040c;border-radius:8px;padding:.45rem .9rem;font-size:.73rem;font-weight:700;cursor:pointer;flex-shrink:0;transition:all .18s;white-space:nowrap}
-.wallet-copy:hover{opacity:.88;transform:translateY(-1px)}
-.wallet-copy:active{transform:scale(.96)}
-.network-warn{background:rgba(248,113,113,.07);border:1px solid rgba(248,113,113,.3);border-radius:11px;padding:.95rem 1.1rem;margin-bottom:.9rem}
-.nw-head{display:flex;align-items:center;gap:.5rem;font-size:.77rem;font-weight:800;color:#ff9090;margin-bottom:.45rem}
-.nw-ok{display:inline-block;font-size:.74rem;color:var(--green);font-weight:700;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3);border-radius:7px;padding:.22rem .6rem;margin-bottom:.6rem}
-.nw-list{font-size:.74rem;color:#c9a0a0;line-height:1.85;padding-left:1.2rem;margin:0 0 .45rem}
-.nw-list li::marker{color:#ff9090}
-.nw-final{font-size:.74rem;color:#ff9090;font-weight:700}
 .proof-box{text-align:center;background:rgba(100,181,246,.05);border:1px solid var(--border);border-radius:11px;padding:1rem 1.1rem}
 .proof-note{font-size:.77rem;color:var(--text2);line-height:1.7;margin-bottom:.8rem}
 .proof-note strong{color:var(--accent3)}
@@ -482,7 +450,6 @@ section{padding:6rem 2rem;position:relative}
 .pay-footer-note .sep{opacity:.4}
 .payment-proof-note{margin:.75rem 0 0;text-align:center;font-size:.73rem;line-height:1.6;color:var(--text3)}
 
-/* ── DONATE ── */
 .donate-box{max-width:720px;margin:3rem auto 0;display:flex;align-items:center;gap:1.4rem;background:linear-gradient(135deg,rgba(100,181,246,.07),rgba(167,139,250,.06));border:1px solid var(--border2);border-radius:18px;padding:1.5rem 1.7rem;position:relative;overflow:hidden;transition:all .3s}
 .donate-box::before{content:'';position:absolute;top:0;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,rgba(100,181,246,.8),rgba(167,139,250,.8),transparent)}
 .donate-box:hover{border-color:var(--border3);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.5),var(--glow-purple)}
@@ -498,7 +465,6 @@ section{padding:6rem 2rem;position:relative}
   .donate-btn{width:100%;justify-content:center}
 }
 
-/* ── FAQ ── */
 #faq{background:var(--bg)}
 .faq-list{max-width:700px;margin:3.5rem auto 0;display:flex;flex-direction:column;gap:1rem}
 .fi{background:var(--card);border:1px solid var(--border);border-radius:13px;overflow:hidden;transition:all .3s}
@@ -512,13 +478,11 @@ section{padding:6rem 2rem;position:relative}
 .fa{padding:0 1.3rem;max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;font-size:.85rem;color:var(--text2);line-height:1.75}
 .fi.open .fa{max-height:320px;padding:0 1.3rem 1.1rem}
 
-/* ── CTA ── */
 #cta{background:var(--bg2);padding:7rem 2rem;text-align:center;position:relative;overflow:hidden}
 .cta-glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:700px;height:340px;background:rgba(167,139,250,.12);filter:blur(90px);pointer-events:none}
 #cta h2{font-size:clamp(2rem,4.5vw,3.4rem);font-weight:800;margin-bottom:1.1rem;position:relative;letter-spacing:-.025em;background:linear-gradient(90deg,var(--text),var(--accent3),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 #cta p{color:var(--text2);margin-bottom:2.5rem;position:relative;font-size:1.05rem}
 
-/* ── FOOTER ── */
 footer{background:var(--card);border-top:1px solid var(--border);padding:3.5rem 2rem;text-align:center}
 .flogo{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:4px;margin-bottom:.8rem}
 .flinks{display:flex;gap:1.6rem;justify-content:center;margin:1.1rem 0 1.5rem;flex-wrap:wrap}
@@ -534,16 +498,13 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3.5rem 
 .legal-links a:hover{color:var(--accent)}
 .fcopy{font-size:.79rem;color:var(--text3);margin-bottom:.35rem;line-height:1.6}
 
-/* ── SCROLL TO TOP ── */
 #scroll-top{position:fixed;bottom:26px;right:26px;width:50px;height:50px;border-radius:50%;background:var(--grad-main);color:#04040c;border:none;font-size:1.25rem;font-weight:800;cursor:pointer;opacity:0;visibility:hidden;transition:all .3s;box-shadow:0 10px 30px rgba(100,181,246,.4);z-index:150}
 #scroll-top.visible{opacity:1;visibility:visible}
 #scroll-top:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 16px 40px rgba(100,181,246,.6)}
 
-/* ── TOAST ── */
 .toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(90px);background:var(--green);color:#04040c;padding:.8rem 1.6rem;border-radius:12px;font-weight:700;font-size:.86rem;opacity:0;transition:opacity .3s,transform .3s;z-index:300;pointer-events:none;box-shadow:0 12px 36px rgba(52,211,153,.4)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-/* ── THANK-YOU ── */
 #thank-you{display:none;min-height:100vh;padding:5rem 1.5rem;position:relative;overflow:hidden;background:var(--bg);align-items:center;justify-content:center}
 body.ty-mode > *{display:none !important}
 body.ty-mode > #thank-you{display:flex !important}
@@ -571,7 +532,6 @@ body.ty-mode > #thank-you{display:flex !important}
 .ty-back{background:transparent;border:1px solid var(--border);color:var(--text3);font-family:inherit;font-size:.79rem;font-weight:700;padding:.55rem 1.2rem;border-radius:10px;cursor:pointer;transition:all .22s}
 .ty-back:hover{color:var(--accent);border-color:var(--border2)}
 
-/* ── RESPONSIVE ── */
 @media(max-width:900px){
   .specs-grid{grid-template-columns:1fr}
   .mock-body{flex-direction:column;height:auto}
@@ -609,7 +569,6 @@ body.ty-mode > #thank-you{display:flex !important}
   .flinks{gap:1rem}
 }
 
-/* ── REDUCED MOTION ── */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
   html{scroll-behavior:auto}
@@ -628,7 +587,6 @@ body.ty-mode > #thank-you{display:flex !important}
 .kofi-btn{max-width:none}
 .kofi-note{text-align:center}
 
-/* ── SECURITY / FALSE FLAG SECTION ── */
 .security-box {
   max-width: 720px;
   margin: 3rem auto 0;
@@ -713,7 +671,6 @@ body.ty-mode > #thank-you{display:flex !important}
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="mainNav">
   <div class="nav-logo">YUNA</div>
   <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks" onclick="toggleNav(this)">☰</button>
@@ -731,7 +688,6 @@ body.ty-mode > #thank-you{display:flex !important}
   <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.2v" target="_blank" rel="noopener noreferrer" class="nav-cta">⬇ Download</a>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="glow g1"></div>
   <div class="glow g2"></div>
@@ -759,7 +715,6 @@ body.ty-mode > #thank-you{display:flex !important}
   </div>
 </section>
 
-<!-- APP DEMO -->
 <div class="mock-section">
   <div class="mock-frame">
     <div class="mock-titlebar">
@@ -851,7 +806,6 @@ body.ty-mode > #thank-you{display:flex !important}
   </div>
 </div>
 
-<!-- STATS -->
 <div class="stats-bar">
   <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Lifetime license</div></div>
   <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Runs locally — no cloud</div></div>
@@ -859,7 +813,6 @@ body.ty-mode > #thank-you{display:flex !important}
   <div class="stat"><div class="stat-num">6+</div><div class="stat-label">Supported AI providers</div></div>
 </div>
 
-<!-- VIDEO -->
 <section id="video-section" class="reveal">
   <div class="ctr">
     <div class="stag">Demo</div>
@@ -871,7 +824,6 @@ body.ty-mode > #thank-you{display:flex !important}
   </div>
 </section>
 
-<!-- FEATURES -->
 <section id="features" class="reveal">
   <div class="ctr">
     <div class="stag">Features</div>
@@ -898,7 +850,6 @@ body.ty-mode > #thank-you{display:flex !important}
   </div>
 </section>
 
-<!-- PROVIDERS -->
 <section id="providers" class="reveal">
   <div class="ctr">
     <div class="stag">AI Models</div>
@@ -919,7 +870,6 @@ body.ty-mode > #thank-you{display:flex !important}
   </div>
 </section>
 
-<!-- CHARACTERS -->
 <section id="characters" class="reveal">
   <div class="ctr">
     <div class="stag">Characters</div>
@@ -963,7 +913,6 @@ body.ty-mode > #thank-you{display:flex !important}
   </div>
 </section>
 
-<!-- CHANGELOG -->
 <section id="changelog" class="reveal">
   <div class="ctr">
     <div class="stag">Changelog</div>
@@ -989,7 +938,6 @@ body.ty-mode > #thank-you{display:flex !important}
   <p class="cl-privacy">🔒 Local AI. Private by design. More customization, a better experience.</p>
 </section>
 
-<!-- HOW -->
 <section id="how" class="reveal">
   <div class="ctr">
     <div class="stag">How it works</div>
@@ -1003,7 +951,6 @@ body.ty-mode > #thank-you{display:flex !important}
   </div>
 </section>
 
-<!-- SPECS -->
 <section id="specs" class="reveal">
   <div class="ctr">
     <div class="stag">Requirements</div>
@@ -1030,7 +977,6 @@ body.ty-mode > #thank-you{display:flex !important}
   <div class="spec-rec">💡 <strong style="color:var(--text)">Recommended:</strong> Core i7 / Ryzen 7, 16 GB RAM, dedicated GPU (CUDA supported). Llama 3.1 8B and Gemma 2 9B run noticeably faster.</div>
 </section>
 
-<!-- PRICING -->
 <section id="pricing" class="reveal">
   <div class="ctr">
     <div class="stag">Pricing</div>
@@ -1085,7 +1031,6 @@ body.ty-mode > #thank-you{display:flex !important}
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="reveal">
   <div class="ctr">
     <div class="stag">Get YUNA</div>
@@ -1114,10 +1059,9 @@ body.ty-mode > #thank-you{display:flex !important}
     </a>
   </div>
 
-  <!-- PAYMENT -->
   <div class="payment-box">
     <p class="payment-box-title">Choose payment method</p>
-    <p class="payment-box-sub">Ko-fi gives you an instant key by email — PayPal and USDT are also available.</p>
+    <p class="payment-box-sub">Ko-fi gives you an instant key by email — PayPal is also available.</p>
 
     <div class="pay-tabs" role="tablist">
       <button class="pay-tab active" id="tab-kofi" type="button" onclick="switchPay('kofi')" role="tab" aria-selected="true" aria-controls="panel-kofi">
@@ -1127,10 +1071,6 @@ body.ty-mode > #thank-you{display:flex !important}
       <button class="pay-tab" id="tab-pp" type="button" onclick="switchPay('pp')" role="tab" aria-selected="false" aria-controls="panel-pp">
         <span class="pay-tab-icon pp">🅿️</span>
         <span style="text-align:left">PayPal<small>Card · instant</small></span>
-      </button>
-      <button class="pay-tab" id="tab-usdt" type="button" onclick="switchPay('usdt')" role="tab" aria-selected="false" aria-controls="panel-usdt">
-        <span class="pay-tab-icon usdt">₮</span>
-        <span style="text-align:left">USDT <small>ERC20 only</small></span>
       </button>
     </div>
 
@@ -1180,48 +1120,6 @@ body.ty-mode > #thank-you{display:flex !important}
       </div>
     </div>
 
-    <div class="pay-panel" id="panel-usdt" role="tabpanel">
-      <div class="step-label">1 · Select your plan</div>
-      <div class="plan-selector">
-        <button class="plan-option selected" type="button" id="usdt-plan-basic" onclick="selectPlan('usdt','basic')">
-          <span class="plan-top"><span class="plan-name">Basic</span><span class="radio-dot"></span></span>
-          <span class="plan-price">$10 <span>USDT</span></span>
-          <span class="plan-feat" style="display:block">Lifetime · 1 device</span>
-        </button>
-        <button class="plan-option pro" type="button" id="usdt-plan-pro" onclick="selectPlan('usdt','pro')">
-          <span class="plan-top"><span class="plan-name">⭐ Pro</span><span class="radio-dot"></span></span>
-          <span class="plan-price">$15 <span>USDT</span></span>
-          <span class="plan-feat" style="display:block">+ support &amp; setup</span>
-        </button>
-      </div>
-      <div class="step-label">2 · Send exact amount</div>
-      <div class="amount-due"><span class="ad-label">👉 Send exactly</span><span class="ad-value" id="usdt-total-label">10 USDT</span></div>
-      <div class="wallet-box">
-        <div class="wallet-meta"><span class="wallet-net">ERC20</span><span class="wallet-hint">Ethereum Network · USDT only</span></div>
-        <div class="wallet-line">
-          <code class="wallet-address" id="usdt-addr">0xFb63Df8F135215C53fd8a8d6F78A986c5949798F</code>
-          <button class="wallet-copy" type="button" onclick="copyWallet()">⧉ Copy</button>
-        </div>
-      </div>
-      <div class="network-warn">
-        <div class="nw-head">⚠️ Read before sending</div>
-        <div class="nw-ok">✅ Only: USDT on Ethereum Network (ERC20)</div>
-        <ul class="nw-list">
-          <li>Not TRC20 (Tron) · Not BEP20 (BNB Chain)</li>
-          <li>Not Polygon, Solana, or any other network</li>
-          <li>Not ETH, TRX, BNB, or any other token</li>
-        </ul>
-        <div class="nw-final">Wrong network = permanent loss. We cannot recover funds.</div>
-      </div>
-      <div class="proof-box">
-        <div class="proof-note">After sending, share your <strong>transaction hash + chosen plan</strong>. The key is sent after the payment is verified.</div>
-        <div class="proof-actions">
-          <a href="https://discord.gg/ARg6yujhdc" target="_blank" rel="noopener noreferrer" class="proof-btn discord">💬 Send via Discord</a>
-          <a href="mailto:code7kjt@proton.me?subject=YUNA%20USDT%20Payment%20Proof" class="proof-btn email">📧 Send via Email</a>
-        </div>
-      </div>
-    </div>
-
     <div class="pay-panel active" id="panel-kofi" role="tabpanel">
       <div class="kofi-box">
         <div class="kofi-top"><span class="auto-badge">⚡ INSTANT DELIVERY</span><span class="kofi-rec">★ Recommended</span></div>
@@ -1238,10 +1136,17 @@ body.ty-mode > #thank-you{display:flex !important}
       </div>
     </div>
 
-    <div class="pay-footer-note">⚡ Instant key via Ko-fi <span class="sep">·</span> Manual delivery for PayPal/USDT <span class="sep">·</span> One device <span class="sep">·</span> Lifetime access</div>
+      <div class="proof-box" id="pay-contact-box" style="margin-top:1.4rem">
+      <div class="proof-note"><strong>Payment methods don't work for you?</strong> If none of these options suit you, contact me and we'll find a solution together.</div>
+      <div class="proof-actions">
+        <a href="https://discord.gg/ARg6yujhdc" target="_blank" rel="noopener noreferrer" class="proof-btn discord">💬 Contact on Discord</a>
+        <a href="mailto:code7kjt@proton.me?subject=YUNA%20Payment%20Help" class="proof-btn email">📧 Contact by Email</a>
+      </div>
+    </div>
+
+    <div class="pay-footer-note">⚡ Instant key via Ko-fi <span class="sep">·</span> Manual delivery for PayPal <span class="sep">·</span> One device <span class="sep">·</span> Lifetime access</div>
   </div>
 
-  <!-- DONATE -->
   <div class="donate-box">
     <div class="donate-icon">☕</div>
     <div class="donate-text">
@@ -1252,7 +1157,6 @@ body.ty-mode > #thank-you{display:flex !important}
   </div>
 </section>
 
-<!-- FAQ -->
 <section id="faq" class="reveal">
   <div class="ctr"><div class="stag">FAQ</div><h2 class="stitle">Questions? Answers.</h2></div>
   <div class="faq-list">
@@ -1266,7 +1170,6 @@ body.ty-mode > #thank-you{display:flex !important}
   </div>
 </section>
 
-<!-- CTA -->
 <section id="cta">
   <div class="cta-glow"></div>
   <h2>Ready to meet Yuna?</h2>
@@ -1277,7 +1180,6 @@ body.ty-mode > #thank-you{display:flex !important}
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="flogo">YUNA</div>
   <div class="fsocials">
@@ -1311,7 +1213,6 @@ body.ty-mode > #thank-you{display:flex !important}
   <p class="fcopy" style="margin-top:.6rem;font-size:.7rem;opacity:.55">Unauthorized reproduction or redistribution of YUNA is strictly prohibited.</p>
 </footer>
 
-<!-- THANK-YOU -->
 <section id="thank-you" aria-hidden="true">
   <div class="ty-glow"></div>
   <div class="ty-card">
@@ -1326,7 +1227,7 @@ body.ty-mode > #thank-you{display:flex !important}
       </div>
       <div class="ty-step">
         <div class="ty-num">2</div>
-        <div><h3>Send your payment proof</h3><p>PayPal receipt / transaction ID — or your <strong>USDT (ERC20) tx hash</strong> — plus the plan you bought: <strong>Basic $10</strong> or <strong>Pro $15</strong>.</p></div>
+        <div><h3>Send your payment proof</h3><p>PayPal receipt / transaction ID plus the plan you bought: <strong>Basic $10</strong> or <strong>Pro $15</strong>.</p></div>
       </div>
       <div class="ty-step">
         <div class="ty-num">3</div>
@@ -1336,7 +1237,7 @@ body.ty-mode > #thank-you{display:flex !important}
 
     <div class="ty-actions">
       <a class="ty-btn ty-discord" href="https://discord.gg/ARg6yujhdc" target="_blank" rel="noopener noreferrer">💬 Open Discord &amp; claim your key</a>
-      <a class="ty-btn ty-mail" href="mailto:code7kjt@proton.me?subject=YUNA%20Purchase%20%E2%80%94%20Licence%20Key%20Request&body=Hi%2C%20I%20just%20purchased%20YUNA.%0A%0APlan%3A%20(Basic%20%2F%20Pro)%0APayment%20method%3A%20(PayPal%20%2F%20USDT%20ERC20)%0ATransaction%20ID%20%2F%20Hash%3A%20%0A%0AThanks!">📧 Email us instead</a>
+      <a class="ty-btn ty-mail" href="mailto:code7kjt@proton.me?subject=YUNA%20Purchase%20%E2%80%94%20Licence%20Key%20Request&body=Hi%2C%20I%20just%20purchased%20YUNA.%0A%0APlan%3A%20(Basic%20%2F%20Pro)%0APayment%20method%3A%20(PayPal)%0ATransaction%20ID%3A%20%0A%0AThanks!">📧 Email us instead</a>
     </div>
 
     <div class="ty-note">
@@ -1352,14 +1253,13 @@ body.ty-mode > #thank-you{display:flex !important}
 <div class="toast" id="toast">✓ Copied!</div>
 
 <script>
-/* ── NAV ── */
+
 function toggleNav(btn){
   const links=document.getElementById('navLinks');
   const open=links.classList.toggle('open');
   btn.setAttribute('aria-expanded',open?'true':'false');
 }
 
-/* ── NAV SCROLL EFFECT ── */
 (function(){
   const nav=document.getElementById('mainNav');
   let ticking=false;
@@ -1374,7 +1274,6 @@ function toggleNav(btn){
   },{passive:true});
 })();
 
-/* ── FAQ ── */
 function tf(el){
   const it=el.parentElement, open=it.classList.contains('open');
   document.querySelectorAll('.fi').forEach(i=>{
@@ -1435,36 +1334,8 @@ function showToast(msg){
   t._timer=setTimeout(()=>t.classList.remove('show'),1800);
 }
 
-function copyWallet(){
-  const el=document.getElementById('usdt-addr');
-  if(!el)return;
-  const text=el.textContent.trim();
-  const btn=document.querySelector('.wallet-copy');
-  const done=()=>{
-    if(btn){const o=btn.textContent;btn.textContent='✓ Copied!';setTimeout(()=>btn.textContent=o,1500);}
-    showToast('✓ Wallet address copied!');
-  };
-  if(navigator.clipboard&&navigator.clipboard.writeText){
-    navigator.clipboard.writeText(text).then(done).catch(()=>fallbackCopy(el,done));
-  }else{
-    fallbackCopy(el,done);
-  }
-}
-function fallbackCopy(el,done){
-  try{
-    const r=document.createRange();
-    r.selectNode(el);
-    const sel=window.getSelection();
-    sel.removeAllRanges();
-    sel.addRange(r);
-    document.execCommand('copy');
-    sel.removeAllRanges();
-    done();
-  }catch(_){showToast('Copy failed — select manually');}
-}
-
 function switchPay(id){
-  ['pp','usdt','kofi'].forEach(function(k){
+  ['pp','kofi'].forEach(function(k){
     var on=(k===id);
     var tab=document.getElementById('tab-'+k);
     var panel=document.getElementById('panel-'+k);
@@ -1491,10 +1362,6 @@ function selectPlan(method,plan){
     document.getElementById('pp-pro-wrap').style.display=plan==='pro'?'block':'none';
     document.getElementById('pp-total-label').textContent=plan==='basic'?'$10 USD · Basic':'$15 USD · Pro';
     if(typeof window.__renderPP==='function'){window.__renderPP(plan==='pro'?'pro':'basic');}
-  }else{
-    document.getElementById('usdt-plan-basic').classList.toggle('selected',plan==='basic');
-    document.getElementById('usdt-plan-pro').classList.toggle('selected',plan==='pro');
-    document.getElementById('usdt-total-label').textContent=plan==='basic'?'10 USDT':'15 USDT';
   }
 }
 
@@ -1658,7 +1525,6 @@ checkThankYouHash();
 })();
 </script>
 
-
 <script>
 window.__paypalLoading = null;
 window.__paypalLoaded  = false;
@@ -1738,7 +1604,7 @@ window.loadPayPal = function(){
             page_location: location.origin + location.pathname + '#thank-you'
           });
         }
-      } catch(e){ /* لا نكسر الصفحة بسبب analytics */ }
+      } catch(e){  }
     };
     window.showThankYou.__wrapped = true;
   }
