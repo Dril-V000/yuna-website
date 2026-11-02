@@ -691,40 +691,43 @@ body.ty-mode > #thank-you{display:flex !important}
 }
 
 
-/* ===== Screenshot lightbox modal ===== */
-.as-screenshots{display:flex;flex-direction:column;gap:1.2rem;position:relative;z-index:1}
-.as-shot-card{background:var(--card);border:1px solid var(--border2);border-radius:14px;overflow:hidden;box-shadow:var(--shadow-md);transition:transform .35s ease,box-shadow .35s ease;position:relative}
-.as-shot-card:hover{transform:translateY(-5px) scale(1.01);box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 30px rgba(100,181,246,.12)}
-.as-shot-titlebar{background:linear-gradient(180deg,#0e0e22,#0a0a1a);height:32px;display:flex;align-items:center;padding:0 14px;gap:7px;border-bottom:1px solid rgba(255,255,255,.06)}
-.as-shot-dot{width:10px;height:10px;border-radius:50%}
-.as-shot-dot.red{background:#ff5f57}
-.as-shot-dot.yellow{background:#febc2e}
-.as-shot-dot.green{background:#28c840}
-.as-shot-label{font-size:.68rem;color:rgba(255,255,255,.4);font-family:'Space Grotesk',sans-serif;letter-spacing:2px;margin-left:8px;font-weight:600}
-.as-shot-card img{width:100%;display:block;height:auto;transition:transform .5s ease;cursor:zoom-in}
-.as-shot-card:hover img{transform:scale(1.03)}
-.as-shot-badge{position:absolute;bottom:52px;left:12px;background:rgba(4,4,12,.85);backdrop-filter:blur(10px);border:1px solid var(--border3);color:var(--accent3);font-size:.72rem;font-weight:700;padding:.35rem .8rem;border-radius:8px;display:flex;align-items:center;gap:.4rem;box-shadow:0 4px 15px rgba(0,0,0,.5);pointer-events:none}
-.as-shot-view-btn{position:absolute;bottom:12px;right:12px;background:linear-gradient(135deg,#64b5f6,#a78bfa);color:#04040c;border:none;border-radius:9px;padding:.45rem 1rem;font-family:'Inter',sans-serif;font-size:.74rem;font-weight:800;letter-spacing:.3px;cursor:pointer;z-index:5;box-shadow:0 6px 20px rgba(100,181,246,.4);transition:transform .2s,box-shadow .2s}
-.as-shot-view-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(100,181,246,.6)}
-.as-shot-view-btn:active{transform:translateY(0)}
+/* ===== Shell helpers block ===== */
+.shell-spot{max-width:1150px;margin:2.5rem auto 0;padding:2rem 2rem 2.2rem;border-radius:22px;background:linear-gradient(135deg,rgba(100,181,246,.07),rgba(167,139,250,.07)),var(--card);border:1px solid var(--border2);box-shadow:var(--shadow-md),0 0 40px rgba(100,181,246,.08);position:relative;overflow:hidden}
+.shell-spot::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--pink))}
+.shell-head{margin-bottom:1.6rem}
+.shell-tag{display:inline-flex;align-items:center;gap:.5rem;background:rgba(100,181,246,.1);border:1px solid rgba(100,181,246,.3);color:var(--accent3);font-size:.72rem;font-weight:800;padding:.28rem .8rem;border-radius:100px;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:1rem}
+.shell-head h3{font-size:clamp(1.35rem,2.6vw,1.9rem);font-weight:800;line-height:1.2;letter-spacing:-.02em;margin-bottom:.7rem;color:var(--text)}
+.shell-head h3 span{background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.shell-head p{font-size:.9rem;color:var(--text2);line-height:1.75;max-width:860px}
 
-.shot-modal-overlay{position:fixed;inset:0;background:rgba(2,2,10,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:9999;display:none;align-items:center;justify-content:center;padding:2rem;opacity:0;transition:opacity .28s ease}
-.shot-modal-overlay.open{display:flex;opacity:1}
-.shot-modal-inner{position:relative;max-width:1200px;width:100%;border-radius:16px;overflow:hidden;border:1px solid rgba(100,181,246,.4);box-shadow:0 0 0 1px rgba(167,139,250,.15),0 0 120px rgba(100,181,246,.25),0 50px 120px rgba(0,0,0,.9);background:#0e0e22;transform:scale(.94);transition:transform .3s cubic-bezier(.2,1,.4,1)}
-.shot-modal-overlay.open .shot-modal-inner{transform:scale(1)}
-.shot-modal-titlebar{background:linear-gradient(180deg,#0e0e22,#0a0a1a);height:44px;display:flex;align-items:center;padding:0 16px;gap:10px;border-bottom:1px solid rgba(255,255,255,.06)}
-.shot-modal-titlebar .dot{width:12px;height:12px;border-radius:50%}
-.shot-modal-titlebar .dot.r{background:#ff5f57}
-.shot-modal-titlebar .dot.y{background:#febc2e}
-.shot-modal-titlebar .dot.g{background:#28c840}
-.shot-modal-title{flex:1;font-size:.74rem;color:rgba(255,255,255,.55);font-family:'Space Grotesk',sans-serif;letter-spacing:3px;font-weight:600}
-.shot-modal-close{width:34px;height:34px;border-radius:50%;background:rgba(255,90,90,.15);border:1px solid rgba(255,90,90,.4);color:#ff8080;font-size:1.1rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
-.shot-modal-close:hover{background:rgba(255,90,90,.3);transform:rotate(90deg)}
-.shot-modal-body{background:#05051a;padding:0;line-height:0}
-.shot-modal-body img{width:100%;height:auto;display:block}
+.shell-uses{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.9rem;margin-bottom:1.6rem}
+.shell-use{display:flex;gap:.85rem;align-items:flex-start;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:13px;padding:.85rem .95rem;transition:all .25s}
+.shell-use:hover{border-color:var(--border3);background:rgba(100,181,246,.07);transform:translateY(-2px)}
+.su-ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0}
+.shell-use strong{display:block;font-size:.88rem;color:var(--text);line-height:1.3;margin-bottom:.15rem}
+.shell-use span{font-size:.79rem;color:var(--text2);line-height:1.55}
+.shell-use code{background:rgba(100,181,246,.1);border:1px solid rgba(100,181,246,.22);color:var(--accent3);font-family:'Space Grotesk',ui-monospace,monospace;font-size:.74rem;padding:.02rem .35rem;border-radius:4px}
 
-@media(max-width:900px){.as-screenshots{margin-top:1rem}}
-@media(max-width:640px){.shot-modal-overlay{padding:.8rem}.as-shot-view-btn{font-size:.66rem;padding:.35rem .7rem}}
+.shell-flow{display:flex;gap:.6rem;align-items:stretch;flex-wrap:wrap;margin-bottom:1.5rem;padding:1rem;background:rgba(5,5,15,.45);border:1px solid var(--border);border-radius:14px}
+.shell-flow-step{flex:1;min-width:180px;display:flex;gap:.65rem;align-items:flex-start}
+.sfs-num{width:26px;height:26px;border-radius:50%;flex-shrink:0;background:var(--grad-main);color:#04040c;font-weight:800;font-size:.74rem;display:flex;align-items:center;justify-content:center}
+.shell-flow-step strong{display:block;font-size:.83rem;color:var(--text);margin-bottom:.15rem}
+.shell-flow-step span{font-size:.77rem;color:var(--text2);line-height:1.55;display:block}
+.shell-flow-step code{background:rgba(100,181,246,.1);border:1px solid rgba(100,181,246,.22);color:var(--accent3);font-family:'Space Grotesk',ui-monospace,monospace;font-size:.72rem;padding:.02rem .35rem;border-radius:4px}
+.shell-flow-arrow{color:var(--accent2);font-weight:700;display:flex;align-items:center;font-size:1.05rem}
+
+.shell-safety{background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.25);border-radius:14px;padding:1rem 1.1rem}
+.shell-safety-head{font-size:.76rem;font-weight:800;color:var(--red);letter-spacing:1px;text-transform:uppercase;margin-bottom:.8rem}
+.shell-safety-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.6rem;margin-bottom:.8rem}
+.shell-safety-grid>div{background:rgba(5,5,15,.5);border:1px solid var(--border);border-radius:9px;padding:.55rem .7rem;font-size:.76rem;color:var(--text2);line-height:1.55}
+.shell-safety-grid code{color:#ffb4b4;background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.25);font-family:'Space Grotesk',ui-monospace,monospace;font-size:.72rem;padding:.02rem .35rem;border-radius:4px;display:inline-block;margin-bottom:.15rem}
+.shell-safety-note{margin:0;font-size:.79rem;color:var(--text2);line-height:1.6}
+
+@media(max-width:820px){
+  .shell-spot{padding:1.4rem 1.2rem 1.6rem;margin-top:1.8rem}
+  .shell-flow{flex-direction:column;align-items:flex-start}
+  .shell-flow-arrow{transform:rotate(90deg);align-self:center}
+}
 
 </style>
 
@@ -908,32 +911,58 @@ body.ty-mode > #thank-you{display:flex !important}
       </div>
       <p class="as-foot">⚡ Instant by design &mdash; she acts the second you ask, with no extra confirmations.</p>
     </div>
-    <div class="as-screenshots">
-          <div class="as-shot-card">
-            <div class="as-shot-titlebar">
-              <span class="as-shot-dot red"></span><span class="as-shot-dot yellow"></span><span class="as-shot-dot green"></span>
-              <span class="as-shot-label">YUNA · Chat &amp; Tools</span>
-            </div>
-            <img src="./preview/screenshot-search.png" alt="YUNA searching the web and answering a user question" loading="lazy">
-            <div class="as-shot-badge"><span>🌐</span> Used tool: Web Search</div>
-            <button type="button" class="as-shot-view-btn"
-                    onclick="openShotModal(this.closest('.as-shot-card').querySelector('img').src, '🔍 Web Search Screenshot')"
-                    aria-label="View web search screenshot">🔍 View</button>
-          </div>
-    
-          <div class="as-shot-card">
-            <div class="as-shot-titlebar">
-              <span class="as-shot-dot red"></span><span class="as-shot-dot yellow"></span><span class="as-shot-dot green"></span>
-              <span class="as-shot-label">YUNA · Local File Access</span>
-            </div>
-            <img src="./preview/screenshot-system.png" alt="YUNA checking Python version and saving a note locally" loading="lazy">
-            <div class="as-shot-badge"><span>🛠️</span> Used tool: System &amp; Write</div>
-            <button type="button" class="as-shot-view-btn"
-                    onclick="openShotModal(this.closest('.as-shot-card').querySelector('img').src, '🛠️ System &amp; Files Screenshot')"
-                    aria-label="View system screenshot">🛠️ View</button>
-          </div>
-        </div>
+    <div class="as-demo" aria-hidden="true">
+      <div class="as-demo-head"><i></i>YUNA &middot; Live</div>
+      <div class="as-msg as-me">Find tonight&rsquo;s best sci-fi movies and save them to a note</div>
+      <div class="as-chips">
+        <span class="as-chip">🌐 Searched the web</span>
+        <span class="as-chip">🔗 Opened the top pick</span>
+        <span class="as-chip">📝 Note saved</span>
+      </div>
+      <div class="as-msg as-ai">Done! I found a few great ones, opened the best pick for you, and saved the list to your notes 🎬💜</div>
+    </div>
   </div>
+
+  <div class="shell-spot">
+    <div class="shell-head">
+      <div class="shell-tag">🐚 Shell helpers · With your approval</div>
+      <h3>She can use your shell &mdash; <span>when you say yes</span></h3>
+      <p>YUNA is not locked inside a chat box. With your approval, she can run shell commands on your PC and actually help &mdash; read logs, diagnose a broken app, clean up a stuck process, automate a task you'd normally do by hand. You see the exact command first. Nothing runs silently.</p>
+    </div>
+
+    <div class="shell-uses">
+      <div class="shell-use"><div class="su-ico ib">📜</div><div><strong>Read your logs</strong><span>Pulls the last lines of an app or Windows log and explains what went wrong.</span></div></div>
+      <div class="shell-use"><div class="su-ico it">🩺</div><div><strong>Diagnose a problem</strong><span>Checks running services, ports, disk space, PATH, missing dependencies.</span></div></div>
+      <div class="shell-use"><div class="su-ico ip">🔧</div><div><strong>Fix what's stuck</strong><span>Restarts a hung process, frees a busy port, clears a bad cache folder.</span></div></div>
+      <div class="shell-use"><div class="su-ico ia">⚙️</div><div><strong>Automate boring tasks</strong><span>Batch-renames files, runs a script, converts a folder, backs things up.</span></div></div>
+      <div class="shell-use"><div class="su-ico ic">🔍</div><div><strong>Investigate your system</strong><span>Reads <code>systeminfo</code>, environment variables, installed versions.</span></div></div>
+      <div class="shell-use"><div class="su-ico ib">📦</div><div><strong>Run dev tools for you</strong><span><code>git</code>, <code>pip</code>, <code>npm</code>, <code>python</code> &mdash; without you typing them.</span></div></div>
+    </div>
+
+    <div class="shell-flow">
+      <div class="shell-flow-step"><div class="sfs-num">1</div><div><strong>You ask</strong><span>&ldquo;Why is my port 3000 stuck?&rdquo;</span></div></div>
+      <div class="shell-flow-arrow">→</div>
+      <div class="shell-flow-step"><div class="sfs-num">2</div><div><strong>She proposes</strong><span>Shows the exact command: <code>netstat -ano | findstr :3000</code></span></div></div>
+      <div class="shell-flow-arrow">→</div>
+      <div class="shell-flow-step"><div class="sfs-num">3</div><div><strong>You approve</strong><span>One click. If you say no, nothing runs.</span></div></div>
+      <div class="shell-flow-arrow">→</div>
+      <div class="shell-flow-step"><div class="sfs-num">4</div><div><strong>She explains</strong><span>Reads the output and tells you what it means.</span></div></div>
+    </div>
+
+    <div class="shell-safety">
+      <div class="shell-safety-head">🚫 Blocked &mdash; refused before they ever run</div>
+      <div class="shell-safety-grid">
+        <div><code>del /f /s /q C:\Windows\*</code><br><span>Deleting system folders</span></div>
+        <div><code>rm -rf /</code> · <code>format C:</code><br><span>Wiping entire drives</span></div>
+        <div><code>shutdown /s /t 0</code> · <code>reboot</code><br><span>Powering off the machine</span></div>
+        <div><code>reg delete HKLM\...</code><br><span>Destroying the registry</span></div>
+        <div><code>net user admin ...</code><br><span>Changing accounts &amp; passwords</span></div>
+        <div><code>netsh advfirewall set ... off</code><br><span>Disabling security &amp; Defender</span></div>
+      </div>
+      <p class="shell-safety-note">Only these destructive commands are blocked. Everything else &mdash; reading, diagnosing, fixing, automating &mdash; is available once you approve it.</p>
+    </div>
+  </div>
+
 
   <div class="feat-sub">Also new in v1.3</div>
   <div class="feat-grid">
@@ -1747,52 +1776,6 @@ window.loadPayPal = function(){
   window.addEventListener('hashchange', function(){
     if (location.hash === '#thank-you' && !window.__paid) {
       setTimeout(guard, 0);
-    }
-  });
-})();
-</script>
-
-<div class="shot-modal-overlay" id="shotModalOverlay" role="dialog" aria-modal="true" aria-hidden="true" onclick="if(event.target===this)closeShotModal()">
-  <div class="shot-modal-inner">
-    <div class="shot-modal-titlebar">
-      <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-      <span class="shot-modal-title" id="shotModalTitle">YUNA · Screenshot</span>
-      <button type="button" class="shot-modal-close" onclick="closeShotModal()" aria-label="Close">✕</button>
-    </div>
-    <div class="shot-modal-body">
-      <img id="shotModalImg" src="" alt="Screenshot preview">
-    </div>
-  </div>
-</div>
-
-<script>
-(function(){
-  'use strict';
-  var overlay = document.getElementById('shotModalOverlay');
-  var img = document.getElementById('shotModalImg');
-  var title = document.getElementById('shotModalTitle');
-  if(!overlay || !img || !title) return;
-
-  window.openShotModal = function(src, label){
-    if(!src){ console.warn('[YUNA] openShotModal: empty src'); return; }
-    img.src = src;
-    img.alt = label || 'Screenshot';
-    title.textContent = label || 'YUNA · Screenshot';
-    overlay.classList.add('open');
-    overlay.setAttribute('aria-hidden','false');
-    document.body.style.overflow = 'hidden';
-  };
-
-  window.closeShotModal = function(){
-    overlay.classList.remove('open');
-    overlay.setAttribute('aria-hidden','true');
-    document.body.style.overflow = '';
-    setTimeout(function(){ img.src = ''; }, 300);
-  };
-
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape' && overlay.classList.contains('open')){
-      window.closeShotModal();
     }
   });
 })();
