@@ -66,7 +66,7 @@
   --accent:#64b5f6;--accent2:#a78bfa;--accent3:#7dd3fc;--accent4:#c084fc;
   --grad-main:linear-gradient(135deg,#64b5f6,#a78bfa);
   --grad-soft:linear-gradient(135deg,rgba(100,181,246,.15),rgba(167,139,250,.15));
-  --text:#eef1ff;--text2:#b0b8e0;--text3:#6a739e;
+  --text:#eef1ff;--text2:#9aa3cc;--text3:#5a6390;
   --green:#34d399;--amber:#fbbf24;--red:#f87171;--pink:#f472b6;
   --basic:#38bdf8;--pro:#a78bfa;
   --discord:#5865F2;--youtube:#FF0000;
@@ -259,25 +259,18 @@ section{padding:6rem 2rem;position:relative}
 .as-tile strong{display:block;font-size:.9rem;color:var(--text);line-height:1.3}
 .as-tile span{font-size:.8rem;color:var(--text2);line-height:1.5}
 .as-text>p.as-foot{margin:1.2rem 0 0;font-size:.82rem;color:var(--accent3);font-weight:600}
-
-/* ===== جديد: قسم لقطات الشاشة ===== */
-.as-screenshots{display:flex;flex-direction:column;gap:1.2rem;position:relative;z-index:1}
-.as-shot-card{background:var(--card);border:1px solid var(--border2);border-radius:14px;overflow:hidden;box-shadow:var(--shadow-md);transition:transform .35s ease,box-shadow .35s ease;position:relative}
-.as-shot-card:hover{transform:translateY(-5px) scale(1.01);box-shadow:0 20px 50px rgba(0,0,0,0.6),0 0 30px rgba(100,181,246,0.12)}
-.as-shot-titlebar{background:linear-gradient(180deg, #0e0e22, #0a0a1a);height:32px;display:flex;align-items:center;padding:0 14px;gap:7px;border-bottom:1px solid rgba(255,255,255,0.06)}
-.as-shot-dot{width:10px;height:10px;border-radius:50%}
-.as-shot-dot.red{background:#ff5f57}
-.as-shot-dot.yellow{background:#febc2e}
-.as-shot-dot.green{background:#28c840}
-.as-shot-label{font-size:0.68rem;color:rgba(255,255,255,0.4);font-family:'Space Grotesk',sans-serif;letter-spacing:2px;margin-left:8px;font-weight:600}
-.as-shot-card img{width:100%;display:block;height:auto;transition:transform 0.5s ease}
-.as-shot-card:hover img{transform:scale(1.03)}
-.as-shot-badge{position:absolute;bottom:12px;left:12px;background:rgba(4,4,12,0.85);backdrop-filter:blur(10px);border:1px solid var(--border3);color:var(--accent3);font-size:0.72rem;font-weight:700;padding:0.35rem 0.8rem;border-radius:8px;display:flex;align-items:center;gap:0.4rem;box-shadow:0 4px 15px rgba(0,0,0,0.5);pointer-events:none}
-
+.as-demo{position:relative;z-index:1;background:rgba(4,4,12,.65);border:1px solid var(--border2);border-radius:18px;padding:1.2rem;box-shadow:var(--shadow-sm)}
+.as-demo-head{display:flex;align-items:center;gap:.5rem;font-size:.74rem;color:var(--text3);font-weight:600;margin-bottom:1rem;letter-spacing:.3px}
+.as-demo-head i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);display:block}
+.as-msg{max-width:88%;padding:.7rem .95rem;border-radius:14px;font-size:.84rem;line-height:1.55;margin-bottom:.8rem}
+.as-me{margin-left:auto;background:var(--grad-main);color:#04040c;font-weight:500;border-bottom-right-radius:4px}
+.as-ai{background:var(--card2);border:1px solid var(--border);color:var(--text);border-bottom-left-radius:4px;margin-bottom:0}
+.as-chips{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 .8rem}
+.as-chip{display:inline-flex;align-items:center;gap:.35rem;font-size:.72rem;font-weight:700;padding:.3rem .7rem;border-radius:100px;background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.3);color:var(--green)}
 .feat-sub{max-width:1150px;margin:3rem auto 0;text-align:center;font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3)}
 .feat-sub+.feat-grid{margin-top:1.4rem}
 .fc.hl{border-color:rgba(167,139,250,.3);background:linear-gradient(160deg,rgba(167,139,250,.08),transparent 60%),var(--card)}
-@media(max-width:900px){.agent-spot{grid-template-columns:1fr;padding:1.6rem 1.3rem;gap:1.6rem}.as-screenshots{margin-top:1rem}}
+@media(max-width:900px){.agent-spot{grid-template-columns:1fr;padding:1.6rem 1.3rem;gap:1.6rem}}
 
 #providers{background:var(--bg2)}
 .providers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:1.1rem;max-width:950px;margin:3rem auto 0}
@@ -697,6 +690,42 @@ body.ty-mode > #thank-you{display:flex !important}
   .security-stats { justify-content: center; }
 }
 
+
+/* ===== Screenshot lightbox modal ===== */
+.as-screenshots{display:flex;flex-direction:column;gap:1.2rem;position:relative;z-index:1}
+.as-shot-card{background:var(--card);border:1px solid var(--border2);border-radius:14px;overflow:hidden;box-shadow:var(--shadow-md);transition:transform .35s ease,box-shadow .35s ease;position:relative}
+.as-shot-card:hover{transform:translateY(-5px) scale(1.01);box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 30px rgba(100,181,246,.12)}
+.as-shot-titlebar{background:linear-gradient(180deg,#0e0e22,#0a0a1a);height:32px;display:flex;align-items:center;padding:0 14px;gap:7px;border-bottom:1px solid rgba(255,255,255,.06)}
+.as-shot-dot{width:10px;height:10px;border-radius:50%}
+.as-shot-dot.red{background:#ff5f57}
+.as-shot-dot.yellow{background:#febc2e}
+.as-shot-dot.green{background:#28c840}
+.as-shot-label{font-size:.68rem;color:rgba(255,255,255,.4);font-family:'Space Grotesk',sans-serif;letter-spacing:2px;margin-left:8px;font-weight:600}
+.as-shot-card img{width:100%;display:block;height:auto;transition:transform .5s ease;cursor:zoom-in}
+.as-shot-card:hover img{transform:scale(1.03)}
+.as-shot-badge{position:absolute;bottom:52px;left:12px;background:rgba(4,4,12,.85);backdrop-filter:blur(10px);border:1px solid var(--border3);color:var(--accent3);font-size:.72rem;font-weight:700;padding:.35rem .8rem;border-radius:8px;display:flex;align-items:center;gap:.4rem;box-shadow:0 4px 15px rgba(0,0,0,.5);pointer-events:none}
+.as-shot-view-btn{position:absolute;bottom:12px;right:12px;background:linear-gradient(135deg,#64b5f6,#a78bfa);color:#04040c;border:none;border-radius:9px;padding:.45rem 1rem;font-family:'Inter',sans-serif;font-size:.74rem;font-weight:800;letter-spacing:.3px;cursor:pointer;z-index:5;box-shadow:0 6px 20px rgba(100,181,246,.4);transition:transform .2s,box-shadow .2s}
+.as-shot-view-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(100,181,246,.6)}
+.as-shot-view-btn:active{transform:translateY(0)}
+
+.shot-modal-overlay{position:fixed;inset:0;background:rgba(2,2,10,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:9999;display:none;align-items:center;justify-content:center;padding:2rem;opacity:0;transition:opacity .28s ease}
+.shot-modal-overlay.open{display:flex;opacity:1}
+.shot-modal-inner{position:relative;max-width:1200px;width:100%;border-radius:16px;overflow:hidden;border:1px solid rgba(100,181,246,.4);box-shadow:0 0 0 1px rgba(167,139,250,.15),0 0 120px rgba(100,181,246,.25),0 50px 120px rgba(0,0,0,.9);background:#0e0e22;transform:scale(.94);transition:transform .3s cubic-bezier(.2,1,.4,1)}
+.shot-modal-overlay.open .shot-modal-inner{transform:scale(1)}
+.shot-modal-titlebar{background:linear-gradient(180deg,#0e0e22,#0a0a1a);height:44px;display:flex;align-items:center;padding:0 16px;gap:10px;border-bottom:1px solid rgba(255,255,255,.06)}
+.shot-modal-titlebar .dot{width:12px;height:12px;border-radius:50%}
+.shot-modal-titlebar .dot.r{background:#ff5f57}
+.shot-modal-titlebar .dot.y{background:#febc2e}
+.shot-modal-titlebar .dot.g{background:#28c840}
+.shot-modal-title{flex:1;font-size:.74rem;color:rgba(255,255,255,.55);font-family:'Space Grotesk',sans-serif;letter-spacing:3px;font-weight:600}
+.shot-modal-close{width:34px;height:34px;border-radius:50%;background:rgba(255,90,90,.15);border:1px solid rgba(255,90,90,.4);color:#ff8080;font-size:1.1rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.shot-modal-close:hover{background:rgba(255,90,90,.3);transform:rotate(90deg)}
+.shot-modal-body{background:#05051a;padding:0;line-height:0}
+.shot-modal-body img{width:100%;height:auto;display:block}
+
+@media(max-width:900px){.as-screenshots{margin-top:1rem}}
+@media(max-width:640px){.shot-modal-overlay{padding:.8rem}.as-shot-view-btn{font-size:.66rem;padding:.35rem .7rem}}
+
 </style>
 
 <script src="https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"></script>
@@ -721,7 +750,7 @@ body.ty-mode > #thank-you{display:flex !important}
     <li><a href="https://ko-fi.com/code7" target="_blank" rel="noopener noreferrer">Donate</a></li>
     <li><a href="https://discord.gg/ARg6yujhdc" target="_blank" rel="noopener noreferrer">Discord</a></li>
   </ul>
-  <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.3v" target="_blank" rel="noopener noreferrer" class="nav-cta">⬇ Download</a>
+  <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.2v" target="_blank" rel="noopener noreferrer" class="nav-cta">⬇ Download</a>
 </nav>
 
 <section class="hero">
@@ -737,7 +766,7 @@ body.ty-mode > #thank-you{display:flex !important}
     <p class="hero-sub">Voice conversations, real-time animation, full local privacy. YUNA runs entirely on your machine — <strong>no cloud, no subscription, no compromise.</strong></p>
     <div class="hero-btns">
       <a href="#pricing" class="btn-primary">🔑 Get Licence</a>
-      <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.3v" target="_blank" rel="noopener noreferrer" class="btn-secondary">⬇ Download YUNA v1.3</a>
+      <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.2v" target="_blank" rel="noopener noreferrer" class="btn-secondary">⬇ Download YUNA v1.3</a>
       <a href="#video-section" class="btn-secondary">▶ Watch Demo</a>
     </div>
     <div class="vt-wrap">
@@ -879,31 +908,31 @@ body.ty-mode > #thank-you{display:flex !important}
       </div>
       <p class="as-foot">⚡ Instant by design &mdash; she acts the second you ask, with no extra confirmations.</p>
     </div>
-
-    <!-- قسم لقطات الشاشة الجديد -->
     <div class="as-screenshots">
-      <div class="as-shot-card">
-        <div class="as-shot-titlebar">
-          <span class="as-shot-dot red"></span><span class="as-shot-dot yellow"></span><span class="as-shot-dot green"></span>
-          <span class="as-shot-label">YUNA · Chat &amp; Tools</span>
+          <div class="as-shot-card">
+            <div class="as-shot-titlebar">
+              <span class="as-shot-dot red"></span><span class="as-shot-dot yellow"></span><span class="as-shot-dot green"></span>
+              <span class="as-shot-label">YUNA · Chat &amp; Tools</span>
+            </div>
+            <img src="./preview/screenshot-search.png" alt="YUNA searching the web and answering a user question" loading="lazy">
+            <div class="as-shot-badge"><span>🌐</span> Used tool: Web Search</div>
+            <button type="button" class="as-shot-view-btn"
+                    onclick="openShotModal(this.closest('.as-shot-card').querySelector('img').src, '🔍 Web Search Screenshot')"
+                    aria-label="View web search screenshot">🔍 View</button>
+          </div>
+    
+          <div class="as-shot-card">
+            <div class="as-shot-titlebar">
+              <span class="as-shot-dot red"></span><span class="as-shot-dot yellow"></span><span class="as-shot-dot green"></span>
+              <span class="as-shot-label">YUNA · Local File Access</span>
+            </div>
+            <img src="./preview/screenshot-system.png" alt="YUNA checking Python version and saving a note locally" loading="lazy">
+            <div class="as-shot-badge"><span>🛠️</span> Used tool: System &amp; Write</div>
+            <button type="button" class="as-shot-view-btn"
+                    onclick="openShotModal(this.closest('.as-shot-card').querySelector('img').src, '🛠️ System &amp; Files Screenshot')"
+                    aria-label="View system screenshot">🛠️ View</button>
+          </div>
         </div>
-        <img src="https://yunaai.online/preview/screenshot-search.png" alt="YUNA searching the web and answering a user question" loading="lazy">
-        <div class="as-shot-badge">
-          <span>🌐</span> Used tool: Web Search
-        </div>
-      </div>
-      
-      <div class="as-shot-card">
-        <div class="as-shot-titlebar">
-          <span class="as-shot-dot red"></span><span class="as-shot-dot yellow"></span><span class="as-shot-dot green"></span>
-          <span class="as-shot-label">YUNA · Local File Access</span>
-        </div>
-        <img src="https://yunaai.online/preview/screenshot-system.png" alt="YUNA checking Python version and saving a note locally" loading="lazy">
-        <div class="as-shot-badge">
-          <span>🛠️</span> Used tool: System &amp; Write
-        </div>
-      </div>
-    </div>
   </div>
 
   <div class="feat-sub">Also new in v1.3</div>
@@ -1253,7 +1282,7 @@ body.ty-mode > #thank-you{display:flex !important}
   <h2>Ready to meet Yuna?</h2>
   <p>A voice AI with a living face — fully local, yours forever.</p>
   <div class="hero-btns">
-    <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.3v" target="_blank" rel="noopener noreferrer" class="btn-primary">⬇ Download YUNA v1.3</a>
+    <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.2v" target="_blank" rel="noopener noreferrer" class="btn-primary">⬇ Download YUNA v1.3</a>
     <a href="https://discord.gg/ARg6yujhdc" target="_blank" rel="noopener noreferrer" class="btn-secondary">💬 Join Discord</a>
   </div>
 </section>
@@ -1718,6 +1747,52 @@ window.loadPayPal = function(){
   window.addEventListener('hashchange', function(){
     if (location.hash === '#thank-you' && !window.__paid) {
       setTimeout(guard, 0);
+    }
+  });
+})();
+</script>
+
+<div class="shot-modal-overlay" id="shotModalOverlay" role="dialog" aria-modal="true" aria-hidden="true" onclick="if(event.target===this)closeShotModal()">
+  <div class="shot-modal-inner">
+    <div class="shot-modal-titlebar">
+      <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+      <span class="shot-modal-title" id="shotModalTitle">YUNA · Screenshot</span>
+      <button type="button" class="shot-modal-close" onclick="closeShotModal()" aria-label="Close">✕</button>
+    </div>
+    <div class="shot-modal-body">
+      <img id="shotModalImg" src="" alt="Screenshot preview">
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var overlay = document.getElementById('shotModalOverlay');
+  var img = document.getElementById('shotModalImg');
+  var title = document.getElementById('shotModalTitle');
+  if(!overlay || !img || !title) return;
+
+  window.openShotModal = function(src, label){
+    if(!src){ console.warn('[YUNA] openShotModal: empty src'); return; }
+    img.src = src;
+    img.alt = label || 'Screenshot';
+    title.textContent = label || 'YUNA · Screenshot';
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeShotModal = function(){
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    setTimeout(function(){ img.src = ''; }, 300);
+  };
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && overlay.classList.contains('open')){
+      window.closeShotModal();
     }
   });
 })();
