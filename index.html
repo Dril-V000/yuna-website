@@ -139,7 +139,54 @@ h1{font-size:clamp(2.6rem,6vw,4.8rem);font-weight:900;line-height:1.05;margin-bo
 .vt-badge .vt-link{text-decoration:underline;text-underline-offset:3px;opacity:.9}
 .vt-wrap{display:flex;justify-content:center}
 @media(max-width:600px){.vt-badge{font-size:.76rem;padding:.55rem 1rem}}
-
+/* ===== SaaSHub badge ===== */
+.saas-badge-wrap{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:.8rem;
+  flex-wrap:wrap;
+  margin-top:1.6rem;
+}
+.saas-badge-wrap a{
+  display:inline-flex;
+  align-items:center;
+  gap:.6rem;
+  padding:.55rem 1rem;
+  border-radius:100px;
+  background:rgba(100,181,246,.08);
+  border:1px solid rgba(100,181,246,.25);
+  text-decoration:none;
+  transition:transform .2s, box-shadow .2s, background .2s;
+  box-shadow:0 0 18px rgba(100,181,246,.15);
+}
+.saas-badge-wrap a:hover{
+  transform:translateY(-2px);
+  background:rgba(100,181,246,.14);
+  box-shadow:0 0 30px rgba(100,181,246,.35);
+}
+.saas-badge-wrap img{
+  max-width:150px;
+  height:auto;
+  display:block;
+}
+.badge-text{
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  background:rgba(52,211,153,.1);
+  border:1px solid rgba(52,211,153,.3);
+  color:var(--green);
+  font-size:.78rem;
+  font-weight:700;
+  padding:.3rem .8rem;
+  border-radius:100px;
+  white-space:nowrap;
+}
+@media(max-width:520px){
+  .saas-badge-wrap img{max-width:130px;}
+  .badge-text{font-size:.72rem;padding:.25rem .65rem;}
+}
 .mock-section{padding:1rem 2rem 5rem;display:flex;justify-content:center;position:relative}
 .mock-frame{border:1px solid rgba(100,181,246,.35);border-radius:16px;overflow:hidden;max-width:1000px;width:100%;box-shadow:0 0 0 1px rgba(167,139,250,.1),0 0 100px rgba(100,181,246,.15),0 50px 120px rgba(0,0,0,.9);background:#0e0e22;transition:transform .4s ease,box-shadow .4s ease}
 .mock-frame:hover{transform:translateY(-4px);box-shadow:0 0 0 1px rgba(167,139,250,.15),0 0 120px rgba(100,181,246,.2),0 60px 140px rgba(0,0,0,.95)}
@@ -806,10 +853,11 @@ body.ty-mode > #thank-you{display:flex !important}
       <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.3v" target="_blank" rel="noopener noreferrer" class="btn-secondary">⬇ Download YUNA v1.3</a>
       <a href="#video-section" class="btn-secondary">▶ Watch Demo</a>
     </div>
-    <div class="vt-wrap" style="display:flex;gap:.9rem;flex-wrap:wrap;justify-content:center;align-items:center;margin-top:1.6rem;">
-  <a href="https://www.saashub.com/yunaai-online?utm_source=badge&utm_campaign=badge&utm_content=yunaai-online&badge_variant=color&badge_kind=approved" target="_blank" rel="noopener noreferrer" aria-label="YunaAI.online is approved on SaaSHub">
-    <img src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1" alt="YunaAI.online badge" style="max-width:150px;height:auto;display:block;" loading="lazy">
+   <div class="saas-badge-wrap">
+  <a href="https://www.saashub.com/yunaai-online?utm_source=badge&utm_campaign=badge&utm_content=yunaai-online&badge_variant=color&badge_kind=approved" target="_blank" rel="noopener noreferrer">
+    <img src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1" alt="YunaAI.online badge">
   </a>
+  <span class="badge-text">✅ Approved on SaaSHub</span>
 </div>
   </div>
 </section>
