@@ -66,7 +66,7 @@
   --accent:#64b5f6;--accent2:#a78bfa;--accent3:#7dd3fc;--accent4:#c084fc;
   --grad-main:linear-gradient(135deg,#64b5f6,#a78bfa);
   --grad-soft:linear-gradient(135deg,rgba(100,181,246,.15),rgba(167,139,250,.15));
-  --text:#eef1ff;--text2:#9aa3cc;--text3:#5a6390;
+  --text:#eef1ff;--text2:#b0b8e0;--text3:#6a739e;
   --green:#34d399;--amber:#fbbf24;--red:#f87171;--pink:#f472b6;
   --basic:#38bdf8;--pro:#a78bfa;
   --discord:#5865F2;--youtube:#FF0000;
@@ -259,18 +259,25 @@ section{padding:6rem 2rem;position:relative}
 .as-tile strong{display:block;font-size:.9rem;color:var(--text);line-height:1.3}
 .as-tile span{font-size:.8rem;color:var(--text2);line-height:1.5}
 .as-text>p.as-foot{margin:1.2rem 0 0;font-size:.82rem;color:var(--accent3);font-weight:600}
-.as-demo{position:relative;z-index:1;background:rgba(4,4,12,.65);border:1px solid var(--border2);border-radius:18px;padding:1.2rem;box-shadow:var(--shadow-sm)}
-.as-demo-head{display:flex;align-items:center;gap:.5rem;font-size:.74rem;color:var(--text3);font-weight:600;margin-bottom:1rem;letter-spacing:.3px}
-.as-demo-head i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);display:block}
-.as-msg{max-width:88%;padding:.7rem .95rem;border-radius:14px;font-size:.84rem;line-height:1.55;margin-bottom:.8rem}
-.as-me{margin-left:auto;background:var(--grad-main);color:#04040c;font-weight:500;border-bottom-right-radius:4px}
-.as-ai{background:var(--card2);border:1px solid var(--border);color:var(--text);border-bottom-left-radius:4px;margin-bottom:0}
-.as-chips{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 .8rem}
-.as-chip{display:inline-flex;align-items:center;gap:.35rem;font-size:.72rem;font-weight:700;padding:.3rem .7rem;border-radius:100px;background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.3);color:var(--green)}
+
+/* ===== جديد: قسم لقطات الشاشة ===== */
+.as-screenshots{display:flex;flex-direction:column;gap:1.2rem;position:relative;z-index:1}
+.as-shot-card{background:var(--card);border:1px solid var(--border2);border-radius:14px;overflow:hidden;box-shadow:var(--shadow-md);transition:transform .35s ease,box-shadow .35s ease;position:relative}
+.as-shot-card:hover{transform:translateY(-5px) scale(1.01);box-shadow:0 20px 50px rgba(0,0,0,0.6),0 0 30px rgba(100,181,246,0.12)}
+.as-shot-titlebar{background:linear-gradient(180deg, #0e0e22, #0a0a1a);height:32px;display:flex;align-items:center;padding:0 14px;gap:7px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.as-shot-dot{width:10px;height:10px;border-radius:50%}
+.as-shot-dot.red{background:#ff5f57}
+.as-shot-dot.yellow{background:#febc2e}
+.as-shot-dot.green{background:#28c840}
+.as-shot-label{font-size:0.68rem;color:rgba(255,255,255,0.4);font-family:'Space Grotesk',sans-serif;letter-spacing:2px;margin-left:8px;font-weight:600}
+.as-shot-card img{width:100%;display:block;height:auto;transition:transform 0.5s ease}
+.as-shot-card:hover img{transform:scale(1.03)}
+.as-shot-badge{position:absolute;bottom:12px;left:12px;background:rgba(4,4,12,0.85);backdrop-filter:blur(10px);border:1px solid var(--border3);color:var(--accent3);font-size:0.72rem;font-weight:700;padding:0.35rem 0.8rem;border-radius:8px;display:flex;align-items:center;gap:0.4rem;box-shadow:0 4px 15px rgba(0,0,0,0.5);pointer-events:none}
+
 .feat-sub{max-width:1150px;margin:3rem auto 0;text-align:center;font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3)}
 .feat-sub+.feat-grid{margin-top:1.4rem}
 .fc.hl{border-color:rgba(167,139,250,.3);background:linear-gradient(160deg,rgba(167,139,250,.08),transparent 60%),var(--card)}
-@media(max-width:900px){.agent-spot{grid-template-columns:1fr;padding:1.6rem 1.3rem;gap:1.6rem}}
+@media(max-width:900px){.agent-spot{grid-template-columns:1fr;padding:1.6rem 1.3rem;gap:1.6rem}.as-screenshots{margin-top:1rem}}
 
 #providers{background:var(--bg2)}
 .providers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:1.1rem;max-width:950px;margin:3rem auto 0}
@@ -714,7 +721,7 @@ body.ty-mode > #thank-you{display:flex !important}
     <li><a href="https://ko-fi.com/code7" target="_blank" rel="noopener noreferrer">Donate</a></li>
     <li><a href="https://discord.gg/ARg6yujhdc" target="_blank" rel="noopener noreferrer">Discord</a></li>
   </ul>
-  <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.2v" target="_blank" rel="noopener noreferrer" class="nav-cta">⬇ Download</a>
+  <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.3v" target="_blank" rel="noopener noreferrer" class="nav-cta">⬇ Download</a>
 </nav>
 
 <section class="hero">
@@ -730,7 +737,7 @@ body.ty-mode > #thank-you{display:flex !important}
     <p class="hero-sub">Voice conversations, real-time animation, full local privacy. YUNA runs entirely on your machine — <strong>no cloud, no subscription, no compromise.</strong></p>
     <div class="hero-btns">
       <a href="#pricing" class="btn-primary">🔑 Get Licence</a>
-      <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.2v" target="_blank" rel="noopener noreferrer" class="btn-secondary">⬇ Download YUNA v1.3</a>
+      <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.3v" target="_blank" rel="noopener noreferrer" class="btn-secondary">⬇ Download YUNA v1.3</a>
       <a href="#video-section" class="btn-secondary">▶ Watch Demo</a>
     </div>
     <div class="vt-wrap">
@@ -872,15 +879,30 @@ body.ty-mode > #thank-you{display:flex !important}
       </div>
       <p class="as-foot">⚡ Instant by design &mdash; she acts the second you ask, with no extra confirmations.</p>
     </div>
-    <div class="as-demo" aria-hidden="true">
-      <div class="as-demo-head"><i></i>YUNA &middot; Live</div>
-      <div class="as-msg as-me">Find tonight&rsquo;s best sci-fi movies and save them to a note</div>
-      <div class="as-chips">
-        <span class="as-chip">🌐 Searched the web</span>
-        <span class="as-chip">🔗 Opened the top pick</span>
-        <span class="as-chip">📝 Note saved</span>
+
+    <!-- قسم لقطات الشاشة الجديد -->
+    <div class="as-screenshots">
+      <div class="as-shot-card">
+        <div class="as-shot-titlebar">
+          <span class="as-shot-dot red"></span><span class="as-shot-dot yellow"></span><span class="as-shot-dot green"></span>
+          <span class="as-shot-label">YUNA · Chat &amp; Tools</span>
+        </div>
+        <img src="https://yunaai.online/preview/screenshot-search.png" alt="YUNA searching the web and answering a user question" loading="lazy">
+        <div class="as-shot-badge">
+          <span>🌐</span> Used tool: Web Search
+        </div>
       </div>
-      <div class="as-msg as-ai">Done! I found a few great ones, opened the best pick for you, and saved the list to your notes 🎬💜</div>
+      
+      <div class="as-shot-card">
+        <div class="as-shot-titlebar">
+          <span class="as-shot-dot red"></span><span class="as-shot-dot yellow"></span><span class="as-shot-dot green"></span>
+          <span class="as-shot-label">YUNA · Local File Access</span>
+        </div>
+        <img src="https://yunaai.online/preview/screenshot-system.png" alt="YUNA checking Python version and saving a note locally" loading="lazy">
+        <div class="as-shot-badge">
+          <span>🛠️</span> Used tool: System &amp; Write
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1231,7 +1253,7 @@ body.ty-mode > #thank-you{display:flex !important}
   <h2>Ready to meet Yuna?</h2>
   <p>A voice AI with a living face — fully local, yours forever.</p>
   <div class="hero-btns">
-    <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.2v" target="_blank" rel="noopener noreferrer" class="btn-primary">⬇ Download YUNA v1.3</a>
+    <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.3v" target="_blank" rel="noopener noreferrer" class="btn-primary">⬇ Download YUNA v1.3</a>
     <a href="https://discord.gg/ARg6yujhdc" target="_blank" rel="noopener noreferrer" class="btn-secondary">💬 Join Discord</a>
   </div>
 </section>
