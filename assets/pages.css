@@ -36,6 +36,8 @@ footer a{color:var(--text2)}
   display:flex;
   justify-content:center;
   align-items:center;
+  gap:.8rem;
+  flex-wrap:wrap;
   margin:1.4rem 0;
 }
 .saas-badge-wrap a{
