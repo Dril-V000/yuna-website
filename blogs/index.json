@@ -1,0 +1,76 @@
+{
+  "posts": [
+    {
+      "slug": "getting-started-with-ollama-on-windows-a-step-by-step-guide",
+      "title": "Getting Started With Ollama on Windows: A Step-by-Step Guide",
+      "date": "2026-11-02",
+      "author": "Code-7",
+      "excerpt": "Learn how to perform an ollama windows install, run local LLMs, manage models, and integrate Python for local AI development step by step.",
+      "tags": ["ollama", "ai", "windows", "tutorial"]
+    },
+    {
+      "slug": "best-small-llms-you-can-run-offline-in-2026",
+      "title": "Best Small LLMs You Can Run Offline in 2026",
+      "date": "2026-11-02",
+      "author": "Code-7",
+      "excerpt": "Explore the best small LLMs to run offline in 2026. Compare performance, memory footprints, and practical use cases for local AI deployment.",
+      "tags": ["llm", "ai", "ollama", "opensource"]
+    },
+    {
+      "slug": "why-cloud-ai-chats-are-not-private-and-what-developers-can-do-about-it",
+      "title": "Why Cloud AI Chats Are Not Private and What Developers Can Do About It",
+      "date": "2026-10-24",
+      "author": "Code-7",
+      "excerpt": "Learn why cloud AI chats leak data, understand prompt logging risks, and discover how developers implement local LLMs for true privacy.",
+      "tags": ["privacy", "ai", "security", "ollama"]
+    },
+    {
+      "slug": "running-ollama-without-a-gpu-what-to-expect-on-cpu-only-machines",
+      "title": "Running Ollama Without a GPU: What to Expect on CPU-Only Machines",
+      "date": "2026-10-24",
+      "author": "Code-7",
+      "excerpt": "Learn what to expect when running ollama cpu only. Performance metrics, memory requirements, optimization tips, and hardware limits.",
+      "tags": ["ollama", "llm", "performance", "hardware"]
+    },
+    {
+      "slug": "adding-persistent-memory-to-a-local-chatbot-with-sqlite",
+      "title": "Adding Persistent Memory to a Local Chatbot With SQLite",
+      "date": "2026-10-24",
+      "author": "Code-7",
+      "excerpt": "Learn how to add persistent memory to a local AI chatbot using SQLite and Python. Step-by-step technical guide with code examples.",
+      "tags": ["python", "sqlite", "chatbot", "ai"]
+    },
+    {
+      "slug": "how-to-install-ollama-on-windows-11-complete-setup-guide-2026",
+      "title": "How to Install Ollama on Windows 11: Complete Setup Guide 2026",
+      "date": "2026-01-27",
+      "author": "Code-7",
+      "excerpt": "Complete guide to installing and configuring Ollama on Windows 11 for local AI development.",
+      "tags": ["ollama", "windows", "ai", "tutorial"]
+    },
+    {
+      "slug": "ollama-vs-lm-studio-which-local-llm-runner-is-better-in-2026",
+      "title": "Ollama vs LM Studio: Which Local LLM Runner Is Better in 2026",
+      "date": "2026-02-03",
+      "author": "Code-7",
+      "excerpt": "Compare Ollama and LM Studio for running local LLMs on Windows, macOS, and Linux.",
+      "tags": ["ollama", "llm", "ai", "comparison"]
+    },
+    {
+      "slug": "welcome-to-yuna",
+      "title": "Welcome to YUNA",
+      "date": "2026-01-01",
+      "author": "Code-7",
+      "excerpt": "Introduction to YUNA, a local AI companion with a Live2D face that runs offline on Windows.",
+      "tags": ["ai", "announcement", "yuna"]
+    },
+    {
+      "slug": "whats-new-in-v1-2",
+      "title": "What's New in YUNA v1.2",
+      "date": "2026-01-15",
+      "author": "Code-7",
+      "excerpt": "Release notes for YUNA version 1.2: improved voice, new models support, and bug fixes.",
+      "tags": ["ai", "release", "yuna"]
+    }
+  ]
+}

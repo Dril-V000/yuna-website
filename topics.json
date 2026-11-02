@@ -1,0 +1,127 @@
+[
+  {
+    "title": "Getting Started With Ollama on Windows: A Step-by-Step Guide",
+    "keyword": "ollama windows install",
+    "tags": ["ollama", "ai", "windows", "tutorial"]
+  },
+  {
+    "title": "Best Small LLMs You Can Run Offline in 2026",
+    "keyword": "small llm offline",
+    "tags": ["llm", "ai", "ollama", "opensource"]
+  },
+  {
+    "title": "Why Cloud AI Chats Aren't Private: What Developers Can Do",
+    "keyword": "cloud ai privacy concerns",
+    "tags": ["privacy", "ai", "security", "ollama"]
+  },
+  {
+    "title": "Running Ollama Without a GPU: What to Expect",
+    "keyword": "ollama without gpu",
+    "tags": ["ollama", "ai", "performance", "hardware"]
+  },
+  {
+    "title": "Adding Persistent Memory to a Local Chatbot With SQLite",
+    "keyword": "chatbot memory sqlite",
+    "tags": ["python", "sqlite", "ai", "tutorial"]
+  },
+  {
+    "title": "Building a Simple Offline Voice Assistant in Python",
+    "keyword": "offline voice assistant python",
+    "tags": ["python", "ai", "tutorial", "opensource"]
+  },
+  {
+    "title": "Speech-to-Text on Your Own Machine With Whisper",
+    "keyword": "whisper speech to text python",
+    "tags": ["python", "ai", "opensource", "tutorial"]
+  },
+  {
+    "title": "Offline Text-to-Speech: Choosing a Local TTS Engine",
+    "keyword": "offline tts python",
+    "tags": ["python", "ai", "opensource", "tutorial"]
+  },
+  {
+    "title": "Live2D in Python: Rendering an Animated Avatar for Desktop",
+    "keyword": "live2d python desktop",
+    "tags": ["python", "gamedev", "animation", "ai"]
+  },
+  {
+    "title": "Quantization Explained: Running 7B Models on Modest Hardware",
+    "keyword": "gguf quantization",
+    "tags": ["llm", "ai", "machinelearning", "performance"]
+  },
+  {
+    "title": "Using the Ollama REST API From Python",
+    "keyword": "ollama rest api python",
+    "tags": ["ollama", "python", "api", "tutorial"]
+  },
+  {
+    "title": "Offline AI: Making an Assistant Work Without Internet",
+    "keyword": "offline ai assistant python",
+    "tags": ["ai", "privacy", "ollama", "opensource"]
+  },
+  {
+    "title": "Setting Up a Python Environment for Local AI on Windows",
+    "keyword": "python environment local ai windows",
+    "tags": ["python", "windows", "ai", "beginners"]
+  },
+  {
+    "title": "Context Window Sizes for Local LLMs: Avoiding Out-of-Memory",
+    "keyword": "llm context window ram",
+    "tags": ["llm", "ollama", "performance", "ai"]
+  },
+  {
+    "title": "Self-Hosting AI for Privacy: A Practical Threat Model",
+    "keyword": "self hosted ai privacy",
+    "tags": ["privacy", "ai", "security", "selfhosted"]
+  },
+  {
+    "title": "Prompt Design for Small LLMs: Getting Consistent Output",
+    "keyword": "prompt engineering small llm",
+    "tags": ["llm", "ai", "tutorial", "ollama"]
+  },
+  {
+    "title": "Building Long-Term Memory for Local LLMs With Embeddings",
+    "keyword": "llm long term memory embeddings",
+    "tags": ["embeddings", "llm", "python", "ai"]
+  },
+  {
+    "title": "Streaming LLM Responses Into a Desktop App",
+    "keyword": "streaming llm python",
+    "tags": ["python", "ollama", "api", "ai"]
+  },
+  {
+    "title": "Lip Sync and Expressions: Driving an Avatar From AI Output",
+    "keyword": "avatar lip sync python",
+    "tags": ["python", "gamedev", "animation", "ai"]
+  },
+  {
+    "title": "Running DeepSeek-R1 Locally: A Complete Setup Guide",
+    "keyword": "deepseek r1 local install",
+    "tags": ["deepseek", "llm", "ollama", "tutorial"]
+  },
+  {
+    "title": "LM Studio vs Ollama vs GPT4All: Which Local AI Tool Wins",
+    "keyword": "lm studio ollama gpt4all comparison",
+    "tags": ["ollama", "ai", "comparison", "tools"]
+  },
+  {
+    "title": "Free Local Alternatives to ChatGPT Plus Worth Trying",
+    "keyword": "chatgpt plus local alternative",
+    "tags": ["ai", "ollama", "opensource", "privacy"]
+  },
+  {
+    "title": "Building a RAG System With Local LLMs and Python",
+    "keyword": "rag local llm python",
+    "tags": ["rag", "llm", "python", "ai"]
+  },
+  {
+    "title": "Ollama vs llama.cpp: Which Should You Use?",
+    "keyword": "ollama vs llama.cpp",
+    "tags": ["ollama", "llm", "ai", "comparison"]
+  },
+  {
+    "title": "Running AI Models on Old Laptops: What to Expect",
+    "keyword": "run llm old laptop",
+    "tags": ["llm", "hardware", "ai", "performance"]
+  }
+]

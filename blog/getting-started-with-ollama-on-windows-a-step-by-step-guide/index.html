@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting Started With Ollama on Windows: A Step-by-Step Guide | YUNA Blog</title>
+<meta name="description" content="Learn how to perform an ollama windows install, run local LLMs, manage models, and integrate Python for local AI development step by step.">
+<link rel="canonical" href="https://yunaai.online/blog/getting-started-with-ollama-on-windows-a-step-by-step-guide/">
+<link rel="icon" href="/favicon.ico">
+<meta name="theme-color" content="#04040c">
+<meta property="og:title" content="Getting Started With Ollama on Windows: A Step-by-Step Guide | YUNA Blog">
+<meta property="og:description" content="Learn how to perform an ollama windows install, run local LLMs, manage models, and integrate Python for local AI development step by step.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://yunaai.online/blog/getting-started-with-ollama-on-windows-a-step-by-step-guide/">
+<meta property="og:site_name" content="YUNA">
+<meta property="og:image" content="https://yunaai.online/preview/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Getting Started With Ollama on Windows: A Step-by-Step Guide | YUNA Blog">
+<meta name="twitter:description" content="Learn how to perform an ollama windows install, run local LLMs, manage models, and integrate Python for local AI development step by step.">
+<meta name="twitter:image" content="https://yunaai.online/preview/og-image.png">
+<link rel="stylesheet" href="/assets/pages.css">
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Getting Started With Ollama on Windows: A Step-by-Step Guide", "description": "Learn how to perform an ollama windows install, run local LLMs, manage models, and integrate Python for local AI development step by step.", "image": "https://yunaai.online/preview/og-image.png", "author": {"@type": "Person", "name": "Code-7"}, "publisher": {"@type": "Organization", "name": "YUNA", "url": "https://yunaai.online/"}, "mainEntityOfPage": "https://yunaai.online/blog/getting-started-with-ollama-on-windows-a-step-by-step-guide/", "datePublished": "2026-11-02", "dateModified": "2026-11-02"}</script>
+</head>
+<body>
+<nav><a class="logo" href="/">YUNA</a><a href="/#features">Features</a><a href="/ai-models/">AI Models</a><a href="/requirements/">Requirements</a><a href="/faq/">FAQ</a><a href="/blog/">Blog</a><a class="cta" href="/#pricing">Get YUNA</a></nav>
+<main class="wrap">
+<p class="meta"><a href="/blog/">&larr; All posts</a></p><article><h1>Getting Started With Ollama on Windows: A Step-by-Step Guide</h1><p class="meta">2026-11-02 &middot; Code-7 <span class="meta">#ollama</span> <span class="meta">#ai</span> <span class="meta">#windows</span> <span class="meta">#tutorial</span></p><div class="md"><p>Running large language models locally has shifted from a niche research endeavor to a standard developer workflow. Privacy concerns, API costs, and the need for offline functionality drive many engineers to host models on their own hardware. For Windows users, the ecosystem has matured significantly, moving away from complex WSL2 compilation steps toward native installers. This guide covers the complete ollama windows install process, configuration, model management, and API integration.</p>
+<h2 id="prerequisites-and-system-requirements">Prerequisites and System Requirements</h2>
+<p>Before downloading any software, understanding the hardware constraints of running local inference is essential. Large language models require substantial RAM and VRAM. While CPU inference is possible, it is significantly slower than GPU acceleration.</p>
+<p>For a smooth experience running 7B or 8B parameter models, such as Llama 3 or Mistral, you need a dedicated graphics card with at least 8GB of VRAM. NVIDIA GPUs are currently the best supported through CUDA, though AMD cards work via the ROCm stack on Linux. On Windows, Ollama leverages your GPU automatically if compatible drivers are installed. System RAM should be at least 16GB, with 32GB recommended if you plan to experiment with larger 13B or 34B models.</p>
+<p>Storage speed also matters. Model weights range from 4GB to over 20GB. Loading these files into memory takes time, making an NVMe solid-state drive almost mandatory for acceptable startup speeds. Ensure you have at least 30GB of free disk space before proceeding.</p>
+<h2 id="performing-the-ollama-windows-install">Performing the Ollama Windows Install</h2>
+<p>The official installation method relies on a standalone executable that manages the background service and command-line interface. </p>
+<p>Navigate to the official Ollama website and download the Windows installer package. Run the executable file. The setup wizard installs the Ollama application, adds the necessary binaries to your system PATH, and starts a background service that listens on localhost port 11434. </p>
+<p>To verify that the installation completed successfully, open a fresh terminal window. PowerShell or Command Prompt will work. Type the following command to check the installed version:</p>
+<pre><code class="language-powershell">ollama --version
+</code></pre>
+<p>If the terminal returns the version number without throwing an error, the service is running correctly. The background service handles model loading, unloading, and API requests, meaning you do not need to keep a separate terminal window open for the server to function. You can check your system tray to confirm the Ollama icon is present, indicating the daemon is active.</p>
+<h2 id="pulling-and-running-your-first-model">Pulling and Running Your First Model</h2>
+<p>With the runtime installed, you can download and execute language models. Ollama uses a model library similar to Docker Hub, where community-curated weights are tagged and versioned.</p>
+<p>To download and run a model in an interactive terminal session, use the run command. For example, to start Llama 3, execute:</p>
+<pre><code class="language-powershell">ollama run llama3
+</code></pre>
+<p>The CLI will download the model manifests and weight layers. Depending on your internet connection, this may take a few minutes. Once the download finishes, the interface transitions into an interactive chat prompt where you can converse with the model directly.</p>
+<p>You can manage your local model library using several subcommands. To list all models currently stored on your machine, run:</p>
+<pre><code class="language-powershell">ollama list
+</code></pre>
+<p>If you need to remove a model to free up disk space, use the rm command followed by the model name:</p>
+<pre><code class="language-powershell">ollama rm llama3
+</code></pre>
+<p>The local storage directory for these weights is typically located within your user profile under the .ollama folder. If you ever need to purge cached data, you can inspect this directory, though using the CLI commands is safer to prevent database corruption.</p>
+<h2 id="interacting-with-the-local-api">Interacting with the Local API</h2>
+<p>One of the primary benefits of running Ollama is its built-in REST API. Because the background service listens on port 11434, any application on your machine can send HTTP requests to generate text, embedding vectors, or chat completions. This makes it trivial to wire local intelligence into custom software projects.</p>
+<p>The API is fully compatible with the OpenAI format in many endpoints, making migration straightforward if you currently prototype against cloud providers. Here is a simple Python script using the requests library to query your local model programmatically:</p>
+<pre><code class="language-python">import requests
+import json
+
+url = &quot;http://localhost:11434/api/generate&quot;
+
+payload = {
+    &quot;model&quot;: &quot;llama3&quot;,
+    &quot;prompt&quot;: &quot;Explain the difference between TCP and UDP in two sentences.&quot;,
+    &quot;stream&quot;: False
+}
+
+response = requests.post(url, json=payload)
+
+if response.status_code == 200:
+    result = response.json()
+    print(result.get(&quot;response&quot;))
+else:
+    print(f&quot;Error: {response.status_code}&quot;)
+</code></pre>
+<p>In this script, the stream parameter is set to false, which waits for the entire generation to complete before returning the JSON payload. For real-time user interfaces, you can set stream to true and parse the chunked response to display text as it generates token by token. This architectural flexibility allows developers to build robust desktop tools, command-line utilities, or internal enterprise applications without sending sensitive data to external servers.</p>
+<h2 id="a-practical-option-for-windows-users">A Practical Option for Windows Users</h2>
+<p>Navigating the command line and writing custom Python scripts satisfies many developers, but some users prefer a ready-made graphical interface for everyday interaction. If you want a local AI companion with a Live2D face that runs smoothly on your machine using your existing local setup, you might find YUNA interesting. You can learn more about it here: https://ko-fi.com/s/45662d5cc0</p>
+<hr />
+<p>Disclosure: I am the developer of YUNA, the software mentioned in the last section.</p></div></article>
+<div class="cta-box"><strong>YUNA: local AI companion with a Live2D face</strong><br>
+<span class="meta">Runs offline on Windows. Pay once, from $10.</span><br>
+<a class="btn" href="/#pricing">See pricing</a></div>
+</main>
+<footer><a href="/">Home</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/faq/">FAQ</a> &middot;
+<a href="https://discord.gg/ARg6yujhdc" rel="noopener">Discord</a> &middot;
+<a href="https://ko-fi.com/code7" rel="noopener">Support</a><br>&copy; 2026 YUNA</footer>
+</body>
+</html>
