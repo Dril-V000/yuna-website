@@ -243,6 +243,35 @@ section{padding:6rem 2rem;position:relative}
 .fc h3{font-size:.98rem;font-weight:700;margin-bottom:.45rem;color:var(--text);line-height:1.35}
 .fc p{font-size:.84rem;color:var(--text2);line-height:1.65}
 
+/* ===== v1.3 feature spotlight ===== */
+.agent-spot{display:grid;grid-template-columns:1.1fr .9fr;gap:2.2rem;align-items:center;max-width:1150px;margin:3.5rem auto 0;padding:2.4rem;border-radius:22px;background:linear-gradient(135deg,rgba(100,181,246,.09),rgba(167,139,250,.09)),var(--card);border:1px solid var(--border2);box-shadow:var(--shadow-md),var(--glow-purple);position:relative;overflow:hidden}
+.agent-spot::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--pink))}
+.agent-spot::after{content:'';position:absolute;width:380px;height:380px;right:-120px;top:-140px;background:radial-gradient(circle,rgba(167,139,250,.18),transparent 70%);pointer-events:none}
+.as-tag{display:inline-flex;align-items:center;gap:.5rem;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.3);color:var(--amber);font-size:.72rem;font-weight:800;padding:.28rem .8rem;border-radius:100px;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:1.1rem}
+.as-text{position:relative;z-index:1}
+.as-text h3{font-size:clamp(1.55rem,3vw,2.2rem);font-weight:800;line-height:1.15;letter-spacing:-.02em;margin-bottom:.9rem}
+.as-text h3 span{background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.as-text>p{color:var(--text2);font-size:.95rem;line-height:1.75;margin-bottom:1.4rem}
+.as-tiles{display:grid;gap:.7rem}
+.as-tile{display:flex;gap:.9rem;align-items:center;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:13px;padding:.8rem 1rem;transition:all .25s}
+.as-tile:hover{border-color:var(--border3);background:rgba(100,181,246,.07);transform:translateX(4px)}
+.as-tile .ficon{margin:0;flex-shrink:0;width:42px;height:42px}
+.as-tile strong{display:block;font-size:.9rem;color:var(--text);line-height:1.3}
+.as-tile span{font-size:.8rem;color:var(--text2);line-height:1.5}
+.as-text>p.as-foot{margin:1.2rem 0 0;font-size:.82rem;color:var(--accent3);font-weight:600}
+.as-demo{position:relative;z-index:1;background:rgba(4,4,12,.65);border:1px solid var(--border2);border-radius:18px;padding:1.2rem;box-shadow:var(--shadow-sm)}
+.as-demo-head{display:flex;align-items:center;gap:.5rem;font-size:.74rem;color:var(--text3);font-weight:600;margin-bottom:1rem;letter-spacing:.3px}
+.as-demo-head i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);display:block}
+.as-msg{max-width:88%;padding:.7rem .95rem;border-radius:14px;font-size:.84rem;line-height:1.55;margin-bottom:.8rem}
+.as-me{margin-left:auto;background:var(--grad-main);color:#04040c;font-weight:500;border-bottom-right-radius:4px}
+.as-ai{background:var(--card2);border:1px solid var(--border);color:var(--text);border-bottom-left-radius:4px;margin-bottom:0}
+.as-chips{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 .8rem}
+.as-chip{display:inline-flex;align-items:center;gap:.35rem;font-size:.72rem;font-weight:700;padding:.3rem .7rem;border-radius:100px;background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.3);color:var(--green)}
+.feat-sub{max-width:1150px;margin:3rem auto 0;text-align:center;font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3)}
+.feat-sub+.feat-grid{margin-top:1.4rem}
+.fc.hl{border-color:rgba(167,139,250,.3);background:linear-gradient(160deg,rgba(167,139,250,.08),transparent 60%),var(--card)}
+@media(max-width:900px){.agent-spot{grid-template-columns:1fr;padding:1.6rem 1.3rem;gap:1.6rem}}
+
 #providers{background:var(--bg2)}
 .providers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:1.1rem;max-width:950px;margin:3rem auto 0}
 .pcard{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.3rem 1rem;text-align:center;transition:all .3s}
@@ -693,7 +722,7 @@ body.ty-mode > #thank-you{display:flex !important}
   <div class="glow g2"></div>
   <div class="glow g3"></div>
   <div class="hero-content">
-    <div class="hero-badge"><div class="badge-dot"></div>Version 1.2 <span class="badge-new">NEW</span></div>
+    <div class="hero-badge"><div class="badge-dot"></div>Version 1.3 · Available now <span class="badge-new">NEW</span></div>
     <h1>
       <span class="h1-1">Your AI companion</span>
       <span class="h1-2">with a living face</span>
@@ -701,7 +730,7 @@ body.ty-mode > #thank-you{display:flex !important}
     <p class="hero-sub">Voice conversations, real-time animation, full local privacy. YUNA runs entirely on your machine — <strong>no cloud, no subscription, no compromise.</strong></p>
     <div class="hero-btns">
       <a href="#pricing" class="btn-primary">🔑 Get Licence</a>
-      <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.2v" target="_blank" rel="noopener noreferrer" class="btn-secondary">⬇ Download YUNA v1.2</a>
+      <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.2v" target="_blank" rel="noopener noreferrer" class="btn-secondary">⬇ Download YUNA v1.3</a>
       <a href="#video-section" class="btn-secondary">▶ Watch Demo</a>
     </div>
     <div class="vt-wrap">
@@ -827,26 +856,56 @@ body.ty-mode > #thank-you{display:flex !important}
 <section id="features" class="reveal">
   <div class="ctr">
     <div class="stag">Features</div>
-    <h2 class="stitle">Everything in one place</h2>
-    <p class="ssub">A complete voice-AI experience that runs entirely on your hardware</p>
+    <h2 class="stitle">More than a chat. A companion who gets things done.</h2>
+    <p class="ssub">YUNA bridges the gap between AI chat and real-life actions &mdash; all running privately on your own PC</p>
   </div>
+
+  <div class="agent-spot">
+    <div class="as-text">
+      <div class="as-tag">✨ New in v1.3 · The biggest update</div>
+      <h3>She doesn&rsquo;t just talk.<br><span>She gets things done.</span></h3>
+      <p>YUNA is no longer just a chatbot. Ask for something and she does it right on your PC &mdash; no copy-pasting, no switching windows, no waiting around.</p>
+      <div class="as-tiles">
+        <div class="as-tile"><div class="ficon ib">🌐</div><div><strong>Searches the live web</strong><span>Real-time answers, not out-of-date guesses.</span></div></div>
+        <div class="as-tile"><div class="ficon ip">🔗</div><div><strong>Opens links &amp; websites for you</strong><span>Pages pop open in your browser the moment you ask.</span></div></div>
+        <div class="as-tile"><div class="ficon it">📝</div><div><strong>Writes &amp; saves your notes</strong><span>Ideas, lists and reminders saved straight to your local files.</span></div></div>
+      </div>
+      <p class="as-foot">⚡ Instant by design &mdash; she acts the second you ask, with no extra confirmations.</p>
+    </div>
+    <div class="as-demo" aria-hidden="true">
+      <div class="as-demo-head"><i></i>YUNA &middot; Live</div>
+      <div class="as-msg as-me">Find tonight&rsquo;s best sci-fi movies and save them to a note</div>
+      <div class="as-chips">
+        <span class="as-chip">🌐 Searched the web</span>
+        <span class="as-chip">🔗 Opened the top pick</span>
+        <span class="as-chip">📝 Note saved</span>
+      </div>
+      <div class="as-msg as-ai">Done! I found a few great ones, opened the best pick for you, and saved the list to your notes 🎬💜</div>
+    </div>
+  </div>
+
+  <div class="feat-sub">Also new in v1.3</div>
   <div class="feat-grid">
-    <div class="fc"><div class="ficon ib">🎙️</div><h3>Hands-free voice conversation</h3><p>Talk naturally — YUNA listens, understands, and replies out loud with real-time voice interruption support.</p></div>
-    <div class="fc"><div class="ficon ip">🎭</div><h3>Live2D animated face</h3><p>A 2D character that moves, blinks, and lip-syncs while she speaks — not just a chat window.</p></div>
-    <div class="fc"><div class="ficon it">🧠</div><h3>8,000-character memory</h3><p>YUNA remembers context across the conversation — rolling memory for coherent, natural dialogue.</p></div>
-    <div class="fc"><div class="ficon ia">🎭</div><h3>Multiple distinct personalities</h3><p>Switch between Smart, Funny, and Professional modes — each one behaves differently. All fully customizable.</p></div>
-    <div class="fc"><div class="ficon ib">📝</div><h3>Prompt customization</h3><p>Change how YUNA thinks and acts — tweak her personality, tone, and behavior from settings anytime.</p></div>
+    <div class="fc hl"><div class="ficon ip">😊</div><h3>A face that feels what she says <span class="new-tag">NEW v1.3</span></h3><p>Her Live2D face blinks, smiles and lip-syncs as she talks &mdash; and now she shows emotion too. Say something amazing and she lights up; something sad and you&rsquo;ll see it.</p></div>
+    <div class="fc hl"><div class="ficon ia">⚡</div><h3>Instant, never robotic <span class="new-tag">NEW v1.3</span></h3><p>No more &ldquo;let me check&hellip;&rdquo; &mdash; she simply checks and gives you the answer right away. Zero awkward delays.</p></div>
+    <div class="fc hl"><div class="ficon ic">💖</div><h3>Warm, playful &amp; to the point <span class="new-tag">NEW v1.3</span></h3><p>Short, sweet replies in a friendly tone &mdash; like chatting with a real friend, not reading an essay.</p></div>
+    <div class="fc hl"><div class="ficon ib">🔊</div><h3>High-quality, natural voice</h3><p>Natural-sounding speech that talks out loud smoothly, so every conversation feels effortless.</p></div>
+  </div>
+
+  <div class="feat-sub">Everything else, built in</div>
+  <div class="feat-grid">
+    <div class="fc"><div class="ficon it">🔒</div><h3>100% local &amp; private</h3><p>Runs entirely on your machine. No cloud, no data collection, no monthly subscription &mdash; you own it forever.</p></div>
+    <div class="fc"><div class="ficon ip">🎨</div><h3>Make her truly yours</h3><p>Change her background, her voice and her persona prompt &mdash; or upload your own custom Live2D model.</p></div>
+    <div class="fc"><div class="ficon ib">🎙️</div><h3>Hands-free voice conversation</h3><p>Talk naturally &mdash; YUNA listens, understands, and replies out loud with real-time voice interruption support.</p></div>
+    <div class="fc"><div class="ficon it">🧠</div><h3>8,000-character memory</h3><p>YUNA remembers context across the conversation &mdash; rolling memory for coherent, natural dialogue.</p></div>
+    <div class="fc"><div class="ficon ia">🎭</div><h3>Multiple distinct personalities</h3><p>Switch between Smart, Funny, and Professional modes &mdash; each one behaves differently. All fully customizable.</p></div>
     <div class="fc"><div class="ficon it">💬</div><h3>Full conversation history</h3><p>Every session is saved. Browse past conversations and pick up right where you left off.</p></div>
-    <div class="fc"><div class="ficon ip">🎨</div><h3>Custom backgrounds &amp; voices</h3><p>Set any background image and pick from a wide library of voices — Azure, Edge TTS, ElevenLabs, and more.</p></div>
-    <div class="fc"><div class="ficon ib">⚡</div><h3>Two clicks to ready</h3><p>Open the app, enter your license key — YUNA downloads and sets up the AI model automatically.</p></div>
-    <div class="fc"><div class="ficon it">🔒</div><h3>Zero data collection</h3><p>YUNA never collects, sends, or stores any personal information. Everything stays on your machine.</p></div>
-    <div class="fc"><div class="ficon ia">⚙️</div><h3>Simple, readable settings</h3><p>No hidden options or confusing toggles — every setting is labeled clearly.</p></div>
-    <div class="fc"><div class="ficon ic">🔊</div><h3>Rich voice library</h3><p>Dozens of natural voices across multiple TTS engines — find the one that feels right.</p></div>
-    <div class="fc"><div class="ficon ip">🎌</div><h3>Custom Live2D models <span class="new-tag">NEW v1.2</span></h3><p>Upload your own Live2D model with thumbnail support, or choose one from your library. Existing users get it free.</p></div>
-    <div class="fc"><div class="ficon ib">🧠</div><h3>Choose your preferred AI model <span class="new-tag">NEW v1.2</span></h3><p>Pick the AI model you like best and switch whenever you want — local with Ollama or via your own API key.</p></div>
-    <div class="fc"><div class="ficon ip">🎭</div><h3>Exclusive speech &amp; idle animations <span class="new-tag">NEW v1.2</span></h3><p>New speech and idle animations made for YUNA, so she feels even more alive while talking and waiting.</p></div>
-    <div class="fc"><div class="ficon it">💭</div><h3>Better memory for multiple characters <span class="new-tag">NEW v1.2</span></h3><p>Improved memory handling so each character keeps its own context and conversations stay coherent.</p></div>
-    <div class="fc"><div class="ficon ia">🌑</div><h3>Premium black theme <span class="new-tag">NEW v1.2</span></h3><p>A refined black theme with an improved UI — cleaner, darker, and easier on the eyes.</p></div>
+    <div class="fc"><div class="ficon ib">⚡</div><h3>Two clicks to ready</h3><p>Open the app, enter your license key &mdash; YUNA downloads and sets up the AI model automatically.</p></div>
+    <div class="fc"><div class="ficon ia">⚙️</div><h3>Simple, readable settings</h3><p>No hidden options or confusing toggles &mdash; every setting is labeled clearly.</p></div>
+    <div class="fc"><div class="ficon ib">🧠</div><h3>Choose your preferred AI model</h3><p>Pick the AI model you like best and switch whenever you want &mdash; local with Ollama or via your own API key.</p></div>
+    <div class="fc"><div class="ficon ip">🎭</div><h3>Exclusive speech &amp; idle animations</h3><p>New speech and idle animations made for YUNA, so she feels even more alive while talking and waiting.</p></div>
+    <div class="fc"><div class="ficon it">💭</div><h3>Better memory for multiple characters</h3><p>Improved memory handling so each character keeps its own context and conversations stay coherent.</p></div>
+    <div class="fc"><div class="ficon ia">🌑</div><h3>Premium black theme</h3><p>A refined black theme with an improved UI &mdash; cleaner, darker, and easier on the eyes.</p></div>
   </div>
 </section>
 
@@ -874,7 +933,7 @@ body.ty-mode > #thank-you{display:flex !important}
   <div class="ctr">
     <div class="stag">Characters</div>
     <h2 class="stitle">Meet your companions</h2>
-    <p class="ssub ctr" style="margin:0 auto">Three built-in personalities, full custom support — and MAJO joins in v1.2</p>
+    <p class="ssub ctr" style="margin:0 auto">Three built-in personalities, full custom support — and MAJO joins the family</p>
   </div>
   <div class="chars-grid">
     <div class="char-card">
@@ -901,9 +960,9 @@ body.ty-mode > #thank-you{display:flex !important}
     <div class="char-card" style="border-color:rgba(167,139,250,.4)">
       <div class="char-avatar ca-m">🧙‍♀️</div>
       <div class="char-name">Majo <span class="new-tag">NEW</span></div>
-      <div class="char-type">New character · v1.2</div>
-      <div class="char-desc">A brand-new companion joining the family with YUNA v1.2. Mysterious, playful, and full of surprises.</div>
-      <div class="char-tags"><span class="ctag p">New in v1.2</span><span class="ctag p">Exclusive</span></div>
+      <div class="char-type">New character</div>
+      <div class="char-desc">A brand-new companion joining the family. Mysterious, playful, and full of surprises.</div>
+      <div class="char-tags"><span class="ctag p">New</span><span class="ctag p">Exclusive</span></div>
     </div>
   </div>
   <div class="mode-row">
@@ -916,23 +975,20 @@ body.ty-mode > #thank-you{display:flex !important}
 <section id="changelog" class="reveal">
   <div class="ctr">
     <div class="stag">Changelog</div>
-    <h2 class="stitle">What's new in v1.2</h2>
+    <h2 class="stitle">What's new in v1.3</h2>
   </div>
   <div class="cl-box">
     <div class="cl-head">
-      <span class="vbadge">v1.2</span>
+      <span class="vbadge">v1.3</span>
       <span class="cl-head-t">Major Update</span>
       <span class="cl-head-d">2026</span>
     </div>
     <div class="cl-items">
-      <div class="cli"><div class="cldot new"></div><p><strong>New:</strong> 🧠 Choose your preferred AI model.</p></div>
-      <div class="cli"><div class="cldot new"></div><p><strong>New:</strong> 🎭 Exclusive speech and idle animations for YUNA.</p></div>
-      <div class="cli"><div class="cldot new"></div><p><strong>New:</strong> 🧙‍♀️ New character: MAJO.</p></div>
-      <div class="cli"><div class="cldot new"></div><p><strong>New:</strong> 📦 Custom Live2D model uploads with thumbnail support.</p></div>
-      <div class="cli"><div class="cldot new"></div><p><strong>New:</strong> 🌑 Premium black theme and improved UI.</p></div>
-      <div class="cli"><div class="cldot fix"></div><p><strong>Improved:</strong> 💭 Better memory handling for multiple characters.</p></div>
-      <div class="cli"><div class="cldot fix"></div><p><strong>Fixed:</strong> 🔊 Edge TTS compatibility fixes.</p></div>
-      <div class="cli"><div class="cldot fix"></div><p><strong>Improved:</strong> ⚡ General performance improvements and bug fixes.</p></div>
+      <div class="cli"><div class="cldot new"></div><p><strong>New:</strong> 🛠️ Real agentic tools &mdash; YUNA can search the live web, open links and websites, and save notes to your files.</p></div>
+      <div class="cli"><div class="cldot new"></div><p><strong>New:</strong> 😊 A living Live2D face that shows emotion based on what she says.</p></div>
+      <div class="cli"><div class="cldot new"></div><p><strong>New:</strong> 💖 A smarter, sweeter personality &mdash; instant answers in a warm, playful, to-the-point tone.</p></div>
+      <div class="cli"><div class="cldot fix"></div><p><strong>Improved:</strong> 🔊 High-quality, natural voice that speaks out loud seamlessly.</p></div>
+      <div class="cli"><div class="cldot fix"></div><p><strong>Improved:</strong> 🎨 Full customization &mdash; background, voice, persona prompt and your own Live2D model.</p></div>
     </div>
   </div>
   <p class="cl-privacy">🔒 Local AI. Private by design. More customization, a better experience.</p>
@@ -1175,7 +1231,7 @@ body.ty-mode > #thank-you{display:flex !important}
   <h2>Ready to meet Yuna?</h2>
   <p>A voice AI with a living face — fully local, yours forever.</p>
   <div class="hero-btns">
-    <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.2v" target="_blank" rel="noopener noreferrer" class="btn-primary">⬇ Download YUNA v1.2</a>
+    <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.2v" target="_blank" rel="noopener noreferrer" class="btn-primary">⬇ Download YUNA v1.3</a>
     <a href="https://discord.gg/ARg6yujhdc" target="_blank" rel="noopener noreferrer" class="btn-secondary">💬 Join Discord</a>
   </div>
 </section>
