@@ -690,7 +690,6 @@ body.ty-mode > #thank-you{display:flex !important}
   .security-stats { justify-content: center; }
 }
 
-
 /* ===== Shell helpers block ===== */
 .shell-spot{max-width:1150px;margin:2.5rem auto 0;padding:2rem 2rem 2.2rem;border-radius:22px;background:linear-gradient(135deg,rgba(100,181,246,.07),rgba(167,139,250,.07)),var(--card);border:1px solid var(--border2);box-shadow:var(--shadow-md),0 0 40px rgba(100,181,246,.08);position:relative;overflow:hidden}
 .shell-spot::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--pink))}
@@ -728,6 +727,41 @@ body.ty-mode > #thank-you{display:flex !important}
   .shell-flow{flex-direction:column;align-items:flex-start}
   .shell-flow-arrow{transform:rotate(90deg);align-self:center}
 }
+
+/* ===== Screenshot lightbox modal ===== */
+.as-screenshots{display:flex;flex-direction:column;gap:1.2rem;position:relative;z-index:1}
+.as-shot-card{background:var(--card);border:1px solid var(--border2);border-radius:14px;overflow:hidden;box-shadow:var(--shadow-md);transition:transform .35s ease,box-shadow .35s ease;position:relative}
+.as-shot-card:hover{transform:translateY(-5px) scale(1.01);box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 30px rgba(100,181,246,.12)}
+.as-shot-titlebar{background:linear-gradient(180deg,#0e0e22,#0a0a1a);height:32px;display:flex;align-items:center;padding:0 14px;gap:7px;border-bottom:1px solid rgba(255,255,255,.06)}
+.as-shot-dot{width:10px;height:10px;border-radius:50%}
+.as-shot-dot.red{background:#ff5f57}
+.as-shot-dot.yellow{background:#febc2e}
+.as-shot-dot.green{background:#28c840}
+.as-shot-label{font-size:.68rem;color:rgba(255,255,255,.4);font-family:'Space Grotesk',sans-serif;letter-spacing:2px;margin-left:8px;font-weight:600}
+.as-shot-card img{width:100%;display:block;height:auto;transition:transform .5s ease;cursor:zoom-in}
+.as-shot-card:hover img{transform:scale(1.03)}
+.as-shot-badge{position:absolute;bottom:52px;left:12px;background:rgba(4,4,12,.85);backdrop-filter:blur(10px);border:1px solid var(--border3);color:var(--accent3);font-size:.72rem;font-weight:700;padding:.35rem .8rem;border-radius:8px;display:flex;align-items:center;gap:.4rem;box-shadow:0 4px 15px rgba(0,0,0,.5);pointer-events:none}
+.as-shot-view-btn{position:absolute;bottom:12px;right:12px;background:linear-gradient(135deg,#64b5f6,#a78bfa);color:#04040c;border:none;border-radius:9px;padding:.45rem 1rem;font-family:'Inter',sans-serif;font-size:.74rem;font-weight:800;letter-spacing:.3px;cursor:pointer;z-index:5;box-shadow:0 6px 20px rgba(100,181,246,.4);transition:transform .2s,box-shadow .2s}
+.as-shot-view-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(100,181,246,.6)}
+.as-shot-view-btn:active{transform:translateY(0)}
+
+.shot-modal-overlay{position:fixed;inset:0;background:rgba(2,2,10,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:9999;display:none;align-items:center;justify-content:center;padding:2rem;opacity:0;transition:opacity .28s ease}
+.shot-modal-overlay.open{display:flex;opacity:1}
+.shot-modal-inner{position:relative;max-width:1200px;width:100%;border-radius:16px;overflow:hidden;border:1px solid rgba(100,181,246,.4);box-shadow:0 0 0 1px rgba(167,139,250,.15),0 0 120px rgba(100,181,246,.25),0 50px 120px rgba(0,0,0,.9);background:#0e0e22;transform:scale(.94);transition:transform .3s cubic-bezier(.2,1,.4,1)}
+.shot-modal-overlay.open .shot-modal-inner{transform:scale(1)}
+.shot-modal-titlebar{background:linear-gradient(180deg,#0e0e22,#0a0a1a);height:44px;display:flex;align-items:center;padding:0 16px;gap:10px;border-bottom:1px solid rgba(255,255,255,.06)}
+.shot-modal-titlebar .dot{width:12px;height:12px;border-radius:50%}
+.shot-modal-titlebar .dot.r{background:#ff5f57}
+.shot-modal-titlebar .dot.y{background:#febc2e}
+.shot-modal-titlebar .dot.g{background:#28c840}
+.shot-modal-title{flex:1;font-size:.74rem;color:rgba(255,255,255,.55);font-family:'Space Grotesk',sans-serif;letter-spacing:3px;font-weight:600}
+.shot-modal-close{width:34px;height:34px;border-radius:50%;background:rgba(255,90,90,.15);border:1px solid rgba(255,90,90,.4);color:#ff8080;font-size:1.1rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.shot-modal-close:hover{background:rgba(255,90,90,.3);transform:rotate(90deg)}
+.shot-modal-body{background:#05051a;padding:0;line-height:0}
+.shot-modal-body img{width:100%;height:auto;display:block}
+
+@media(max-width:900px){.as-screenshots{margin-top:1rem}}
+@media(max-width:640px){.shot-modal-overlay{padding:.8rem}.as-shot-view-btn{font-size:.66rem;padding:.35rem .7rem}}
 
 </style>
 
@@ -911,15 +945,30 @@ body.ty-mode > #thank-you{display:flex !important}
       </div>
       <p class="as-foot">⚡ Instant by design &mdash; she acts the second you ask, with no extra confirmations.</p>
     </div>
-    <div class="as-demo" aria-hidden="true">
-      <div class="as-demo-head"><i></i>YUNA &middot; Live</div>
-      <div class="as-msg as-me">Find tonight&rsquo;s best sci-fi movies and save them to a note</div>
-      <div class="as-chips">
-        <span class="as-chip">🌐 Searched the web</span>
-        <span class="as-chip">🔗 Opened the top pick</span>
-        <span class="as-chip">📝 Note saved</span>
+    <div class="as-screenshots">
+      <div class="as-shot-card">
+        <div class="as-shot-titlebar">
+          <span class="as-shot-dot red"></span><span class="as-shot-dot yellow"></span><span class="as-shot-dot green"></span>
+          <span class="as-shot-label">YUNA · Chat &amp; Tools</span>
+        </div>
+        <img src="./preview/screenshot-search.png" alt="YUNA searching the web and answering a user question" loading="lazy">
+        <div class="as-shot-badge"><span>🌐</span> Used tool: Web Search</div>
+        <button type="button" class="as-shot-view-btn"
+                onclick="openShotModal(this.closest('.as-shot-card').querySelector('img').src, '🔍 Web Search Screenshot')"
+                aria-label="View web search screenshot">🔍 View</button>
       </div>
-      <div class="as-msg as-ai">Done! I found a few great ones, opened the best pick for you, and saved the list to your notes 🎬💜</div>
+
+      <div class="as-shot-card">
+        <div class="as-shot-titlebar">
+          <span class="as-shot-dot red"></span><span class="as-shot-dot yellow"></span><span class="as-shot-dot green"></span>
+          <span class="as-shot-label">YUNA · Local File Access</span>
+        </div>
+        <img src="./preview/screenshot-system.png" alt="YUNA checking Python version and saving a note locally" loading="lazy">
+        <div class="as-shot-badge"><span>🛠️</span> Used tool: System &amp; Write</div>
+        <button type="button" class="as-shot-view-btn"
+                onclick="openShotModal(this.closest('.as-shot-card').querySelector('img').src, '🛠️ System &amp; Files Screenshot')"
+                aria-label="View system screenshot">🛠️ View</button>
+      </div>
     </div>
   </div>
 
@@ -962,7 +1011,6 @@ body.ty-mode > #thank-you{display:flex !important}
       <p class="shell-safety-note">Only these destructive commands are blocked. Everything else &mdash; reading, diagnosing, fixing, automating &mdash; is available once you approve it.</p>
     </div>
   </div>
-
 
   <div class="feat-sub">Also new in v1.3</div>
   <div class="feat-grid">
@@ -1065,6 +1113,7 @@ body.ty-mode > #thank-you{display:flex !important}
     </div>
     <div class="cl-items">
       <div class="cli"><div class="cldot new"></div><p><strong>New:</strong> 🛠️ Real agentic tools &mdash; YUNA can search the live web, open links and websites, and save notes to your files.</p></div>
+      <div class="cli"><div class="cldot new"></div><p><strong>New:</strong> 🐚 Shell helpers &mdash; run real shell commands with your approval to read logs, diagnose and fix problems, and automate tasks. Only destructive commands are blocked.</p></div>
       <div class="cli"><div class="cldot new"></div><p><strong>New:</strong> 😊 A living Live2D face that shows emotion based on what she says.</p></div>
       <div class="cli"><div class="cldot new"></div><p><strong>New:</strong> 💖 A smarter, sweeter personality &mdash; instant answers in a warm, playful, to-the-point tone.</p></div>
       <div class="cli"><div class="cldot fix"></div><p><strong>Improved:</strong> 🔊 High-quality, natural voice that speaks out loud seamlessly.</p></div>
@@ -1272,7 +1321,7 @@ body.ty-mode > #thank-you{display:flex !important}
       </div>
     </div>
 
-      <div class="proof-box" id="pay-contact-box" style="margin-top:1.4rem">
+    <div class="proof-box" id="pay-contact-box" style="margin-top:1.4rem">
       <div class="proof-note"><strong>Payment methods don't work for you?</strong> If none of these options suit you, contact me and we'll find a solution together.</div>
       <div class="proof-actions">
         <a href="https://discord.gg/ARg6yujhdc" target="_blank" rel="noopener noreferrer" class="proof-btn discord">💬 Contact on Discord</a>
@@ -1389,7 +1438,6 @@ body.ty-mode > #thank-you{display:flex !important}
 <div class="toast" id="toast">✓ Copied!</div>
 
 <script>
-
 function toggleNav(btn){
   const links=document.getElementById('navLinks');
   const open=links.classList.toggle('open');
@@ -1759,7 +1807,6 @@ window.loadPayPal = function(){
 
 <script src="./reviews.js"></script>
 <script>
-
 (function(){
   function guard(){
     var _paid = window.__paid || (function(){ try { return sessionStorage.getItem('yuna_paid')==='1'; } catch(e){ return false; } })();
@@ -1776,6 +1823,52 @@ window.loadPayPal = function(){
   window.addEventListener('hashchange', function(){
     if (location.hash === '#thank-you' && !window.__paid) {
       setTimeout(guard, 0);
+    }
+  });
+})();
+</script>
+
+<div class="shot-modal-overlay" id="shotModalOverlay" role="dialog" aria-modal="true" aria-hidden="true" onclick="if(event.target===this)closeShotModal()">
+  <div class="shot-modal-inner">
+    <div class="shot-modal-titlebar">
+      <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+      <span class="shot-modal-title" id="shotModalTitle">YUNA · Screenshot</span>
+      <button type="button" class="shot-modal-close" onclick="closeShotModal()" aria-label="Close">✕</button>
+    </div>
+    <div class="shot-modal-body">
+      <img id="shotModalImg" src="" alt="Screenshot preview">
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var overlay = document.getElementById('shotModalOverlay');
+  var img = document.getElementById('shotModalImg');
+  var title = document.getElementById('shotModalTitle');
+  if(!overlay || !img || !title) return;
+
+  window.openShotModal = function(src, label){
+    if(!src){ console.warn('[YUNA] openShotModal: empty src'); return; }
+    img.src = src;
+    img.alt = label || 'Screenshot';
+    title.textContent = label || 'YUNA · Screenshot';
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeShotModal = function(){
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    setTimeout(function(){ img.src = ''; }, 300);
+  };
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && overlay.classList.contains('open')){
+      window.closeShotModal();
     }
   });
 })();
