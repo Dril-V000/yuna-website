@@ -207,6 +207,11 @@ body.ty-mode>#thank-you{display:flex!important}
 .saashub-trust a{display:flex;align-items:center;border-radius:8px;transition:filter .2s,transform .2s}
 .saashub-trust a:hover{filter:brightness(1.12);transform:translateY(-1px)}
 .saashub-trust img{display:block;width:150px;height:auto;max-width:100%}
+
+/* Reviews prompt shown beside the pricing plans */
+.reviews-link{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem;max-width:760px;margin-top:1.5rem;padding:.9rem 1.1rem;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--pk);border-radius:10px;font-size:.92rem;color:var(--mute)}
+.reviews-link b{color:var(--ink)}
+
 @media(max-width:800px){.extra-grid,.shell-detail-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.approval-flow{grid-template-columns:repeat(2,minmax(0,1fr))}.requirements-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:540px){.yuna-extra{padding:3.4rem 0}.extra-grid,.shell-detail-grid,.requirements-grid{grid-template-columns:1fr}.approval-flow{grid-template-columns:1fr 1fr}.video-compare{align-items:flex-start;flex-direction:column}}
 
@@ -395,15 +400,38 @@ body.ty-mode>#thank-you{display:flex!important}
 
 <section id="pricing"><div class="w">
   <div class="ttl"><h2>Pay once. Keep it forever.</h2><p class="sub">No subscription, no renewal. One payment, lifetime access on one device.</p></div>
+
   <div class="plans">
     <div class="plan">
-      <div class="n">Basic</div><div class="p">$10</div>
-      <ul><li>Full app, all core features</li><li>Voice, Live2D face, all AI providers</li><li>Memory, history, custom characters</li><li class="no">Direct support</li><li class="no">Personality prompt set up for you</li></ul>
+      <div class="n">Basic</div>
+      <div class="p">$10</div>
+      <ul>
+        <li>Full app, all core features</li>
+        <li>Voice, Live2D face, all AI providers</li>
+        <li>Memory, history, custom characters</li>
+        <li class="no">Early access to new features</li>
+        <li class="no">Beta version access</li>
+        <li class="no">Priority technical support</li>
+        <li class="no">Full character customization service</li>
+      </ul>
     </div>
+
     <div class="plan hot">
-      <div class="n">Pro · most popular</div><div class="p">$15</div>
-      <ul><li>Everything in Basic</li><li><b>Direct support</b> when you have issues</li><li><b>We write your personality prompt</b></li></ul>
+      <div class="n">Pro · most popular</div>
+      <div class="p">$15</div>
+      <ul>
+        <li>Everything in Basic</li>
+        <li><b>Early access to new features</b></li>
+        <li><b>Access to beta releases</b></li>
+        <li><b>Priority technical support</b></li>
+        <li><b>Full character customization</b></li>
+      </ul>
     </div>
+  </div>
+
+  <div class="reviews-link">
+    <span>Before you buy, see what <b>real users</b> say about YUNA.</span>
+    <a href="/reviews/" class="btn ghost sm">Read reviews →</a>
   </div>
 
   <div class="buy" id="contact">
