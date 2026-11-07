@@ -577,6 +577,7 @@ body.ty-mode>#thank-you{display:flex!important}
     <a href="https://www.youtube.com/@code7kjt" target="_blank" rel="noopener noreferrer">YouTube</a>
     <a href="https://github.com/Dril-V000/yuna-AI/blob/main/TOS.md" target="_blank" rel="noopener noreferrer">Terms of Service</a>
     <a href="https://github.com/Dril-V000/yuna-AI/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">License</a>
+    <a href="#cookie-settings" id="cookie-settings">Cookie settings</a>
   </div>
   <p>© 2026 Code-7 &amp; Merry Yuna · All rights reserved. Unauthorized reproduction or redistribution of YUNA is prohibited.</p>
 </div></footer>
@@ -835,21 +836,11 @@ window.loadPayPal=function(){
 })();
 </script>
 
-  <p class="cb-text">
-    YUNA uses essential cookies to remember your preferences. Optional analytics help us improve the experience.
-    Read our <a href="https://github.com/Dril-V000/yuna-AI/blob/main/TOS.md" target="_blank" rel="noopener noreferrer">Terms of Service</a>.
-  </p>
-  <div class="cb-actions">
-    <button type="button" class="cb-btn cb-reject" data-cookie="reject">Reject optional</button>
-    <button type="button" class="cb-btn cb-accept" data-cookie="accept">Accept all</button>
-  </div>
-</div>
-
 <!-- ===== Cookie Consent Banner ===== -->
-<div id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" aria-hidden="true">
+<div id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" aria-hidden="true" inert>
   <div class="cb-title">🍪 We use cookies</div>
   <p class="cb-text">
-    YUNA uses essential cookies to remember your preferences. Optional analytics help us improve the experience.
+    YUNA uses essential storage to remember your preferences. With your permission, we may also use optional analytics and advertising cookies. You can change your choice at any time from "Cookie settings" in the footer.
     Read our <a href="https://github.com/Dril-V000/yuna-AI/blob/main/TOS.md" target="_blank" rel="noopener noreferrer">Terms of Service</a>.
   </p>
   <div class="cb-actions">
@@ -859,7 +850,9 @@ window.loadPayPal=function(){
 </div>
 
 <script>
-/* ===== Cookie Consent (banner + storage) ===== */
+/* ===== Cookie Consent (banner + storage) =====
+   Stored value: 'true' (accepted) | 'false' (rejected) | absent (not chosen yet).
+   Every change fires a 'yuna:consent' event on window: event.detail = true | false | null (reset). */
 window.YunaCookieConsent = (function(){
   var KEY = 'yuna_cookie_consent';
   var value = null;
@@ -869,51 +862,118 @@ window.YunaCookieConsent = (function(){
     else if (stored === 'false') value = false;
   } catch(e){}
 
+  function emit(){
+    try { window.dispatchEvent(new CustomEvent('yuna:consent', { detail: value })); } catch(e){}
+  }
   function set(v){
     value = !!v;
     try { localStorage.setItem(KEY, value ? 'true' : 'false'); } catch(e){}
+    emit();
     return value;
   }
   function get(){ return value; }
   function hasChosen(){ return value !== null; }
-  function reset(){ value = null; try{ localStorage.removeItem(KEY); }catch(e){} }
+  function reset(){
+    value = null;
+    try { localStorage.removeItem(KEY); } catch(e){}
+    emit();
+  }
 
   return { set:set, get:get, hasChosen:hasChosen, reset:reset };
+})();
+
+/* ===== Optional trackers (analytics / ads) =====
+   Put every non-essential script HERE and never as a static <script> tag in the page.
+   They load only after the user accepts. */
+window.YunaOptional = (function(){
+  var loaded = false;
+
+  function addScript(src, attrs){
+    var el = document.createElement('script');
+    el.src = src; el.async = true;
+    if (attrs) for (var k in attrs) el.setAttribute(k, attrs[k]);
+    document.head.appendChild(el);
+    return el;
+  }
+
+  function load(){
+    if (loaded) return;
+    loaded = true;
+    /* Example (uncomment and fill in your own IDs when you add them):
+       addScript('https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX');
+       window.dataLayer = window.dataLayer || [];
+       window.gtag = function(){ dataLayer.push(arguments); };
+       gtag('js', new Date()); gtag('config', 'G-XXXXXXXXXX');
+
+       addScript('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX',
+                 { crossorigin: 'anonymous' });
+    */
+  }
+
+  function isLoaded(){ return loaded; }
+  return { load:load, isLoaded:isLoaded };
+})();
+
+/* --- Wire consent -> trackers --- */
+(function(){
+  var previous = YunaCookieConsent.get();
+
+  // Returning visitor who already accepted
+  if (previous === true) YunaOptional.load();
+
+  window.addEventListener('yuna:consent', function(e){
+    var now = e.detail;
+    if (now === true) {
+      YunaOptional.load();
+    } else if (previous === true && YunaOptional.isLoaded()) {
+      // Consent withdrawn after trackers already ran: reload so they are not running anymore.
+      location.reload();
+    }
+    previous = now;
+  });
 })();
 
 /* --- Banner wiring --- */
 (function(){
   function init(){
     var banner = document.getElementById('cookie-banner');
-    if (!banner) { console.warn('[cookie] banner element not found'); return; }
+    if (!banner) return;
 
     function showBanner(){
+      banner.removeAttribute('inert');
       banner.classList.add('show');
       banner.setAttribute('aria-hidden', 'false');
-      console.log('[cookie] banner shown');
     }
     function hideBanner(){
       banner.classList.remove('show');
       banner.setAttribute('aria-hidden', 'true');
-      console.log('[cookie] banner hidden');
+      banner.setAttribute('inert', '');
     }
 
     if (!YunaCookieConsent.hasChosen()) {
       setTimeout(showBanner, 800);
-    } else {
-      console.log('[cookie] already chosen:', YunaCookieConsent.get());
     }
 
     banner.addEventListener('click', function(e){
       var btn = e.target.closest('[data-cookie]');
       if (!btn) return;
-      YunaCookieConsent.set(btn.getAttribute('data-cookie') === 'accept');
       hideBanner();
+      YunaCookieConsent.set(btn.getAttribute('data-cookie') === 'accept');
     });
+
+    // Footer link: lets the visitor change or withdraw their choice at any time
+    var settings = document.getElementById('cookie-settings');
+    if (settings) {
+      settings.addEventListener('click', function(e){
+        e.preventDefault();
+        showBanner();
+        var first = banner.querySelector('.cb-reject');
+        if (first) first.focus();
+      });
+    }
 
     window.showCookieBanner = showBanner;
     window.hideCookieBanner = hideBanner;
-    console.log('[cookie] wiring ready');
   }
 
   if (document.readyState === 'loading') {
