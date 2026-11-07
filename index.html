@@ -17,13 +17,6 @@
 })();
 </script>
 <meta charset="UTF-8">
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18495616667"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-18495616667');
-</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>YUNA — Local AI Companion & Desktop Assistant for Windows</title>
 <link rel="icon" type="image/x-icon" href="./favicon.ico">
@@ -214,6 +207,86 @@ body.ty-mode>#thank-you{display:flex!important}
 
 @media(max-width:800px){.extra-grid,.shell-detail-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.approval-flow{grid-template-columns:repeat(2,minmax(0,1fr))}.requirements-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:540px){.yuna-extra{padding:3.4rem 0}.extra-grid,.shell-detail-grid,.requirements-grid{grid-template-columns:1fr}.approval-flow{grid-template-columns:1fr 1fr}.video-compare{align-items:flex-start;flex-direction:column}}
+
+
+/* ===== Cookie Consent Banner ===== */
+#cookie-banner{
+  position:fixed;
+  left:50%;
+  bottom:24px;
+  transform:translateX(-50%) translateY(120%);
+  z-index:9999;
+  width:calc(100% - 2rem);
+  max-width:640px;
+  background:var(--paper,#0b0b0f);
+  border:1px solid var(--line,#23212d);
+  border-radius:16px;
+  padding:1.2rem 1.4rem;
+  box-shadow:0 20px 60px rgba(0,0,0,.6), 0 0 0 1px rgba(122,92,255,.12);
+  display:flex;
+  flex-direction:column;
+  gap:.9rem;
+  transition:transform .35s cubic-bezier(.2,.8,.3,1), opacity .35s;
+  opacity:0;
+  pointer-events:none;
+}
+#cookie-banner.show{
+  transform:translateX(-50%) translateY(0);
+  opacity:1;
+  pointer-events:auto;
+}
+#cookie-banner .cb-title{
+  font:800 1.05rem var(--hf,'Bricolage Grotesque',system-ui,sans-serif);
+  color:var(--ink,#f4f3ff);
+  letter-spacing:-.01em;
+}
+#cookie-banner .cb-text{
+  color:var(--mute,#a19dbf);
+  font-size:.9rem;
+  line-height:1.6;
+  margin:0;
+}
+#cookie-banner .cb-text a{
+  color:#a794ff;
+  text-decoration:underline;
+}
+#cookie-banner .cb-actions{
+  display:flex;
+  gap:.6rem;
+  flex-wrap:wrap;
+}
+#cookie-banner .cb-btn{
+  flex:1 1 auto;
+  min-width:120px;
+  padding:.65rem 1.1rem;
+  border-radius:999px;
+  font:700 .9rem var(--bf,'DM Sans',system-ui,sans-serif);
+  cursor:pointer;
+  border:2px solid transparent;
+  transition:transform .15s, background .15s, border-color .15s;
+}
+#cookie-banner .cb-btn:hover{transform:translateY(-1px);}
+#cookie-banner .cb-accept{
+  background:var(--v,#7a5cff);
+  border-color:var(--v,#7a5cff);
+  color:#fff;
+}
+#cookie-banner .cb-accept:hover{background:#9279ff;border-color:#9279ff;}
+#cookie-banner .cb-reject{
+  background:transparent;
+  border-color:#4a3c99;
+  color:#b6a7ff;
+}
+#cookie-banner .cb-reject:hover{background:var(--v2,#1a1638);}
+
+@media(max-width:520px){
+  #cookie-banner{left:1rem;right:1rem;bottom:1rem;transform:translateY(120%);width:auto;}
+  #cookie-banner.show{transform:translateY(0);}
+  #cookie-banner .cb-btn{width:100%;flex:1 1 100%;}
+}
+@media(prefers-reduced-motion:reduce){
+  #cookie-banner{transition:none;}
+}
 
 </style>
 <script src="https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"></script>
@@ -717,8 +790,6 @@ window.loadPayPal=function(){
     var o=window.showThankYou;
     window.showThankYou=function(){
       o.apply(this,arguments);
-      try{if(typeof gtag==='function'&&!window.__tyTracked){window.__tyTracked=true;
-        gtag('event','page_view',{page_title:'Thank you! — YUNA',page_location:location.origin+location.pathname+'#thank-you'});}}catch(e){}
     };
     window.showThankYou.__wrapped=true;
   }
@@ -763,5 +834,95 @@ window.loadPayPal=function(){
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.classList.contains('open'))window.closeShotModal();});
 })();
 </script>
+
+  <p class="cb-text">
+    YUNA uses essential cookies to remember your preferences. Optional analytics help us improve the experience.
+    Read our <a href="https://github.com/Dril-V000/yuna-AI/blob/main/TOS.md" target="_blank" rel="noopener noreferrer">Terms of Service</a>.
+  </p>
+  <div class="cb-actions">
+    <button type="button" class="cb-btn cb-reject" data-cookie="reject">Reject optional</button>
+    <button type="button" class="cb-btn cb-accept" data-cookie="accept">Accept all</button>
+  </div>
+</div>
+
+<!-- ===== Cookie Consent Banner ===== -->
+<div id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" aria-hidden="true">
+  <div class="cb-title">🍪 We use cookies</div>
+  <p class="cb-text">
+    YUNA uses essential cookies to remember your preferences. Optional analytics help us improve the experience.
+    Read our <a href="https://github.com/Dril-V000/yuna-AI/blob/main/TOS.md" target="_blank" rel="noopener noreferrer">Terms of Service</a>.
+  </p>
+  <div class="cb-actions">
+    <button type="button" class="cb-btn cb-reject" data-cookie="reject">Reject optional</button>
+    <button type="button" class="cb-btn cb-accept" data-cookie="accept">Accept all</button>
+  </div>
+</div>
+
+<script>
+/* ===== Cookie Consent (banner + storage) ===== */
+window.YunaCookieConsent = (function(){
+  var KEY = 'yuna_cookie_consent';
+  var value = null;
+  try {
+    var stored = localStorage.getItem(KEY);
+    if (stored === 'true') value = true;
+    else if (stored === 'false') value = false;
+  } catch(e){}
+
+  function set(v){
+    value = !!v;
+    try { localStorage.setItem(KEY, value ? 'true' : 'false'); } catch(e){}
+    return value;
+  }
+  function get(){ return value; }
+  function hasChosen(){ return value !== null; }
+  function reset(){ value = null; try{ localStorage.removeItem(KEY); }catch(e){} }
+
+  return { set:set, get:get, hasChosen:hasChosen, reset:reset };
+})();
+
+/* --- Banner wiring --- */
+(function(){
+  function init(){
+    var banner = document.getElementById('cookie-banner');
+    if (!banner) { console.warn('[cookie] banner element not found'); return; }
+
+    function showBanner(){
+      banner.classList.add('show');
+      banner.setAttribute('aria-hidden', 'false');
+      console.log('[cookie] banner shown');
+    }
+    function hideBanner(){
+      banner.classList.remove('show');
+      banner.setAttribute('aria-hidden', 'true');
+      console.log('[cookie] banner hidden');
+    }
+
+    if (!YunaCookieConsent.hasChosen()) {
+      setTimeout(showBanner, 800);
+    } else {
+      console.log('[cookie] already chosen:', YunaCookieConsent.get());
+    }
+
+    banner.addEventListener('click', function(e){
+      var btn = e.target.closest('[data-cookie]');
+      if (!btn) return;
+      YunaCookieConsent.set(btn.getAttribute('data-cookie') === 'accept');
+      hideBanner();
+    });
+
+    window.showCookieBanner = showBanner;
+    window.hideCookieBanner = hideBanner;
+    console.log('[cookie] wiring ready');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
 </body>
 </html>
