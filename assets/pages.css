@@ -32,6 +32,11 @@ footer{text-align:center;padding:2rem 1rem;border-top:1px solid var(--border);co
 footer a{color:var(--text2)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 /* SaaSHub badge */
+.trust-row{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin:1rem auto 0}
+.trust-row .saashub-trust{margin:0}
+.findtop-badge{display:inline-flex;background:#fff;padding:6px 10px;border-radius:12px;transition:transform .2s,filter .2s}
+.findtop-badge:hover{transform:translateY(-1px);filter:brightness(.95)}
+.findtop-badge img{display:block;height:44px;width:auto}
 .saas-badge-wrap{
   display:flex;
   justify-content:center;
