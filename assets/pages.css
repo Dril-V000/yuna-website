@@ -31,12 +31,8 @@ a.card:hover{border-color:rgba(110,150,255,.45)}
 footer{text-align:center;padding:2rem 1rem;border-top:1px solid var(--border);color:var(--text3);font-size:.85rem}
 footer a{color:var(--text2)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-/* SaaSHub badge */
-.trust-row{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin:1rem auto 0}
-.trust-row .saashub-trust{margin:0}
-.findtop-badge{display:inline-flex;background:#fff;padding:6px 10px;border-radius:12px;transition:transform .2s,filter .2s}
-.findtop-badge:hover{transform:translateY(-1px);filter:brightness(.95)}
-.findtop-badge img{display:block;height:44px;width:auto}
+
+/* ===== Badges (SaaSHub + Find Top Tools) ===== */
 .saas-badge-wrap{
   display:flex;
   justify-content:center;
@@ -67,6 +63,26 @@ footer a{color:var(--text2)}
   height:auto;
   display:block;
 }
+/* Find Top Tools badge: white background because the badge image is the "light" version */
+.saas-badge-wrap a.findtop-badge{
+  background:#fff;
+  border-color:#fff;
+  padding:6px 10px;
+  border-radius:12px;
+  box-shadow:none;
+  gap:0;
+}
+.saas-badge-wrap a.findtop-badge:hover{
+  background:#fff;
+  box-shadow:0 0 20px rgba(255,255,255,.25);
+  filter:brightness(.95);
+}
+.saas-badge-wrap a.findtop-badge img{
+  max-width:none;
+  height:44px;
+  width:auto;
+}
+
 .btn-row{
   display:flex;
   gap:.8rem;
@@ -91,4 +107,5 @@ footer a{color:var(--text2)}
 }
 @media(max-width:520px){
   .saas-badge-wrap img{max-width:130px;}
+  .saas-badge-wrap a.findtop-badge img{max-width:none;height:40px;}
 }
