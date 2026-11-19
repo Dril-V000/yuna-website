@@ -21,11 +21,67 @@
 <link rel="stylesheet" href="/assets/pages.css">
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "YUNA", "applicationCategory": "MultimediaApplication", "operatingSystem": "Windows 10, Windows 11", "description": "Local AI companion with voice conversation and a Live2D animated face. Runs offline, no subscription.", "url": "https://yunaai.online/", "image": "https://yunaai.online/preview/og-image.png", "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": "10", "highPrice": "15"}, "review": [{"@type": "Review", "author": {"@type": "Person", "name": "LordShadow"}, "reviewRating": {"@type": "Rating", "ratingValue": 5, "bestRating": 5}, "reviewBody": "YUNA stands out because it feels more interactive and personal."}, {"@type": "Review", "author": {"@type": "Person", "name": "Amelia Thornton"}, "reviewRating": {"@type": "Rating", "ratingValue": 4, "bestRating": 5}, "reviewBody": "It's good. Just a few more things to be corrected."}, {"@type": "Review", "author": {"@type": "Person", "name": "Kruegerfan07"}, "reviewRating": {"@type": "Rating", "ratingValue": 5, "bestRating": 5}, "reviewBody": "YUNA IS a great app. I even kept YUNA in place of Desktop Companion by Dokk75, OpenLLMvtuber, Utsuwa and Nerumi, among others"}], "aggregateRating": {"@type": "AggregateRating", "ratingValue": 4.7, "reviewCount": 3, "bestRating": 5}}</script>
+<style>
+  .review-img-wrap { margin-top: 0.75rem; }
+  .review-img-btn {
+    background: #1a1a2e;
+    color: #e0e0ff;
+    border: 1px solid #3a3a5c;
+    border-radius: 6px;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .review-img-btn:hover {
+    background: #2a2a4a;
+    border-color: #5a5a8c;
+  }
+  .review-img {
+    display: none;
+    margin-top: 0.6rem;
+    max-width: 100%;
+    border-radius: 8px;
+    border: 1px solid #2a2a4a;
+  }
+  .review-img.visible { display: block; }
+</style>
 </head>
 <body>
 <nav><a class="logo" href="/">YUNA</a><a href="/#features">Features</a><a href="/ai-models/">AI Models</a><a href="/requirements/">Requirements</a><a href="/faq/">FAQ</a><a href="/blog/">Blog</a><a class="cta" href="/#pricing">Get YUNA</a></nav>
 <main class="wrap">
-<h1>What buyers say about YUNA</h1><p class="lead">Reviews from people who bought a license.</p><div class="card"><div class="stars" aria-label="5 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>YUNA stands out because it feels more interactive and personal.</p><p class="meta">LordShadow &middot; verified buyer</p></div><div class="card"><div class="stars" aria-label="4 out of 5">&#9733;&#9733;&#9733;&#9733;&#9734;</div><p>It&#x27;s good. Just a few more things to be corrected.</p><p class="meta">Amelia Thornton &middot; verified buyer</p></div><div class="card"><div class="stars" aria-label="5 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>YUNA IS a great app. I even kept YUNA in place of Desktop Companion by Dokk75, OpenLLMvtuber, Utsuwa and Nerumi, among others</p><p class="meta">Kruegerfan07 &middot; verified buyer</p></div>
+<h1>What buyers say about YUNA</h1><p class="lead">Reviews from people who bought a license.</p>
+
+<div class="card">
+  <div class="stars" aria-label="5 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+  <p>YUNA stands out because it feels more interactive and personal.</p>
+  <p class="meta">LordShadow &middot; verified buyer</p>
+  <div class="review-img-wrap">
+    <button class="review-img-btn" type="button" data-target="img-lordshadow">View review image</button>
+    <img id="img-lordshadow" class="review-img" src="https://yunaai.online/preview/review-lordshadow.png" alt="Review screenshot from LordShadow" loading="lazy">
+  </div>
+</div>
+
+<div class="card">
+  <div class="stars" aria-label="4 out of 5">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+  <p>It&#x27;s good. Just a few more things to be corrected.</p>
+  <p class="meta">Amelia Thornton &middot; verified buyer</p>
+  <div class="review-img-wrap">
+    <button class="review-img-btn" type="button" data-target="img-amelia">View review image</button>
+    <img id="img-amelia" class="review-img" src="https://yunaai.online/preview/review-amelia.png" alt="Review screenshot from Amelia Thornton" loading="lazy">
+  </div>
+</div>
+
+<div class="card">
+  <div class="stars" aria-label="5 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+  <p>YUNA IS a great app. I even kept YUNA in place of Desktop Companion by Dokk75, OpenLLMvtuber, Utsuwa and Nerumi, among others</p>
+  <p class="meta">Kruegerfan07 &middot; verified buyer</p>
+  <div class="review-img-wrap">
+    <button class="review-img-btn" type="button" data-target="img-kruegerfan07">View review image</button>
+    <img id="img-kruegerfan07" class="review-img" src="https://yunaai.online/preview/review-kruegerfan07.png" alt="Review screenshot from Kruegerfan07" loading="lazy">
+  </div>
+</div>
+
 <div class="cta-box"><strong>YUNA: local AI companion with a Live2D face</strong><br>
 <span class="meta">Runs offline on Windows. Pay once, from $10.</span><br>
 <a class="btn" href="/#pricing">See pricing</a></div>
@@ -33,5 +89,15 @@
 <footer><a href="/">Home</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/faq/">FAQ</a> &middot;
 <a href="https://discord.gg/ARg6yujhdc" rel="noopener">Discord</a> &middot;
 <a href="https://ko-fi.com/code7" rel="noopener">Support</a><br>&copy; 2026 YUNA</footer>
+<script>
+  document.querySelectorAll('.review-img-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var img = document.getElementById(btn.getAttribute('data-target'));
+      if (!img) return;
+      var visible = img.classList.toggle('visible');
+      btn.textContent = visible ? 'Hide review image' : 'View review image';
+    });
+  });
+</script>
 </body>
 </html>
