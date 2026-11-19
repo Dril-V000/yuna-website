@@ -10,6 +10,7 @@ Reads:   blogs/index.json, blogs/<slug>.md, reviews.json (optional)
 Writes:  assets/pages.css, blog/, blog/<slug>/, faq/, ai-models/,
          requirements/, reviews/ (only if reviews.json has entries),
          sitemap.xml, robots.txt (only if missing)
+         text
 """
 import html
 import json
