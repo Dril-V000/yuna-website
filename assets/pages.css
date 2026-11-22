@@ -1,33 +1,1017 @@
-:root{--bg:#04040c;--card:#0d0d1f;--border:rgba(110,150,255,.14);--accent:#64b5f6;--accent2:#a78bfa;--text:#eef1ff;--text2:#9aa3cc;--text3:#5a6390}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font:16px/1.7 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
-nav{position:sticky;top:0;z-index:5;display:flex;gap:1.3rem;align-items:center;flex-wrap:wrap;padding:.85rem 1.5rem;background:rgba(4,4,12,.92);border-bottom:1px solid var(--border)}
-nav .logo{font-weight:700;letter-spacing:5px;color:var(--accent);text-decoration:none;margin-right:auto}
-nav a{color:var(--text2);text-decoration:none;font-size:.9rem}
-nav a:hover{color:var(--accent)}
-nav a.cta{background:linear-gradient(135deg,#64b5f6,#a78bfa);color:#04040c;padding:.45rem 1rem;border-radius:9px;font-weight:700}
-.wrap{max-width:820px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
-h1{font-size:clamp(1.9rem,4.5vw,2.7rem);line-height:1.15;margin-bottom:1rem}
-h2{font-size:1.45rem;margin:2.2rem 0 .7rem}
-h3{font-size:1.1rem;margin:1.4rem 0 .4rem;color:#7dd3fc}
-p,li{color:var(--text2);margin:.7rem 0}
-ul,ol{padding-left:1.5rem}
-a{color:var(--accent)}
-.lead{font-size:1.1rem}
-.card{display:block;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.3rem;margin:1rem 0;text-decoration:none}
-a.card:hover{border-color:rgba(110,150,255,.45)}
-.card h2,.card h3{margin:0 0 .4rem;color:var(--text)}
-.card p{margin:.3rem 0}
-.meta{color:var(--text3);font-size:.85rem}
-.stars{color:#fbbf24;letter-spacing:2px}
-.md pre{background:#07071a;border:1px solid var(--border);border-radius:10px;padding:1rem;overflow-x:auto}
-.md code{font-family:ui-monospace,Consolas,monospace;font-size:.9em}
-.md img{max-width:100%;border-radius:10px}
-.md table{border-collapse:collapse;width:100%}
-.md th,.md td{border-bottom:1px solid var(--border);padding:.5rem;text-align:left}
-.md blockquote{border-left:3px solid var(--accent2);padding-left:1rem;margin:1rem 0}
-.cta-box{margin-top:2.5rem;padding:1.4rem;border:1px solid var(--border);border-radius:12px;background:var(--card);text-align:center}
-.cta-box a.btn{display:inline-block;margin-top:.6rem;background:linear-gradient(135deg,#64b5f6,#a78bfa);color:#04040c;padding:.6rem 1.4rem;border-radius:9px;font-weight:700;text-decoration:none}
-footer{text-align:center;padding:2rem 1rem;border-top:1px solid var(--border);color:var(--text3);font-size:.85rem}
-footer a{color:var(--text2)}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+(function(){
+  if (location.hash === '#thank-you' && !window.__paid) {
+    var paid = false;
+    try { paid = sessionStorage.getItem('yuna_paid') === '1'; } catch(e){}
+    if (!paid) {
+      document.documentElement.style.visibility = 'hidden';
+      document.addEventListener('DOMContentLoaded', function(){
+        try { history.replaceState(null, '', location.pathname + location.search); } catch(e){}
+        document.documentElement.style.visibility = '';
+      });
+    }
+  }
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YUNA — Local AI Companion & Desktop Assistant for Windows</title>
+<link rel="icon" type="image/x-icon" href="./favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="./preview/favicon-32x32.png">
+<meta name="description" content="YUNA is a Windows AI companion and desktop assistant with voice, Live2D, local Ollama models, optional cloud AI, web search and approved PC tools. Lifetime license from $10.">
+<meta name="author" content="Code-7">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="YUNA — Local AI Companion & Desktop Assistant for Windows">
+<meta property="og:description" content="A voice AI companion with a living Live2D face, local AI support and practical desktop tools. Pay once from $10.">
+<meta property="og:image" content="https://yunaai.online/preview/og-image.png">
+<meta property="og:url" content="https://yunaai.online/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="YUNA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="YUNA — Local AI Companion & Desktop Assistant for Windows">
+<meta name="twitter:description" content="A voice AI companion with a living face, local AI support and desktop tools. From $10.">
+<meta name="twitter:image" content="https://yunaai.online/preview/og-image.png">
+<link rel="canonical" href="https://yunaai.online/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#000;--paper:#0b0b0f;--ink:#f4f3ff;--mute:#a19dbf;--line:#23212d;--v:#7a5cff;--v2:#1a1638;--pk:#ff6f91;--night:#05050a;--ok:#2fbf8a;
+--hf:'Bricolage Grotesque','DM Sans',system-ui,sans-serif;--bf:'DM Sans',system-ui,-apple-system,sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 1rem/1.65 var(--bf);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+[id]{scroll-margin-top:76px}
+img{max-width:100%;display:block}
+a{color:#a794ff}
+:focus-visible{outline:2px solid var(--v);outline-offset:3px}
+h1,h2,h3{font-family:var(--hf);line-height:1.1;letter-spacing:-.02em}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;margin-bottom:.6rem}
+h3{font-size:1.1rem;font-weight:600}
+.w{max-width:1080px;margin:0 auto;padding:0 1.5rem}
+section{padding:4.5rem 0}
+.sub{color:var(--mute);max-width:560px}
+nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav .w{display:flex;align-items:center;gap:1.4rem;height:64px}
+.logo{font:800 1.4rem var(--hf);letter-spacing:.2em;color:var(--ink);text-decoration:none;margin-right:auto}
+.links{display:flex;gap:1.4rem;list-style:none;align-items:center}
+.links a{color:var(--mute);text-decoration:none;font-size:.92rem;font-weight:500}
+.links a:hover{color:var(--v)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;background:var(--v);color:#fff;padding:.75rem 1.4rem;border-radius:999px;font-weight:700;font-size:.95rem;text-decoration:none;border:2px solid var(--v);transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-2px);background:#9279ff;border-color:#9279ff}
+.btn.ghost{background:transparent;color:#b6a7ff;border-color:#4a3c99}
+.btn.ghost:hover{background:var(--v2)}
+.btn.sm{padding:.5rem 1.1rem;font-size:.85rem}
+.tog{display:none;background:none;border:1px solid var(--line);border-radius:10px;width:42px;height:42px;font-size:1.2rem;cursor:pointer;color:var(--ink)}
+.hero{padding:3.5rem 0 4rem}
+.hero .w{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center}
+.pill{display:inline-block;background:var(--v2);color:#b6a7ff;font-weight:700;font-size:.82rem;padding:.3rem .8rem;border-radius:999px;margin-bottom:1.2rem}
+h1{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:800;margin-bottom:1.2rem}
+h1 em{font-style:normal;color:var(--pk)}
+.hero p.sub{font-size:1.12rem;margin-bottom:1.8rem}
+.row{display:flex;gap:.8rem;flex-wrap:wrap}
+.facts{display:flex;gap:1.6rem;flex-wrap:wrap;margin-top:2rem;font-size:.88rem;color:var(--mute)}
+.facts b{display:block;font:800 1.5rem var(--hf);color:var(--ink)}
+.stage{position:relative;height:560px;border-radius:260px 260px 28px 28px;overflow:hidden;background:radial-gradient(ellipse at 30% 70%,#7a4dff44,transparent 55%),radial-gradient(ellipse at 75% 25%,#ff6f9133,transparent 55%),var(--night);border:1px solid #2a2744;box-shadow:0 30px 80px rgba(122,92,255,.18)}
+#yuna-live2d{position:absolute;inset:0;width:100%;height:100%;z-index:2}
+#live2d-loading{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;pointer-events:none;color:#cfc9ff;font-size:.78rem;text-align:center}
+.spin{width:34px;height:34px;border:3px solid #ffffff22;border-top-color:var(--pk);border-radius:50%;animation:sp .8s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.cap{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:4;background:#000a;color:#fff;font-size:.82rem;padding:.45rem 1.1rem;border-radius:999px;white-space:nowrap}
+.ttl{max-width:640px;margin-bottom:2.5rem}
+.grp{display:grid;grid-template-columns:240px 1fr;gap:2rem;padding:2rem 0;border-top:1px solid var(--line)}
+.grp>h3{font-size:1.35rem}
+.grp>div>p.sm{color:var(--mute);font-size:.92rem;margin-top:.2rem}
+.items{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem 2rem}
+.items b{display:block;font-weight:700}
+.items span{display:block;margin-top:.28rem;color:var(--mute);font-size:.92rem;line-height:1.65}
+.note{margin-top:1.2rem;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--v);border-radius:10px;padding:.9rem 1.1rem;font-size:.92rem;color:var(--mute)}
+.note.warn{border-left-color:var(--pk)}
+.note b{color:var(--ink)}
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1rem}
+.shot{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.shot img{width:100%;cursor:zoom-in}
+.shot figcaption{padding:.6rem .9rem;font-size:.85rem;color:var(--mute);display:flex;justify-content:space-between;align-items:center;gap:.5rem}
+.shot button{background:var(--v2);color:#b6a7ff;border:0;border-radius:999px;padding:.3rem .8rem;font:700 .78rem var(--bf);cursor:pointer}
+.chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.8rem}
+.chips span{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:.35rem .9rem;font-size:.88rem;font-weight:500}
+.alt{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;max-width:760px}
+.plan{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:1.8rem}
+.alt .plan{background:var(--bg)}
+.plan.hot{border:2px solid var(--v)}
+.plan .n{font-weight:700;color:var(--mute);font-size:.9rem}
+.plan .p{font:800 3rem var(--hf);line-height:1;margin:.3rem 0}
+.plan ul{list-style:none;margin:1rem 0 0}
+.plan li{padding:.3rem 0 .3rem 1.5rem;position:relative;font-size:.92rem}
+.plan li::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:700}
+.plan li.no{color:#9a97b3}.plan li.no::before{content:"–";color:#9a97b3}
+.buy{max-width:760px;margin-top:2.5rem;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:1.6rem}
+.tabs{display:flex;gap:.5rem;background:var(--bg);border-radius:14px;padding:5px;margin-bottom:1.2rem}
+.tab{flex:1;border:0;background:transparent;padding:.7rem;border-radius:10px;font:700 .92rem var(--bf);color:var(--mute);cursor:pointer}
+.tab.active{background:var(--v2);color:var(--ink)}
+.panel{display:none}.panel.active{display:block}
+.price-big{font:800 2.2rem var(--hf)}
+.price-big small{font:400 .85rem var(--bf);color:var(--mute);margin-left:.4rem}
+.steps{margin:.8rem 0 1.2rem 1.2rem;color:var(--mute);font-size:.93rem}
+.pp-plans{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:1rem}
+.po{background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:.8rem 1rem;text-align:left;cursor:pointer;font:inherit;color:var(--ink)}
+.po.selected{border-color:var(--v);background:var(--v2)}
+.po b{display:block}.po span{font-size:.82rem;color:var(--mute)}
+.total{display:flex;justify-content:space-between;padding:.7rem 1rem;border:1px dashed var(--line);border-radius:10px;margin-bottom:1rem;font-size:.92rem}
+.pp-area{position:relative;min-height:180px;max-width:440px;margin:0 auto;background:#f6f8fc;border-radius:14px;padding:14px}
+.pp-sk{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;font-size:.8rem;color:var(--mute);pointer-events:none;background:#f6f8fc;color:#4a5370;border-radius:14px}
+.pp-area.loaded .pp-sk{opacity:0;visibility:hidden}
+.pp-sk .spin{border-color:#d4ddf0;border-top-color:#0079e1;width:28px;height:28px}
+.small{font-size:.82rem;color:var(--mute);margin-top:.9rem}
+.help{margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid var(--line);font-size:.92rem;color:var(--mute)}
+.help .row{margin-top:.6rem}
+.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem 2rem;max-width:860px}
+.specs b{display:block}.specs span{color:var(--mute);font-size:.92rem}
+.faq{max-width:740px}
+.fi{border-top:1px solid var(--line)}
+.fi:last-child{border-bottom:1px solid var(--line)}
+.fq{display:flex;justify-content:space-between;gap:1rem;padding:1.1rem 0;font-weight:700;cursor:pointer;user-select:none}
+.fq::after{content:"+";font-size:1.3rem;line-height:1;color:#a794ff}
+.fi.open .fq::after{content:"–"}
+.fa{max-height:0;overflow:hidden;transition:max-height .3s;color:var(--mute);font-size:.95rem}
+.fi.open .fa{max-height:260px;padding-bottom:1.1rem}
+.cta{background:var(--night);color:#fff;text-align:center;border-top:1px solid var(--line)}
+.cta h2{color:#fff}.cta p{color:#b9b3e6;margin-bottom:1.6rem}
+.cta .btn.ghost{color:#fff;border-color:#ffffff55}.cta .btn.ghost:hover{background:#ffffff18}
+.cta .btn{background:var(--pk);border-color:var(--pk);color:#1a0b14}
+.cta .btn:hover{background:#ff8aa8}
+.cta .row{justify-content:center}
+footer{padding:2.5rem 0;text-align:center;font-size:.86rem;color:var(--mute)}
+footer .fl{display:flex;flex-wrap:wrap;gap:1.2rem;justify-content:center;margin:1rem 0}
+footer a{color:var(--mute)}footer a:hover{color:var(--v)}
+footer img{max-width:140px;margin:1rem auto 0}
+#thank-you{display:none;min-height:100vh;padding:4rem 1.5rem;align-items:center;justify-content:center;background:var(--bg)}
+body.ty-mode>*{display:none!important}
+body.ty-mode>#thank-you{display:flex!important}
+.ty{max-width:620px;width:100%;background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:2.4rem 2rem;text-align:center}
+.ty .ck{width:64px;height:64px;border-radius:50%;background:var(--ok);color:#fff;font-size:1.9rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem}
+.ty h2{font-size:2rem}
+.ty ol{text-align:left;margin:1.4rem 0 1.4rem 1.2rem;color:var(--mute)}
+.ty ol li{margin:.6rem 0}.ty ol b{color:var(--ink)}
+.ty .row{justify-content:center;margin-bottom:1rem}
+.ty .back{background:none;border:0;color:var(--mute);cursor:pointer;font:inherit;text-decoration:underline}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:999;display:none;align-items:center;justify-content:center;padding:1.5rem}
+.modal.open{display:flex}
+.modal div{position:relative;max-width:1100px;width:100%}
+.modal img{width:100%;border-radius:12px}
+.modal button{position:absolute;top:-14px;right:-6px;width:36px;height:36px;border-radius:50%;border:0;background:#fff;font-size:1.1rem;cursor:pointer}
+@media(max-width:860px){
+  .hero .w{grid-template-columns:1fr}.stage{height:440px;order:-1;border-radius:200px 200px 24px 24px}
+  .grp{grid-template-columns:1fr;gap:1rem}.plans,.shots{grid-template-columns:1fr}
+  .tog{display:block}
+  .links{display:none;position:absolute;top:64px;left:0;right:0;background:var(--bg);flex-direction:column;align-items:flex-start;padding:1.2rem 1.5rem;border-bottom:1px solid var(--line)}
+  .links.open{display:flex}
+  nav .btn{display:none}
+}
+@media(max-width:520px){.pp-plans,.tabs{grid-template-columns:1fr;flex-direction:column}.btn{width:100%}.cap{font-size:.72rem;white-space:normal;width:86%;text-align:center}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}html{scroll-behavior:auto}}
+
+/* ===== YUNA expanded product story ===== */
+.yuna-extra{padding:5rem 0;border-top:1px solid var(--line,rgba(255,255,255,.07));}
+.yuna-extra.alt{background:rgba(255,255,255,.018)}
+.extra-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:2rem}
+.extra-card{padding:1.45rem;border:1px solid var(--line,rgba(255,255,255,.1));border-radius:18px;background:rgba(255,255,255,.025);min-width:0}
+.extra-card h3{font-size:1.08rem;margin:.65rem 0 .5rem;color:var(--text,#fff)}
+.extra-card p{font-size:.94rem;line-height:1.7;color:var(--mute,#a9a9b8)}
+.extra-icon{font-size:1.7rem}.extra-tag{display:inline-block;margin-top:1rem;padding:.3rem .65rem;border:1px solid var(--line,rgba(255,255,255,.13));border-radius:99px;color:var(--accent,#a78bfa);font-size:.76rem}
+.extra-note{margin:1.2rem auto 0;max-width:850px;text-align:center;color:var(--mute,#a9a9b8);font-size:.88rem;line-height:1.7}
+.character{text-align:center}.character-face{font-size:2.6rem;margin:.3rem 0 .6rem}
+.shell-detail-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:2rem}
+.approval-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin-top:1.2rem}
+.approval-flow>div{padding:1.05rem;border-radius:14px;background:rgba(120,120,255,.055);border:1px solid var(--line,rgba(255,255,255,.1))}
+.approval-flow b{display:block;font-size:.9rem;margin-bottom:.4rem}.approval-flow span{display:block;color:var(--mute,#aaa);font-size:.84rem;line-height:1.55}
+.safety-note{margin-top:1rem;padding:1.2rem 1.35rem;border-radius:15px;border:1px solid rgba(240,180,70,.25);background:rgba(240,180,70,.045)}
+.safety-note b{color:#f3c879}.safety-note p{margin-top:.35rem;color:var(--mute,#aaa);font-size:.88rem;line-height:1.65}
+.timeline{max-width:850px;margin:2rem auto 0;display:grid;gap:1rem}.timeline>div{display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.2rem;border:1px solid var(--line,rgba(255,255,255,.1));border-radius:14px;background:rgba(255,255,255,.02)}
+.timeline-dot{display:grid;place-items:center;flex:0 0 30px;height:30px;border-radius:50%;background:rgba(160,130,255,.15);color:#c8b8ff}.timeline p{color:var(--mute,#aaa);line-height:1.6}.timeline p b{color:var(--text,#fff)}
+.video-compare{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-top:1.5rem;padding:1.3rem 1.4rem;border:1px solid var(--line,rgba(255,255,255,.1));border-radius:16px;background:rgba(255,255,255,.025)}
+.video-compare p{margin-top:.3rem;color:var(--mute,#aaa);font-size:.9rem}.setup-flow{margin-top:2rem}.requirements-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.saashub-trust{position:relative;isolation:isolate;display:flex;align-items:center;justify-content:center;gap:.75rem;flex-wrap:wrap;width:fit-content;max-width:100%;margin:1rem auto 0;padding:.55rem .9rem;border:1px solid rgba(74,222,128,.42);border-radius:999px;background:linear-gradient(135deg,rgba(34,197,94,.12),rgba(16,185,129,.06));color:#c8f7d8;font-size:.85rem;box-shadow:0 0 18px rgba(34,197,94,.18),inset 0 0 14px rgba(34,197,94,.07)}
+.saashub-trust::before{content:"";position:absolute;inset:-10px;z-index:-1;border-radius:inherit;background:radial-gradient(ellipse,rgba(34,197,94,.3),rgba(16,185,129,.12) 42%,transparent 74%);filter:blur(12px);pointer-events:none}
+.saashub-trust a{display:flex;align-items:center;border-radius:8px;transition:filter .2s,transform .2s}
+.saashub-trust a:hover{filter:brightness(1.12);transform:translateY(-1px)}
+.saashub-trust img{display:block;width:150px;height:auto;max-width:100%}
+
+.reviews-link{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem;max-width:760px;margin-top:1.5rem;padding:.9rem 1.1rem;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--pk);border-radius:10px;font-size:.92rem;color:var(--mute)}
+.reviews-link b{color:var(--ink)}
+
+.code-funding-panel{margin-top:1.5rem;padding:1.5rem;border:1px solid rgba(122,92,255,.35);border-radius:18px;background:linear-gradient(135deg,rgba(122,92,255,.10),rgba(255,111,145,.045))}
+.code-funding-panel h3{font-size:1.2rem}
+.code-funding-panel p{max-width:760px;margin:.6rem 0 1rem;color:var(--mute);font-size:.95rem;line-height:1.7}
+.code-funding-panel .row{margin-top:.9rem}
+@media(max-width:800px){.extra-grid,.shell-detail-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.approval-flow{grid-template-columns:repeat(2,minmax(0,1fr))}.requirements-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){.yuna-extra{padding:3.4rem 0}.extra-grid,.shell-detail-grid,.requirements-grid{grid-template-columns:1fr}.approval-flow{grid-template-columns:1fr 1fr}.video-compare{align-items:flex-start;flex-direction:column}}
+
+
+#cookie-banner{
+  position:fixed;
+  left:50%;
+  bottom:24px;
+  transform:translateX(-50%) translateY(120%);
+  z-index:9999;
+  width:calc(100% - 2rem);
+  max-width:640px;
+  background:var(--paper,#0b0b0f);
+  border:1px solid var(--line,#23212d);
+  border-radius:16px;
+  padding:1.2rem 1.4rem;
+  box-shadow:0 20px 60px rgba(0,0,0,.6), 0 0 0 1px rgba(122,92,255,.12);
+  display:flex;
+  flex-direction:column;
+  gap:.9rem;
+  transition:transform .35s cubic-bezier(.2,.8,.3,1), opacity .35s;
+  opacity:0;
+  pointer-events:none;
+}
+#cookie-banner.show{
+  transform:translateX(-50%) translateY(0);
+  opacity:1;
+  pointer-events:auto;
+}
+#cookie-banner .cb-title{
+  font:800 1.05rem var(--hf,'Bricolage Grotesque',system-ui,sans-serif);
+  color:var(--ink,#f4f3ff);
+  letter-spacing:-.01em;
+}
+#cookie-banner .cb-text{
+  color:var(--mute,#a19dbf);
+  font-size:.9rem;
+  line-height:1.6;
+  margin:0;
+}
+#cookie-banner .cb-text a{
+  color:#a794ff;
+  text-decoration:underline;
+}
+#cookie-banner .cb-actions{
+  display:flex;
+  gap:.6rem;
+  flex-wrap:wrap;
+}
+#cookie-banner .cb-btn{
+  flex:1 1 auto;
+  min-width:120px;
+  padding:.65rem 1.1rem;
+  border-radius:999px;
+  font:700 .9rem var(--bf,'DM Sans',system-ui,sans-serif);
+  cursor:pointer;
+  border:2px solid transparent;
+  transition:transform .15s, background .15s, border-color .15s;
+}
+#cookie-banner .cb-btn:hover{transform:translateY(-1px);}
+#cookie-banner .cb-accept{
+  background:var(--v,#7a5cff);
+  border-color:var(--v,#7a5cff);
+  color:#fff;
+}
+#cookie-banner .cb-accept:hover{background:#9279ff;border-color:#9279ff;}
+#cookie-banner .cb-reject{
+  background:transparent;
+  border-color:#4a3c99;
+  color:#b6a7ff;
+}
+#cookie-banner .cb-reject:hover{background:var(--v2,#1a1638);}
+
+@media(max-width:520px){
+  #cookie-banner{left:1rem;right:1rem;bottom:1rem;transform:translateY(120%);width:auto;}
+  #cookie-banner.show{transform:translateY(0);}
+  #cookie-banner .cb-btn{width:100%;flex:1 1 100%;}
+}
+@media(prefers-reduced-motion:reduce){
+  #cookie-banner{transition:none;}
+}
+
+</style>
+<script src="https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pixi.js@6.5.10/dist/browser/pixi.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pixi-live2d-display@0.4.0/dist/cubism4.min.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "YUNA", "applicationCategory": "MultimediaApplication", "operatingSystem": "Windows 10, Windows 11", "description": "Local AI companion with voice conversation and a Live2D animated face. Runs offline, no subscription.", "url": "https://yunaai.online/", "sameAs": ["https://code-7x.itch.io/yuna-ai"], "image": "https://yunaai.online/preview/og-image.png", "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": "10", "highPrice": "15"}}</script>
+</head>
+<body>
+
+<nav id="mainNav"><div class="w">
+  <a class="logo" href="#top">YUNA</a>
+  <button class="tog" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks" onclick="toggleNav(this)">☰</button>
+  <ul class="links" id="navLinks">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#ai-setup">AI Models</a></li>
+    <li><a href="#shell-details">Desktop Tools</a></li>
+    <li><a href="#characters">Characters</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#v13">What's New</a></li>
+    <li><a href="#yuna-code">Roadmap</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="https://ko-fi.com/code7" target="_blank" rel="noopener noreferrer">Donate</a></li>
+    <li><a href="https://discord.gg/ARg6yujhdc" target="_blank" rel="noopener noreferrer">Discord</a></li>
+    <li><a href="https://code-7x.itch.io/yuna-ai" target="_blank" rel="noopener noreferrer">itch.io</a></li>
+  </ul>
+  <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.3v" target="_blank" rel="noopener noreferrer" class="btn sm">Download</a>
+</div></nav>
+
+<div class="w">
+  <div class="saashub-trust"><span>Approved on SaaSHub</span><a href="https://www.saashub.com/yunaai-online-alternatives" target="_blank" rel="noopener noreferrer" aria-label="YUNA on SaaSHub"><img src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1" alt="Approved on SaaSHub" width="150" height="45"></a></div>
+</div>
+
+<header class="hero" id="top"><div class="w">
+  <div>
+    <span class="pill">Version 1.3 · Windows 10 / 11</span>
+    <h1>An AI companion who lives on <em>your</em> PC.</h1>
+    <p class="sub">Talk to her out loud and watch her face react. Run local AI on your PC, connect cloud models when you choose, and keep your license with a one-time payment.</p>
+    <div class="row">
+      <a href="#pricing" class="btn">Get a licence</a>
+      <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.3v" target="_blank" rel="noopener noreferrer" class="btn ghost">Download v1.3</a>
+      <a href="#demo" class="btn ghost">Watch demo</a>
+      <a href="https://code-7x.itch.io/yuna-ai" target="_blank" rel="noopener noreferrer" class="btn ghost">Get it on itch.io</a>
+    </div>
+    <div class="facts"><div><b>$10</b>one-time, lifetime</div><div><b>Local AI</b>with Ollama</div><div><b>No GPU</b>required</div></div>
+  </div>
+  <div class="stage" id="live2d-panel">
+    <canvas id="yuna-live2d"></canvas>
+    <div id="live2d-loading"><div class="spin"></div><span>Loading Yuna…</span></div>
+    <div class="cap">“Hi there! Did you miss me ”</div>
+  </div>
+</div></header>
+
+<section id="demo" class="alt"><div class="w">
+  <div class="ttl"><h2>See a real session</h2><p class="sub">Voice, Live2D face and local AI running together.</p></div>
+  <div style="max-width:880px;border-radius:18px;overflow:hidden;border:1px solid var(--line)">
+    <iframe src="https://www.youtube.com/embed/eqpU0-PWISY" title="YUNA — AI Companion Demo" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="display:block;width:100%;aspect-ratio:16/9;border:0"></iframe>
+  </div>
+</div></section>
+
+<section id="features"><div class="w">
+  <div class="ttl"><h2>A companion for conversations and everyday PC tasks.</h2><p class="sub">Talk naturally, get practical help, and shape how YUNA looks and responds. Here’s what each feature means in daily use.</p></div>
+
+  <div class="grp">
+    <h3>Useful actions, right from chat</h3>
+    <div>
+      <div class="items">
+        <div><b>Finds current information</b><span>Ask YUNA to search the web, then follow up in the same conversation instead of starting over with a separate search.</span></div>
+        <div><b>Opens the page you need</b><span>Ask her to open a link and it appears in your browser, ready for you to read or continue working.</span></div>
+        <div><b>Saves notes on your PC</b><span>Turn a thought or reminder into a local note you can find later, without moving it through another app.</span></div>
+        <div><b>Opens installed Windows apps</b><span>Ask for an app by name and YUNA can find it in your installed apps. She shows an approval step before launching it.</span></div>
+        <div><b>Finds information in project files</b><span>Ask YUNA to list folders or search text files for a name, setting, or line of code. File tools stay within the project area and skip protected files.</span></div>
+        <div><b>Edits files with a backup</b><span>YUNA can write or add text to project files after you approve. Before replacing an existing file, she can save a dated backup.</span></div>
+        <div><b>Checks your PC at a glance</b><span>Get basic Windows, processor, memory, and disk usage details through read-only checks—useful when you are troubleshooting or checking requirements.</span></div>
+      </div>
+      <p class="sm" style="margin-top:.9rem;color:var(--mute);font-size:.9rem">Web search, opening links, and saving notes are built-in actions. Opening apps, changing files, and running shell commands use approval steps.</p>
+      <div class="shots">
+        <figure class="shot"><img src="./preview/screenshot-search.png" alt="YUNA searching the web and answering a user question" loading="lazy"><figcaption>Web search <button type="button" onclick="openShotModal(this.closest('.shot').querySelector('img').src,'Web search')" aria-label="View web search screenshot">View</button></figcaption></figure>
+        <figure class="shot"><img src="./preview/screenshot-system.png" alt="YUNA checking Python version and saving a note locally" loading="lazy"><figcaption>System and notes <button type="button" onclick="openShotModal(this.closest('.shot').querySelector('img').src,'System and notes')" aria-label="View system screenshot">View</button></figcaption></figure>
+      </div>
+    </div>
+  </div>
+
+  <div class="grp">
+    <h3>PC troubleshooting, with your approval</h3>
+    <div>
+      <p style="color:var(--mute)">When a task needs a system command, YUNA explains a possible fix and shows you exactly what she plans to run. Use it to inspect logs, check a stuck port, or handle a repetitive task. Nothing runs until you approve it.</p>
+      <div class="items" style="margin-top:1rem">
+        <div><b>Describe the issue</b><span>For example: “Why is port 3000 stuck?”</span></div>
+        <div><b>Review the suggestion</b><span>YUNA shows the command and what it is meant to check.</span></div>
+        <div><b>Choose whether to run it</b><span>You approve the command, or decline it. Your choice is explicit.</span></div>
+        <div><b>Understand the result</b><span>YUNA reads the output and explains what it means in plain language.</span></div>
+      </div>
+      <div class="note warn"><b>Always blocked:</b> deleting system folders, wiping drives, shutdown or reboot, registry deletion, changing accounts and passwords, turning off the firewall or Defender.</div>
+    </div>
+  </div>
+
+  <div class="grp">
+    <h3>A more present conversation</h3>
+    <div class="items">
+      <div><b>Live2D expressions</b><span>YUNA blinks, lip-syncs, and changes expression as she speaks, so you can see the conversation as well as hear it.</span></div>
+      <div><b>Talk without typing</b><span>Speak hands-free and hear her reply aloud. You can interrupt when you want to add something or change direction.</span></div>
+      <div><b>Conversation context</b><span>Up to 8,000 characters of rolling context help YUNA keep track of what you have been discussing. Full chat history lets you revisit earlier sessions.</span></div>
+      <div><b>A tone that feels friendly</b><span>YUNA is designed for concise, warm replies that work well in voice conversations. Customize her prompt to adjust the style.</span></div>
+    </div>
+  </div>
+
+  <div class="grp">
+    <h3>Make YUNA fit you</h3>
+    <div>
+      <div class="items">
+        <div><b>Choose where AI runs</b><span>Use an Ollama model locally for on-device conversations, or connect a cloud provider when you want its models. Cloud requests go to the provider you select.</span></div>
+        <div><b>Pick a companion</b><span>Start with Yuna, Haru, or Majo, each with a distinct personality, or create a character that feels more like your own.</span></div>
+        <div><b>Set the conversation style</b><span>Switch between Smart, Fun, and Professional modes, then customize the prompt to guide how your companion responds.</span></div>
+        <div><b>Personalize the experience</b><span>Change the background and voice, and bring in a compatible Live2D model to give your desktop companion a look of your own.</span></div>
+      </div>
+      <p style="margin-top:1.2rem;font-weight:700">Connect the AI you prefer</p>
+      <div class="chips"><span>Ollama (local, any model)</span><span>OpenAI</span><span>Claude</span><span>Gemini</span><span>DeepSeek</span><span>Groq</span></div>
+      <p class="small">Add your own API key for cloud providers; YUNA’s license does not include those providers’ usage fees.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="alt"><div class="w">
+  <div class="ttl"><h2>Up and running in four steps</h2></div>
+  <ol class="steps" style="font-size:1rem;max-width:640px;margin-left:1.2rem">
+    <li><b style="color:var(--ink)">Buy a licence.</b> Your key arrives by email or within minutes.</li>
+    <li><b style="color:var(--ink)">Download and activate.</b> Run YUNA and enter your key.</li>
+    <li><b style="color:var(--ink)">She sets herself up.</b> The right AI model for your PC downloads automatically.</li>
+    <li><b style="color:var(--ink)">Click the mic and talk.</b></li>
+  </ol>
+  <h3 style="margin-top:2rem">Requirements</h3>
+  <div class="specs" style="margin-top:.8rem">
+    <div><b>CPU</b><span>Core i5 6th gen or Ryzen 5 1600</span></div>
+    <div><b>RAM</b><span>8 GB (16 GB recommended)</span></div>
+    <div><b>Storage</b><span>2–8 GB, depends on model</span></div>
+    <div><b>GPU</b><span>Optional, makes big models faster</span></div>
+    <div><b>System</b><span>Windows 10 or 11</span></div>
+    <div><b>Internet</b><span>First launch (model download), plus web search if you use it</span></div>
+  </div>
+</div></section>
+
+
+<section id="ai-setup" class="yuna-extra"><div class="w">
+  <div class="ttl"><h2>Choose the AI behind YUNA</h2><p class="sub">Your companion, your model, your choice. Start locally or connect a provider you already use.</p></div>
+  <div class="extra-grid">
+    <article class="extra-card"><div class="extra-icon">🦙</div><h3>Run AI locally with Ollama</h3><p>Connect local models through Ollama. Your prompts stay on your PC when you use a local model, and you don't need a cloud API key.</p><span class="extra-tag">Local-first option</span></article>
+    <article class="extra-card"><div class="extra-icon">☁️</div><h3>Connect cloud AI providers</h3><p>Use your own API key with supported providers such as OpenAI, Anthropic, Google Gemini, DeepSeek and Groq. You control which provider and model you connect.</p><span class="extra-tag">Bring your own API key</span></article>
+    <article class="extra-card"><div class="extra-icon">🔌</div><h3>OpenAI-compatible endpoints</h3><p>Connect compatible services using a custom base URL, model name and API key, where the provider supports the OpenAI-compatible API format.</p><span class="extra-tag">Custom endpoint support</span></article>
+  </div>
+  <p class="extra-note">Local and cloud modes work differently: Ollama can run on-device, while cloud providers process requests on their own infrastructure and may require internet access.</p>
+</div></section>
+<section id="characters" class="yuna-extra alt"><div class="w">
+  <div class="ttl"><h2>Meet your companions</h2><p class="sub">Start with a built-in character, then make the experience your own.</p></div>
+  <div class="extra-grid">
+    <article class="extra-card character"><div class="character-face">🌸</div><h3>Yuna</h3><p>Warm, curious and expressive. A friendly everyday companion with a playful personality.</p></article>
+    <article class="extra-card character"><div class="character-face">🌿</div><h3>Haru</h3><p>Calm, measured and focused. A more composed presence for thoughtful conversations and practical help.</p></article>
+    <article class="extra-card character"><div class="character-face">🧙‍♀️</div><h3>Majo</h3><p>A distinct character joining the YUNA family, with her own atmosphere and personality.</p></article>
+    <article class="extra-card character"><div class="character-face">🎨</div><h3>Your own character</h3><p>Customize the persona and appearance, change backgrounds and voices, or import a compatible Live2D model.</p></article>
+  </div>
+</div></section>
+<section id="shell-details" class="yuna-extra"><div class="w">
+  <div class="ttl"><h2>Real desktop help, with you in control</h2><p class="sub">YUNA can open installed apps and check basic system details. For more involved tasks, she can propose a Windows command, show it to you, and wait for approval.</p></div>
+  <div class="shell-detail-grid">
+    <article class="extra-card"><div class="extra-icon">📜</div><h3>Understand logs</h3><p>Ask YUNA to inspect relevant output or log information and explain what may have gone wrong.</p></article>
+    <article class="extra-card"><div class="extra-icon">🩺</div><h3>Diagnose problems</h3><p>Use shell commands to inspect processes, ports, versions and other system details when troubleshooting.</p></article>
+    <article class="extra-card"><div class="extra-icon">🧰</div><h3>Help with repetitive tasks</h3><p>Run suitable commands for development workflows and everyday PC tasks instead of manually switching between tools.</p></article>
+  </div>
+  <div class="approval-flow"><div><b>1 · You ask</b><span>Describe what you want YUNA to do.</span></div><div><b>2 · She proposes</b><span>The exact command is shown before execution.</span></div><div><b>3 · You approve</b><span>Nothing runs until you explicitly allow it.</span></div><div><b>4 · She explains</b><span>YUNA reads the result and explains what happened.</span></div></div>
+  <div class="safety-note"><b>Permission and safety matter.</b><p>Shell access is approval-gated and includes blocked-command protections for destructive actions. Review every command before approving it. No software safety filter can guarantee that every command or outcome is risk-free.</p></div>
+</div></section>
+<section id="v13" class="yuna-extra alt"><div class="w">
+  <div class="ttl"><h2>What's new in YUNA v1.3</h2><p class="sub">A major step from an animated AI companion toward a practical desktop assistant.</p></div>
+  <div class="timeline">
+    <div><span class="timeline-dot">✦</span><p><b>Desktop tools</b><br>Web search, opening links, saving notes and system information.</p></div>
+    <div><span class="timeline-dot">✦</span><p><b>Approval-based shell helper</b><br>YUNA can propose commands for troubleshooting and tasks, but waits for your approval.</p></div>
+    <div><span class="timeline-dot">✦</span><p><b>More expressive Live2D</b><br>Facial reactions respond to the conversation, alongside blinking and lip-sync.</p></div>
+    <div><span class="timeline-dot">✦</span><p><b>Refined companion experience</b><br>Improved character behavior, voice experience and memory handling.</p></div>
+  </div>
+  <div class="video-compare"><div><b>Want to see the difference?</b><p>Watch the YUNA vs Codex comparison to understand where each tool fits.</p></div><a class="btn-secondary" href="https://youtu.be/XkBnIoNM9RU" target="_blank" rel="noopener noreferrer">Watch YUNA vs Codex ↗</a></div>
+</div></section>
+<section id="yuna-code" class="yuna-extra alt"><div class="w">
+  <div class="ttl">
+    <span class="pill">Planned project · In preparation</span>
+    <h2>What’s next: YUNA Code</h2>
+    <p class="sub">I’m preparing to begin work on YUNA Code — a dedicated version of YUNA made specifically for programmers, coding, and software development.</p>
+  </div>
+  <div class="extra-grid">
+    <article class="extra-card">
+      <div class="extra-icon">⌨️</div>
+      <h3>Made for developers</h3>
+      <p>YUNA Code will be a developer-focused AI assistant, designed around programming tasks and everyday software development workflows.</p>
+      <span class="extra-tag">Programming-focused</span>
+    </article>
+    <article class="extra-card">
+      <div class="extra-icon">💻</div>
+      <h3>Local AI by design</h3>
+      <p>The project is planned as a local-first experience, using AI models that run on your own computer rather than requiring a cloud AI service for its core workflow.</p>
+      <span class="extra-tag">Run AI locally</span>
+    </article>
+    <article class="extra-card">
+      <div class="extra-icon">🚀</div>
+      <h3>Official announcement later</h3>
+      <p>I’ll share the official YUNA Code announcement after development is complete and enough funding has been secured through investors or community donations.</p>
+      <span class="extra-tag">More details after completion</span>
+    </article>
+  </div>
+  <div class="code-funding-panel">
+    <h3>Help bring the next chapter of YUNA to life</h3>
+    <p>Your contribution helps me continue improving YUNA, fixing bugs, and funding development of YUNA Code. Community donations and investment will make it possible to dedicate more time and resources to the project. Every contribution is appreciated.</p>
+    <div class="row">
+      <a href="https://ko-fi.com/code7" target="_blank" rel="noopener noreferrer" class="btn">Support YUNA on Ko-fi</a>
+      <a href="mailto:cherguihamid88@gmail.com?subject=YUNA%20Investment%20or%20Partnership" class="btn ghost">Discuss investment or partnership</a>
+    </div>
+  </div>
+</div></section>
+
+<section id="getting-started" class="yuna-extra"><div class="w">
+  <div class="ttl"><h2>From download to your first conversation</h2><p class="sub">A straightforward setup designed for Windows users.</p></div>
+  <div class="approval-flow setup-flow"><div><b>1 · Get your license</b><span>Choose Basic or Pro and complete your purchase.</span></div><div><b>2 · Download YUNA</b><span>Install or launch the Windows application and activate your key.</span></div><div><b>3 · Choose an AI model</b><span>Set up a local Ollama model or connect your preferred API provider.</span></div><div><b>4 · Start chatting</b><span>Talk by voice or text and customize your companion.</span></div></div>
+  <div class="extra-grid requirements-grid"><article class="extra-card"><h3>Operating system</h3><p>Windows 10 or Windows 11.</p></article><article class="extra-card"><h3>Memory</h3><p>8 GB RAM minimum; 16 GB recommended for a more comfortable local-model experience.</p></article><article class="extra-card"><h3>Processor</h3><p>Modern Intel Core i5 or AMD Ryzen 5 class processor recommended.</p></article><article class="extra-card"><h3>Graphics</h3><p>A dedicated GPU is not required. Compatible local models can run on CPU, though performance depends on the model and hardware.</p></article></div>
+</div></section>
+
+<section id="pricing"><div class="w">
+  <div class="ttl"><h2>Pay once. Keep it forever.</h2><p class="sub">No subscription, no renewal. One payment, lifetime access on one device.</p></div>
+
+  <div class="plans">
+    <div class="plan">
+      <div class="n">Basic</div>
+      <div class="p">$10</div>
+      <ul>
+        <li>Full app, all core features</li>
+        <li>Voice, Live2D face, all AI providers</li>
+        <li>Memory, history, custom characters</li>
+        <li class="no">Early access to new features</li>
+        <li class="no">Beta version access</li>
+        <li class="no">Priority technical support</li>
+        <li class="no">Full character customization service</li>
+      </ul>
+    </div>
+
+    <div class="plan hot">
+      <div class="n">Pro · most popular</div>
+      <div class="p">$15</div>
+      <ul>
+        <li>Everything in Basic</li>
+        <li><b>Early access to new features</b></li>
+        <li><b>Access to beta releases</b></li>
+        <li><b>Priority technical support</b></li>
+        <li><b>Full character customization</b></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="reviews-link">
+    <span>Before you buy, see what <b>real users</b> say about YUNA.</span>
+    <a href="/reviews/" class="btn ghost sm">Read reviews →</a>
+  </div>
+
+  <div class="buy" id="contact">
+    <div class="tabs" role="tablist">
+      <button class="tab active" id="tab-kofi" type="button" onclick="switchPay('kofi')" role="tab" aria-selected="true" aria-controls="panel-kofi">Ko-fi · instant key</button>
+      <button class="tab" id="tab-pp" type="button" onclick="switchPay('pp')" role="tab" aria-selected="false" aria-controls="panel-pp">PayPal · manual key</button>
+    </div>
+
+    <div class="panel active" id="panel-kofi" role="tabpanel">
+      <div class="price-big">From $10 <small>pay what you want, lifetime, 1 device</small></div>
+      <ol class="steps"><li>Pay on Ko-fi.</li><li>Your key is emailed instantly (check spam).</li><li>Open YUNA, paste the key, start talking.</li></ol>
+      <a href="https://ko-fi.com/s/45662d5cc0" target="_blank" rel="noopener noreferrer" class="btn" style="width:100%">Get my key on Ko-fi</a>
+      <p class="small">Want Pro extras? Contribute $15 or more and send your Ko-fi receipt on Discord.</p>
+    </div>
+
+    <div class="panel" id="panel-pp" role="tabpanel">
+      <div class="pp-plans">
+        <button class="po selected" type="button" id="pp-plan-basic" onclick="selectPlan('pp','basic')"><b>Basic · $10</b><span>All core features</span></button>
+        <button class="po" type="button" id="pp-plan-pro" onclick="selectPlan('pp','pro')"><b>Pro · $15</b><span>Support and setup</span></button>
+      </div>
+      <div class="total"><span>Total due</span><strong id="pp-total-label">$10 USD · Basic</strong></div>
+      <div id="pp-basic-wrap">
+        <div class="pp-area" id="paypal-wrap-basic"><div id="paypal-container-KKXAYU67ZVMR2"></div><div class="pp-sk"><div class="spin"></div><span class="pp-skel-text">Loading secure PayPal checkout…</span></div></div>
+      </div>
+      <div id="pp-pro-wrap" style="display:none">
+        <div class="pp-area" id="paypal-wrap-pro"><div id="paypal-container-5XJJ8XDLXC2RS"></div><div class="pp-sk"><div class="spin"></div><span class="pp-skel-text">Loading secure PayPal checkout…</span></div></div>
+      </div>
+      <p class="small">Keys are sent manually after payment is verified. Keep your PayPal transaction ID. The thank-you page does not verify payment by itself.</p>
+    </div>
+
+    <div class="help">
+      <b style="color:var(--ink)">Payment methods don’t work for you?</b> Contact me and we’ll find a solution.
+      <div class="row">
+        <a href="https://discord.gg/ARg6yujhdc" target="_blank" rel="noopener noreferrer" class="btn ghost sm">Discord</a>
+        <a href="https://code-7x.itch.io/yuna-ai" target="_blank" rel="noopener noreferrer" class="btn ghost sm">itch.io</a>
+        <a href="mailto:cherguihamid88@gmail.com?subject=YUNA%20Payment%20Help" class="btn ghost sm">cherguihamid88@gmail.com</a>
+        <a href="mailto:cherguihamid88@gmail.com?subject=YUNA%20License%20Purchase" class="btn ghost sm">Email to buy</a>
+        <a href="https://www.youtube.com/@code7kjt" target="_blank" rel="noopener noreferrer" class="btn ghost sm">YouTube</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="note" style="max-width:760px;margin-top:1.5rem">Enjoying YUNA? <a href="https://ko-fi.com/code7" target="_blank" rel="noopener noreferrer"><b>Support the project on Ko-fi</b></a> and help add new features.</div>
+</div></section>
+
+<section id="faq" class="alt"><div class="w">
+  <div class="ttl"><h2>Questions</h2></div>
+  <div class="faq">
+    <div class="fi"><div class="fq" role="button" tabindex="0" aria-expanded="false" onclick="tf(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();tf(this)}">Does YUNA need internet?</div><div class="fa">Local chat with an already-downloaded Ollama model can work offline. Internet is needed for web search, downloads, and cloud AI providers. When you use a cloud provider, your prompts are sent to that provider. YUNA does not add its own telemetry.</div></div>
+    <div class="fi"><div class="fq" role="button" tabindex="0" aria-expanded="false" onclick="tf(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();tf(this)}">Can I use my own OpenAI or Claude key?</div><div class="fa">Yes. YUNA supports OpenAI, Anthropic, DeepSeek, Google Gemini, Groq and more. Enter your key in settings.</div></div>
+    <div class="fi"><div class="fq" role="button" tabindex="0" aria-expanded="false" onclick="tf(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();tf(this)}">Does it run without a GPU?</div><div class="fa">Yes. An i5 with 8 GB RAM is enough. A GPU only makes larger models faster.</div></div>
+    <div class="fi"><div class="fq" role="button" tabindex="0" aria-expanded="false" onclick="tf(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();tf(this)}">Can I change her personality?</div><div class="fa">Completely. Edit the prompt in settings, or create separate characters.</div></div>
+    <div class="fi"><div class="fq" role="button" tabindex="0" aria-expanded="false" onclick="tf(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();tf(this)}">What is the refund policy?</div><div class="fa">If YUNA doesn’t work on your machine and we can’t fix it, you may request a refund within 7 days, minus any transfer fees or taxes.</div></div>
+    <div class="fi"><div class="fq" role="button" tabindex="0" aria-expanded="false" onclick="tf(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();tf(this)}">Mac or Linux?</div><div class="fa">Windows 10 and 11 only for now. Mac and Linux are planned, free for existing licence holders.</div></div>
+    <div class="fi"><div class="fq" role="button" tabindex="0" aria-expanded="false" onclick="tf(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();tf(this)}">How do I move my licence to a new PC?</div><div class="fa">Contact us on Discord or email with your key and proof of purchase. We deactivate the old device and reactivate the new one, free of charge.</div></div>
+  </div>
+</div></section>
+
+<section class="cta"><div class="w">
+  <h2>Ready to meet Yuna?</h2>
+  <p>A voice AI with a living face. Local, and yours forever.</p>
+  <div class="row">
+    <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.3v" target="_blank" rel="noopener noreferrer" class="btn">Download YUNA v1.3</a>
+    <a href="https://discord.gg/ARg6yujhdc" target="_blank" rel="noopener noreferrer" class="btn ghost">Join Discord</a>
+    <a href="https://code-7x.itch.io/yuna-ai" target="_blank" rel="noopener noreferrer" class="btn ghost">YUNA on itch.io</a>
+  </div>
+</div></section>
+
+<footer><div class="w">
+  <div class="fl">
+    <a href="/ai-models/">AI Models Guide</a><a href="/requirements/">System Requirements</a><a href="/faq/">Full FAQ</a><a href="/reviews/">Reviews</a><a href="/blog/">Blog</a>
+    <a href="https://www.youtube.com/@code7kjt" target="_blank" rel="noopener noreferrer">YouTube</a>
+    <a href="https://code-7x.itch.io/yuna-ai" target="_blank" rel="noopener noreferrer">itch.io</a>
+    <a href="https://github.com/Dril-V000/yuna-AI/blob/main/TOS.md" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+    <a href="https://github.com/Dril-V000/yuna-AI/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">License</a>
+    <a href="#cookie-settings" id="cookie-settings">Cookie settings</a>
+  </div>
+  <p>© 2026 Code-7 &amp; Merry Yuna · All rights reserved. Unauthorized reproduction or redistribution of YUNA is prohibited.</p>
+</div></footer>
+
+<section id="thank-you" aria-hidden="true">
+  <div class="ty">
+    <div class="ck">✓</div>
+    <h2>Thank you for your purchase!</h2>
+    <p style="color:var(--mute)">
+  <b>Ko-fi:</b> your key is emailed to you automatically — check your inbox and spam folder.
+  <b>PayPal:</b> keys are delivered manually after payment is verified.
+  Here is how to claim yours.
+</p>
+    <ol>
+      <li><b>Open Discord.</b> Open a ticket or send a direct message to the team.</li>
+      <li><b>Send your payment proof.</b> PayPal receipt or transaction ID, plus your plan: Basic $10 or Pro $15.</li>
+      <li><b>Receive your key</b> by Discord DM, or by email if you prefer.</li>
+    </ol>
+    <div class="row">
+      <a class="btn" href="https://discord.gg/ARg6yujhdc" target="_blank" rel="noopener noreferrer">Open Discord</a>
+      <a class="btn ghost" href="mailto:cherguihamid88@gmail.com?subject=YUNA%20Purchase%20%E2%80%94%20Licence%20Key%20Request&body=Hi%2C%20I%20just%20purchased%20YUNA.%0A%0APlan%3A%20(Basic%20%2F%20Pro)%0APayment%20method%3A%20(PayPal)%0ATransaction%20ID%3A%20%0A%0AThanks!">Email us instead</a>
+    </div>
+    <p class="small" style="margin-bottom:1rem">Keep your receipt as proof of purchase. We never ask for card details or wallet passwords.</p>
+    <button class="back" type="button" onclick="hideThankYou()">← Back to the site</button>
+  </div>
+</section>
+
+<div class="modal" id="shotModalOverlay" role="dialog" aria-modal="true" aria-hidden="true" onclick="if(event.target===this)closeShotModal()">
+  <div><button type="button" onclick="closeShotModal()" aria-label="Close">✕</button><img id="shotModalImg" src="" alt="Screenshot preview"></div>
+</div>
+
+<script>
+function toggleNav(btn){
+  var l=document.getElementById('navLinks'),o=l.classList.toggle('open');
+  btn.setAttribute('aria-expanded',o?'true':'false');
+}
+document.querySelectorAll('#navLinks a').forEach(function(a){
+  a.addEventListener('click',function(){
+    document.getElementById('navLinks').classList.remove('open');
+    var t=document.querySelector('.tog');if(t)t.setAttribute('aria-expanded','false');
+  });
+});
+function tf(el){
+  var it=el.parentElement,open=it.classList.contains('open');
+  document.querySelectorAll('.fi').forEach(function(i){
+    i.classList.remove('open');var q=i.querySelector('.fq');if(q)q.setAttribute('aria-expanded','false');
+  });
+  if(!open){it.classList.add('open');el.setAttribute('aria-expanded','true');}
+}
+function switchPay(id){
+  ['pp','kofi'].forEach(function(k){
+    var on=(k===id),tab=document.getElementById('tab-'+k),panel=document.getElementById('panel-'+k);
+    if(tab){tab.classList.toggle('active',on);tab.setAttribute('aria-selected',on?'true':'false');}
+    if(panel)panel.classList.toggle('active',on);
+  });
+  if(id==='pp'){
+    var p=(typeof window.loadPayPal==='function')?window.loadPayPal():Promise.resolve();
+    p.then(function(){
+      if(typeof window.__renderPP==='function')window.__renderPP(document.getElementById('pp-plan-pro').classList.contains('selected')?'pro':'basic');
+    }).catch(function(){});
+  }
+}
+function selectPlan(method,plan){
+  if(method==='pp'){
+    document.getElementById('pp-plan-basic').classList.toggle('selected',plan==='basic');
+    document.getElementById('pp-plan-pro').classList.toggle('selected',plan==='pro');
+    document.getElementById('pp-basic-wrap').style.display=plan==='basic'?'block':'none';
+    document.getElementById('pp-pro-wrap').style.display=plan==='pro'?'block':'none';
+    document.getElementById('pp-total-label').textContent=plan==='basic'?'$10 USD · Basic':'$15 USD · Pro';
+    if(typeof window.__renderPP==='function')window.__renderPP(plan==='pro'?'pro':'basic');
+  }
+}
+function showThankYou(){
+  document.body.classList.add('ty-mode');
+  var ty=document.getElementById('thank-you');if(ty)ty.setAttribute('aria-hidden','false');
+  document.title='Thank you! — YUNA';window.scrollTo(0,0);
+}
+function hideThankYou(){
+  document.body.classList.remove('ty-mode');
+  var ty=document.getElementById('thank-you');if(ty)ty.setAttribute('aria-hidden','true');
+  document.title='YUNA — Local AI Companion & Desktop Assistant for Windows';
+  if(location.hash==='#thank-you')history.replaceState(null,'',location.pathname+location.search);
+}
+function goThankYou(){if(location.hash==='#thank-you'){showThankYou();}else{location.hash='#thank-you';}}
+function checkThankYouHash(){
+  if(location.hash==='#thank-you'){showThankYou();}
+  else if(document.body.classList.contains('ty-mode')){hideThankYou();}
+}
+window.addEventListener('hashchange',checkThankYouHash);
+window.addEventListener('DOMContentLoaded',checkThankYouHash);
+checkThankYouHash();
+</script>
+
+<script>
+(function(){
+  'use strict';
+  var MODEL='./yuna.model3.json';
+  var canvas=document.getElementById('yuna-live2d'),panel=document.getElementById('live2d-panel'),loading=document.getElementById('live2d-loading');
+  if(!canvas||!panel||!loading)return;
+  function showStatus(t,d,err){
+    loading.style.display='flex';
+    loading.innerHTML='<div style="font-size:1.6rem">'+(err?'⚠️':'⏳')+'</div><div style="padding:0 24px;line-height:1.7;color:'+(err?'#ffc48a':'#cfc9ff')+'"><b>'+t+'</b><br>'+(d||'')+'</div>';
+  }
+  function size(){canvas.width=Math.max(1,panel.clientWidth);canvas.height=Math.max(1,panel.clientHeight);}
+  size();
+  if(!window.PIXI){showStatus('PIXI.js failed to load','Check your internet connection or CDN access.',true);return;}
+  if(!window.PIXI.live2d||!window.PIXI.live2d.Live2DModel){showStatus('Live2D plugin failed to load','pixi-live2d-display / Cubism 4 was not loaded.',true);return;}
+  if(!window.Live2DCubismCore){showStatus('Cubism Core failed to load','live2dcubismcore.min.js was not loaded.',true);return;}
+  var app=new PIXI.Application({view:canvas,width:canvas.width,height:canvas.height,backgroundAlpha:0,antialias:true,autoStart:true,resolution:Math.min(window.devicePixelRatio||1,2),autoDensity:true});
+  var model=null;
+  function sp(core,id,v){try{if(core&&typeof core.setParameterValueById==='function')core.setParameterValueById(id,v);}catch(_){}}
+  function place(){
+    if(!model)return;
+    var pw=Math.max(1,Math.floor(panel.clientWidth)),ph=Math.max(1,Math.floor(panel.clientHeight));
+    app.renderer.resize(pw,ph);
+    var b=typeof model.getLocalBounds==='function'?model.getLocalBounds():{width:1,height:1};
+    var mw=Math.max(1,Math.abs(b.width)),mh=Math.max(1,Math.abs(b.height));
+    model.anchor.set(.5,1);model.scale.set(Math.min((ph*.88)/mh,(pw*.62)/mw));
+    model.x=pw*.5;model.y=ph+6;model.alpha=1;model.visible=true;
+  }
+  function animate(){
+    var phase=0,bt=0,nb=3,bs=0,btm=0;
+    app.ticker.add(function(delta){
+      if(!model||!model.internalModel)return;
+      var core=model.internalModel.coreModel,dt=delta/60;
+      phase+=dt*.75;
+      sp(core,'ParamBreath',(Math.sin(phase*Math.PI*2)+1)/2);
+      var sw=Math.sin(phase*Math.PI*.55)*.35,ids=['Param3','Param5','Param7','Param9'],mul=[1,.8,.6,.5];
+      for(var i=0;i<ids.length;i++)sp(core,ids[i],sw*mul[i]);
+      bt+=dt;
+      if(!bs&&bt>=nb){bs=1;btm=0;bt=0;}
+      var eye=1;
+      if(bs){btm+=dt;
+        if(btm<.07)eye=1-btm/.07;else if(btm<.13)eye=(btm-.07)/.06;else{bs=0;nb=2.5+Math.random()*3.5;eye=1;}}
+      sp(core,'ParamEyeLOpen',eye);sp(core,'ParamEyeROpen',eye);
+    });
+  }
+  panel.addEventListener('mousemove',function(e){
+    if(!model||!model.internalModel)return;
+    var r=panel.getBoundingClientRect(),nx=((e.clientX-r.left)/r.width-.5)*2,ny=((e.clientY-r.top)/r.height-.5)*2,c=model.internalModel.coreModel;
+    sp(c,'ParamAngleX',nx*30);sp(c,'ParamAngleY',-ny*20);sp(c,'ParamEyeBallX',nx);sp(c,'ParamEyeBallY',-ny);sp(c,'ParamBodyAngleX',nx*10);
+  });
+  panel.addEventListener('mouseleave',function(){
+    if(!model||!model.internalModel)return;
+    var c=model.internalModel.coreModel;
+    ['ParamAngleX','ParamAngleY','ParamEyeBallX','ParamEyeBallY','ParamBodyAngleX'].forEach(function(id){sp(c,id,0);});
+  });
+  window.addEventListener('resize',place);
+  async function init(){
+    try{
+      showStatus('Loading Yuna…','Preparing the Live2D model.',false);
+      var res=await fetch(MODEL,{cache:'no-store'});
+      if(!res.ok)throw new Error('Model file not found ('+res.status+'). Put yuna.model3.json beside this HTML file.');
+      var j=await res.json();
+      if(!j||!j.FileReferences)throw new Error('yuna.model3.json is not a valid Cubism model file.');
+      model=await PIXI.live2d.Live2DModel.from(MODEL,{autoInteract:false,autoUpdate:true});
+      app.stage.addChild(model);place();animate();
+      loading.style.display='none';window.__yunaModel=model;
+    }catch(err){
+      console.error('[YUNA Live2D ERROR]',err);
+      showStatus('Yuna could not be loaded',err&&err.message?err.message:'Unknown Live2D error.',true);
+    }
+  }
+  init();
+})();
+</script>
+
+<script>
+window.__paypalLoading=null;window.__paypalLoaded=false;
+window.loadPayPal=function(){
+  if(window.__paypalLoaded)return Promise.resolve();
+  if(window.__paypalLoading)return window.__paypalLoading;
+  window.__paypalLoading=new Promise(function(resolve,reject){
+    var s=document.createElement('script');
+    s.src='https://www.paypal.com/sdk/js?client-id=BAAzMZURqi9KGWrbHOv8rh4EJrbE7dYBtTSs7SUBLJTvfswfaS0gefw78sZ2EVsbM6W53_82w968qEQQIg&components=hosted-buttons&disable-funding=venmo&currency=USD';
+    s.async=true;
+    s.onload=function(){window.__paypalLoaded=true;resolve();};
+    s.onerror=function(){reject(new Error('PayPal SDK failed to load'));};
+    document.head.appendChild(s);
+  });
+  return window.__paypalLoading;
+};
+(function(){
+  var rendered={};
+  function markLoaded(sel){
+    var wrap=document.querySelector(sel);if(!wrap)return;
+    var obs=new MutationObserver(function(){if(wrap.querySelector('iframe')){wrap.classList.add('loaded');obs.disconnect();}});
+    obs.observe(wrap,{childList:true,subtree:true});
+    setTimeout(function(){wrap.classList.add('loaded');},9000);
+  }
+  function renderHosted(id,target,wrapSel){
+    if(rendered[id])return;
+    var el=document.querySelector(target);if(!el)return;
+    if(typeof paypal==='undefined'||!paypal.HostedButtons){
+      var sk=el.parentElement.querySelector('.pp-skel-text');
+      if(sk)sk.textContent='PayPal failed to load — check connection & refresh.';
+      return;
+    }
+    try{
+      paypal.HostedButtons({hostedButtonId:id,onApprove:function(){goThankYou();},onComplete:function(){goThankYou();}}).render(target);
+      rendered[id]=true;markLoaded(wrapSel);
+    }catch(e){console.warn('[YUNA] Hosted button render failed:',e);}
+  }
+  window.__renderPP=function(which){
+    if(which==='pro')renderHosted('5XJJ8XDLXC2RS','#paypal-container-5XJJ8XDLXC2RS','#paypal-wrap-pro');
+    else renderHosted('KKXAYU67ZVMR2','#paypal-container-KKXAYU67ZVMR2','#paypal-wrap-basic');
+  };
+})();
+(function(){
+  if(typeof window.showThankYou==='function'&&!window.showThankYou.__wrapped){
+    var o=window.showThankYou;
+    window.showThankYou=function(){
+      o.apply(this,arguments);
+    };
+    window.showThankYou.__wrapped=true;
+  }
+  if(typeof window.goThankYou==='function'&&!window.goThankYou.__wrapped){
+    var g=window.goThankYou;
+    window.goThankYou=function(){
+      window.__paid=true;
+      try{sessionStorage.setItem('yuna_paid','1');}catch(e){}
+      g.apply(this,arguments);
+    };
+    window.goThankYou.__wrapped=true;
+  }
+})();
+</script>
+
+<script src="./reviews.js"></script>
+<script>
+(function(){
+  function guard(){
+    var paid=window.__paid||(function(){try{return sessionStorage.getItem('yuna_paid')==='1';}catch(e){return false;}})();
+    if(location.hash==='#thank-you'&&!paid){
+      try{history.replaceState(null,'',location.pathname+location.search);}catch(e){location.hash='';}
+      document.body.classList.remove('ty-mode');
+      var ty=document.getElementById('thank-you');if(ty)ty.setAttribute('aria-hidden','true');
+    }
+  }
+  window.addEventListener('DOMContentLoaded',guard);
+  window.addEventListener('hashchange',function(){if(location.hash==='#thank-you'&&!window.__paid)setTimeout(guard,0);});
+})();
+(function(){
+  var ov=document.getElementById('shotModalOverlay'),img=document.getElementById('shotModalImg');
+  if(!ov||!img)return;
+  window.openShotModal=function(src,label){
+    if(!src)return;
+    img.src=src;img.alt=label||'Screenshot';
+    ov.classList.add('open');ov.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+  };
+  window.closeShotModal=function(){
+    ov.classList.remove('open');ov.setAttribute('aria-hidden','true');document.body.style.overflow='';
+    setTimeout(function(){img.src='';},300);
+  };
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.classList.contains('open'))window.closeShotModal();});
+})();
+</script>
+
+<!-- ===== Cookie Consent Banner ===== -->
+<div id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" aria-hidden="true" inert>
+  <div class="cb-title">🍪 We use cookies</div>
+  <p class="cb-text">
+    YUNA uses essential storage to remember your preferences. With your permission, we may also use optional analytics and advertising cookies. You can change your choice at any time from "Cookie settings" in the footer.
+    Read our <a href="https://github.com/Dril-V000/yuna-AI/blob/main/TOS.md" target="_blank" rel="noopener noreferrer">Terms of Service</a>.
+  </p>
+  <div class="cb-actions">
+    <button type="button" class="cb-btn cb-reject" data-cookie="reject">Reject optional</button>
+    <button type="button" class="cb-btn cb-accept" data-cookie="accept">Accept all</button>
+  </div>
+</div>
+
+<script>
+window.YunaCookieConsent = (function(){
+  var KEY = 'yuna_cookie_consent';
+  var value = null;
+  try {
+    var stored = localStorage.getItem(KEY);
+    if (stored === 'true') value = true;
+    else if (stored === 'false') value = false;
+  } catch(e){}
+
+  function emit(){
+    try { window.dispatchEvent(new CustomEvent('yuna:consent', { detail: value })); } catch(e){}
+  }
+  function set(v){
+    value = !!v;
+    try { localStorage.setItem(KEY, value ? 'true' : 'false'); } catch(e){}
+    emit();
+    return value;
+  }
+  function get(){ return value; }
+  function hasChosen(){ return value !== null; }
+  function reset(){
+    value = null;
+    try { localStorage.removeItem(KEY); } catch(e){}
+    emit();
+  }
+
+  return { set:set, get:get, hasChosen:hasChosen, reset:reset };
+})();
+
+
+window.YunaOptional = (function(){
+  var loaded = false;
+
+  function addScript(src, attrs){
+    var el = document.createElement('script');
+    el.src = src; el.async = true;
+    if (attrs) for (var k in attrs) el.setAttribute(k, attrs[k]);
+    document.head.appendChild(el);
+    return el;
+  }
+
+  function load(){
+    if (loaded) return;
+    loaded = true;
+
+  }
+
+  function isLoaded(){ return loaded; }
+  return { load:load, isLoaded:isLoaded };
+})();
+
+(function(){
+  var previous = YunaCookieConsent.get();
+
+  // Returning visitor who already accepted
+  if (previous === true) YunaOptional.load();
+
+  window.addEventListener('yuna:consent', function(e){
+    var now = e.detail;
+    if (now === true) {
+      YunaOptional.load();
+    } else if (previous === true && YunaOptional.isLoaded()) {
+      // Consent withdrawn after trackers already ran: reload so they are not running anymore.
+      location.reload();
+    }
+    previous = now;
+  });
+})();
+
+(function(){
+  function init(){
+    var banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+
+    function showBanner(){
+      banner.removeAttribute('inert');
+      banner.classList.add('show');
+      banner.setAttribute('aria-hidden', 'false');
+    }
+    function hideBanner(){
+      banner.classList.remove('show');
+      banner.setAttribute('aria-hidden', 'true');
+      banner.setAttribute('inert', '');
+    }
+
+    if (!YunaCookieConsent.hasChosen()) {
+      setTimeout(showBanner, 800);
+    }
+
+    banner.addEventListener('click', function(e){
+      var btn = e.target.closest('[data-cookie]');
+      if (!btn) return;
+      hideBanner();
+      YunaCookieConsent.set(btn.getAttribute('data-cookie') === 'accept');
+    });
+
+    // Footer link: lets the visitor change or withdraw their choice at any time
+    var settings = document.getElementById('cookie-settings');
+    if (settings) {
+      settings.addEventListener('click', function(e){
+        e.preventDefault();
+        showBanner();
+        var first = banner.querySelector('.cb-reject');
+        if (first) first.focus();
+      });
+    }
+
+    window.showCookieBanner = showBanner;
+    window.hideCookieBanner = hideBanner;
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+</body>
+</html>
