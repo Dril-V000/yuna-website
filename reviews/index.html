@@ -7,7 +7,7 @@
 <meta name="description" content="What buyers say about YUNA, the local AI companion. 3 verified reviews, average 4.7/5.">
 <link rel="canonical" href="https://yunaai.online/reviews/">
 <link rel="icon" href="/favicon.ico">
-<meta name="theme-color" content="#04040c">
+<meta name="theme-color" content="#000000">
 <meta property="og:title" content="YUNA Reviews from Real Buyers">
 <meta property="og:description" content="What buyers say about YUNA, the local AI companion. 3 verified reviews, average 4.7/5.">
 <meta property="og:type" content="website">
@@ -18,86 +18,219 @@
 <meta name="twitter:title" content="YUNA Reviews from Real Buyers">
 <meta name="twitter:description" content="What buyers say about YUNA, the local AI companion. 3 verified reviews, average 4.7/5.">
 <meta name="twitter:image" content="https://yunaai.online/preview/og-image.png">
-<link rel="stylesheet" href="/assets/pages.css">
-
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "YUNA", "applicationCategory": "MultimediaApplication", "operatingSystem": "Windows 10, Windows 11", "description": "Local AI companion with voice conversation and a Live2D animated face. Runs offline, no subscription.", "url": "https://yunaai.online/", "image": "https://yunaai.online/preview/og-image.png", "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": "10", "highPrice": "15"}, "review": [{"@type": "Review", "author": {"@type": "Person", "name": "LordShadow"}, "reviewRating": {"@type": "Rating", "ratingValue": 5, "bestRating": 5}, "reviewBody": "YUNA stands out because it feels more interactive and personal."}, {"@type": "Review", "author": {"@type": "Person", "name": "Amelia Thornton"}, "reviewRating": {"@type": "Rating", "ratingValue": 4, "bestRating": 5}, "reviewBody": "It's good. Just a few more things to be corrected."}, {"@type": "Review", "author": {"@type": "Person", "name": "Kruegerfan07"}, "reviewRating": {"@type": "Rating", "ratingValue": 5, "bestRating": 5}, "reviewBody": "YUNA IS a great app. I even kept YUNA in place of Desktop Companion by Dokk75, OpenLLMvtuber, Utsuwa and Nerumi, among others"}], "aggregateRating": {"@type": "AggregateRating", "ratingValue": 4.7, "reviewCount": 3, "bestRating": 5}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"YUNA","applicationCategory":"MultimediaApplication","operatingSystem":"Windows 10, Windows 11","description":"Local AI companion with voice conversation and a Live2D animated face. Runs offline, no subscription.","url":"https://yunaai.online/","image":"https://yunaai.online/preview/og-image.png","offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"10","highPrice":"15"},"review":[{"@type":"Review","author":{"@type":"Person","name":"LordShadow"},"reviewRating":{"@type":"Rating","ratingValue":5,"bestRating":5},"reviewBody":"YUNA stands out because it feels more interactive and personal."},{"@type":"Review","author":{"@type":"Person","name":"Amelia Thornton"},"reviewRating":{"@type":"Rating","ratingValue":4,"bestRating":5},"reviewBody":"It's good. Just a few more things to be corrected."},{"@type":"Review","author":{"@type":"Person","name":"Kruegerfan07"},"reviewRating":{"@type":"Rating","ratingValue":5,"bestRating":5},"reviewBody":"YUNA IS a great app. I even kept YUNA in place of Desktop Companion by Dokk75, OpenLLMvtuber, Utsuwa and Nerumi, among others"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":4.7,"reviewCount":3,"bestRating":5}}</script>
 <style>
-  .review-img-wrap { margin-top: 0.75rem; }
-  .review-img-btn {
-    background: #1a1a2e;
-    color: #e0e0ff;
-    border: 1px solid #3a3a5c;
-    border-radius: 6px;
-    padding: 0.4rem 0.9rem;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: background 0.2s, border-color 0.2s;
-  }
-  .review-img-btn:hover {
-    background: #2a2a4a;
-    border-color: #5a5a8c;
-  }
-  .review-img {
-    display: none;
-    margin-top: 0.6rem;
-    max-width: 100%;
-    border-radius: 8px;
-    border: 1px solid #2a2a4a;
-  }
-  .review-img.visible { display: block; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#000;--paper:#0b0b0f;--ink:#f4f3ff;--mute:#a19dbf;--line:#23212d;--v:#7a5cff;--v2:#1a1638;--pk:#ff6f91;--night:#05050a;--ok:#2fbf8a;--hf:'Bricolage Grotesque','DM Sans',system-ui,sans-serif;--bf:'DM Sans',system-ui,-apple-system,sans-serif}
+html{scroll-behavior:smooth}
+body{min-height:100vh;background:var(--bg);color:var(--ink);font:400 1rem/1.65 var(--bf);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:#a794ff}
+:focus-visible{outline:2px solid var(--v);outline-offset:4px}
+.w{width:min(1080px,calc(100% - 3rem));margin:0 auto}
+nav{position:sticky;top:0;z-index:20;background:rgba(0,0,0,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-inner{height:68px;display:flex;align-items:center;gap:1.6rem}
+.logo{margin-right:auto;color:var(--ink);font:800 1.4rem var(--hf);letter-spacing:.2em;text-decoration:none}
+.nav-links{display:flex;align-items:center;gap:1.35rem}
+.nav-links a{color:var(--mute);font-size:.9rem;text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;padding:.72rem 1.35rem;border:1px solid var(--v);border-radius:999px;background:var(--v);color:#fff;text-decoration:none;font-weight:700;font-size:.9rem;transition:transform .18s,background .18s}
+.btn:hover{transform:translateY(-2px);background:#9279ff}
+.btn.ghost{background:transparent;color:#b6a7ff;border-color:#4a3c99}
+.btn.ghost:hover{background:var(--v2)}
+.hero{position:relative;padding:5.2rem 0 3.2rem;overflow:hidden}
+.hero::before{content:"";position:absolute;width:520px;height:420px;right:-170px;top:-180px;background:radial-gradient(ellipse,rgba(122,92,255,.19),transparent 68%);pointer-events:none}
+.eyebrow{display:inline-flex;align-items:center;gap:.55rem;margin-bottom:1.2rem;padding:.35rem .8rem;border:1px solid rgba(122,92,255,.35);border-radius:999px;background:var(--v2);color:#c5baff;font-size:.78rem;font-weight:700;letter-spacing:.04em}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--pk);box-shadow:0 0 12px var(--pk)}
+h1,h2,h3{font-family:var(--hf);line-height:1.1;letter-spacing:-.025em}
+h1{max-width:760px;font-size:clamp(2.5rem,6vw,4.3rem);font-weight:800}
+h1 em{color:var(--pk);font-style:normal}
+.lead{max-width:620px;margin-top:1rem;color:var(--mute);font-size:1.08rem}
+.summary{display:flex;align-items:center;gap:1.3rem;flex-wrap:wrap;margin-top:2rem;padding:1.2rem 1.4rem;width:fit-content;max-width:100%;border:1px solid var(--line);border-radius:16px;background:linear-gradient(135deg,rgba(122,92,255,.10),rgba(255,111,145,.035)),var(--paper)}
+.summary-score{font:800 2.25rem/1 var(--hf)}
+.summary-stars{color:#ffc56d;letter-spacing:.13em;font-size:1.05rem}
+.summary-copy{color:var(--mute);font-size:.82rem}
+.summary-divider{height:42px;width:1px;background:var(--line)}
+main{padding:1rem 0 5.5rem}
+.review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;align-items:stretch}
+.card{position:relative;display:flex;flex-direction:column;min-width:0;padding:1.5rem;border:1px solid var(--line);border-radius:18px;background:linear-gradient(155deg,rgba(255,255,255,.035),transparent 55%),var(--paper);transition:transform .2s,border-color .2s,box-shadow .2s}
+.card:hover{transform:translateY(-4px);border-color:#51427f;box-shadow:0 18px 45px rgba(0,0,0,.28)}
+.card-top{display:flex;justify-content:space-between;align-items:center;gap:.6rem;margin-bottom:1.4rem}
+.stars{color:#ffc56d;letter-spacing:.12em;font-size:1.05rem;white-space:nowrap}
+.rating-label{color:var(--mute);font-size:.75rem}
+.quote-mark{font:800 2.8rem/.7 var(--hf);color:rgba(167,148,255,.48)}
+.review-copy{flex:1;color:#e9e6fa;font-size:1.02rem;line-height:1.75}
+.card-bottom{display:flex;align-items:center;gap:.8rem;margin-top:1.6rem;padding-top:1rem;border-top:1px solid var(--line)}
+.avatar{display:grid;place-items:center;flex:0 0 40px;height:40px;border:1px solid rgba(167,148,255,.3);border-radius:50%;background:linear-gradient(135deg,#29204f,#171321);color:#d9d0ff;font:700 .9rem var(--hf)}
+.person{min-width:0}
+.person strong{display:block;color:var(--ink);font-size:.88rem}
+.person span{display:block;color:var(--mute);font-size:.76rem}
+.proof{display:inline-flex;align-items:center;gap:.45rem;align-self:flex-start;margin-top:1rem;padding:.48rem .8rem;border:1px solid #3b315f;border-radius:999px;background:rgba(122,92,255,.09);color:#c9bdff;font:700 .78rem var(--bf);cursor:pointer;transition:background .2s,border-color .2s}
+.proof:hover{background:var(--v2);border-color:#8069d8}
+.proof svg{width:14px;height:14px}
+.cta-box{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;margin-top:2rem;padding:1.6rem 1.8rem;border:1px solid #33285f;border-radius:18px;background:radial-gradient(ellipse at 0 50%,rgba(122,92,255,.14),transparent 65%),var(--paper)}
+.cta-box strong{display:block;font:700 1.18rem var(--hf)}
+.cta-box .meta{display:block;margin-top:.35rem;color:var(--mute);font-size:.9rem}
+footer{padding:2rem 0 2.5rem;border-top:1px solid var(--line);color:var(--mute);font-size:.84rem}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.footer-links{display:flex;gap:1rem;flex-wrap:wrap}
+footer a{color:var(--mute);text-decoration:none}
+footer a:hover{color:#b6a7ff}
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:1.5rem;background:rgba(0,0,0,.92);backdrop-filter:blur(10px)}
+.modal.open{display:flex}
+.modal-panel{position:relative;width:min(100%,1050px);padding:.7rem;border:1px solid #393052;border-radius:18px;background:#0b0b12;box-shadow:0 25px 90px rgba(0,0,0,.65)}
+.modal img{display:block;width:100%;max-height:84vh;object-fit:contain;border-radius:12px}
+.modal-close{position:absolute;top:-14px;right:-14px;display:grid;place-items:center;width:40px;height:40px;border:1px solid #51466f;border-radius:50%;background:#171321;color:white;font-size:1.2rem;cursor:pointer}
+body.modal-open{overflow:hidden}
+@media(max-width:900px){.review-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.nav-links{gap:.8rem}.nav-links a:nth-child(3),.nav-links a:nth-child(4),.nav-links a:nth-child(5),.nav-links a:nth-child(6){display:none}}
+@media(max-width:620px){.w{width:min(100% - 2rem,1080px)}.nav-inner{height:62px}.nav-links{display:none}.hero{padding:3.8rem 0 2.5rem}.review-grid{grid-template-columns:1fr}.card{padding:1.3rem}.cta-box{align-items:flex-start;flex-direction:column}.cta-box .btn{width:100%}.summary{gap:.8rem}.summary-score{font-size:1.9rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
 <body>
-<nav><a class="logo" href="/">YUNA</a><a href="/#features">Features</a><a href="/ai-models/">AI Models</a><a href="/requirements/">Requirements</a><a href="/faq/">FAQ</a><a href="/blog/">Blog</a><a class="cta" href="/#pricing">Get YUNA</a></nav>
-<main class="wrap">
-<h1>What buyers say about YUNA</h1><p class="lead">Reviews from people who bought a license.</p>
-
-<div class="card">
-  <div class="stars" aria-label="5 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-  <p>YUNA stands out because it feels more interactive and personal.</p>
-  <p class="meta">LordShadow &middot; verified buyer</p>
-  <div class="review-img-wrap">
-    <button class="review-img-btn" type="button" data-target="img-lordshadow">View review image</button>
-    <img id="img-lordshadow" class="review-img" src="https://yunaai.online/preview/review-lordshadow.png" alt="Review screenshot from LordShadow" loading="lazy">
+<nav>
+  <div class="w nav-inner">
+    <a class="logo" href="/">YUNA</a>
+    <div class="nav-links">
+      <a href="/#features">Features</a>
+      <a href="/ai-models/">AI Models</a>
+      <a href="/requirements/">Requirements</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/blog/">Blog</a>
+    </div>
+    <a class="btn" href="/#pricing">Get YUNA</a>
   </div>
-</div>
+</nav>
 
-<div class="card">
-  <div class="stars" aria-label="4 out of 5">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
-  <p>It&#x27;s good. Just a few more things to be corrected.</p>
-  <p class="meta">Amelia Thornton &middot; verified buyer</p>
-  <div class="review-img-wrap">
-    <button class="review-img-btn" type="button" data-target="img-amelia">View review image</button>
-    <img id="img-amelia" class="review-img" src="https://yunaai.online/preview/review-amelia.png" alt="Review screenshot from Amelia Thornton" loading="lazy">
+<header class="hero">
+  <div class="w">
+    <div class="eyebrow">COMMUNITY FEEDBACK</div>
+    <h1>What people say about <em>YUNA</em></h1>
+    <p class="lead">Honest feedback from people who have experienced YUNA. Every review below includes its original screenshot.</p>
+    <div class="summary" aria-label="Average rating 4.7 out of 5 from 3 reviews">
+      <div class="summary-score">4.7<span style="font-size:.95rem;color:var(--mute)">/5</span></div>
+      <div>
+        <div class="summary-stars" aria-hidden="true">★★★★★</div>
+        <div class="summary-copy">Average rating · 3 reviews</div>
+      </div>
+      <div class="summary-divider"></div>
+      <div class="summary-copy">Original feedback<br>with screenshot proof</div>
+    </div>
   </div>
-</div>
+</header>
 
-<div class="card">
-  <div class="stars" aria-label="5 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-  <p>YUNA IS a great app. I even kept YUNA in place of Desktop Companion by Dokk75, OpenLLMvtuber, Utsuwa and Nerumi, among others</p>
-  <p class="meta">Kruegerfan07 &middot; verified buyer</p>
-  <div class="review-img-wrap">
-    <button class="review-img-btn" type="button" data-target="img-kruegerfan07">View review image</button>
-    <img id="img-kruegerfan07" class="review-img" src="https://yunaai.online/preview/review-kruegerfan07.png" alt="Review screenshot from Kruegerfan07" loading="lazy">
+<main class="w">
+  <section class="review-grid" aria-label="Customer reviews">
+    <article class="card">
+      <div class="card-top">
+        <div class="stars" aria-label="5 out of 5">★★★★★</div>
+        <span class="rating-label">5.0 / 5</span>
+      </div>
+      <div class="quote-mark" aria-hidden="true">“</div>
+      <p class="review-copy">YUNA stands out because it feels more interactive and personal.</p>
+      <div class="card-bottom">
+        <div class="avatar" aria-hidden="true">L</div>
+        <div class="person"><strong>LordShadow</strong><span>Verified User</span></div>
+      </div>
+      <button class="proof" type="button" data-image="https://yunaai.online/preview/review-lordshadow.png" data-alt="Review screenshot from LordShadow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        View original review
+      </button>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <div class="stars" aria-label="4 out of 5">★★★★<span style="color:#514b62">★</span></div>
+        <span class="rating-label">4.0 / 5</span>
+      </div>
+      <div class="quote-mark" aria-hidden="true">“</div>
+      <p class="review-copy">It's good. Just a few more things to be corrected.</p>
+      <div class="card-bottom">
+        <div class="avatar" aria-hidden="true">A</div>
+        <div class="person"><strong>Amelia Thornton</strong><span>Verified User</span></div>
+      </div>
+      <button class="proof" type="button" data-image="https://yunaai.online/preview/review-amelia.png" data-alt="Review screenshot from Amelia Thornton">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        View original review
+      </button>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <div class="stars" aria-label="5 out of 5">★★★★★</div>
+        <span class="rating-label">5.0 / 5</span>
+      </div>
+      <div class="quote-mark" aria-hidden="true">“</div>
+      <p class="review-copy">YUNA IS a great app. I even kept YUNA in place of Desktop Companion by Dokk75, OpenLLMvtuber, Utsuwa and Nerumi, among others</p>
+      <div class="card-bottom">
+        <div class="avatar" aria-hidden="true">K</div>
+        <div class="person"><strong>Kruegerfan07</strong><span>Verified User</span></div>
+      </div>
+      <button class="proof" type="button" data-image="https://yunaai.online/preview/review-kruegerfan07.png" data-alt="Review screenshot from Kruegerfan07">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        View original review
+      </button>
+    </article>
+  </section>
+
+  <div class="cta-box">
+    <div>
+      <strong>YUNA: local AI companion with a Live2D face</strong>
+      <span class="meta">Runs offline on Windows. Pay once, from $10.</span>
+    </div>
+    <a class="btn" href="/#pricing">See pricing</a>
   </div>
-</div>
-
-<div class="cta-box"><strong>YUNA: local AI companion with a Live2D face</strong><br>
-<span class="meta">Runs offline on Windows. Pay once, from $10.</span><br>
-<a class="btn" href="/#pricing">See pricing</a></div>
 </main>
-<footer><a href="/">Home</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/faq/">FAQ</a> &middot;
-<a href="https://discord.gg/ARg6yujhdc" rel="noopener">Discord</a> &middot;
-<a href="https://ko-fi.com/code7" rel="noopener">Support</a><br>&copy; 2026 YUNA</footer>
+
+<footer>
+  <div class="w footer-inner">
+    <div>© 2026 YUNA · <a href="/">Home</a></div>
+    <div class="footer-links">
+      <a href="/blog/">Blog</a>
+      <a href="/faq/">FAQ</a>
+      <a href="https://discord.gg/ARg6yujhdc" rel="noopener noreferrer">Discord</a>
+      <a href="https://ko-fi.com/code7" rel="noopener noreferrer">Support</a>
+    </div>
+  </div>
+</footer>
+
+<div class="modal" id="review-modal" role="dialog" aria-modal="true" aria-label="Original review screenshot" aria-hidden="true">
+  <div class="modal-panel">
+    <button class="modal-close" type="button" aria-label="Close image">×</button>
+    <img id="review-modal-image" src="" alt="">
+  </div>
+</div>
 <script>
-  document.querySelectorAll('.review-img-btn').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var img = document.getElementById(btn.getAttribute('data-target'));
-      if (!img) return;
-      var visible = img.classList.toggle('visible');
-      btn.textContent = visible ? 'Hide review image' : 'View review image';
-    });
+(function(){
+  var modal=document.getElementById('review-modal');
+  var image=document.getElementById('review-modal-image');
+  var close=modal.querySelector('.modal-close');
+  var previousFocus=null;
+  function open(button){
+    previousFocus=document.activeElement;
+    image.src=button.getAttribute('data-image');
+    image.alt=button.getAttribute('data-alt')||'Original review screenshot';
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('modal-open');
+    close.focus();
+  }
+  function hide(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('modal-open');
+    image.src='';
+    if(previousFocus)previousFocus.focus();
+  }
+  document.querySelectorAll('.proof').forEach(function(button){
+    button.addEventListener('click',function(){open(button);});
   });
+  close.addEventListener('click',hide);
+  modal.addEventListener('click',function(event){if(event.target===modal)hide();});
+  document.addEventListener('keydown',function(event){if(event.key==='Escape'&&modal.classList.contains('open'))hide();});
+})();
 </script>
 </body>
 </html>
