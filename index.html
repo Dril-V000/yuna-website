@@ -328,6 +328,21 @@ body.ty-mode>#thank-you{display:flex!important}
 #features .extra-grid{margin:1.5rem 0}
 #features .extra-card{background:var(--paper)}
 @media(max-width:860px){.more-sections{margin:1rem 1rem 2rem}}
+
+/* License-required download dialog */
+.license-modal{position:fixed;inset:0;z-index:1200;display:none;align-items:center;justify-content:center;padding:1.25rem;background:rgba(3,3,10,.82);backdrop-filter:blur(12px)}
+.license-modal.open{display:flex}
+.license-card{position:relative;width:min(100%,510px);padding:2rem;border:1px solid #40366c;border-radius:22px;background:linear-gradient(145deg,#121020,#090910);box-shadow:0 24px 90px #000b}
+.license-mark{display:grid;place-items:center;width:48px;height:48px;margin-bottom:1rem;border:1px solid #6b56ca;border-radius:14px;background:#241c49;color:#c6b8ff;font-size:1.35rem}
+.license-card h2{font-size:1.65rem;margin-bottom:.7rem}
+.license-card p{color:var(--mute);font-size:.96rem;line-height:1.7}
+.license-warning{margin:1.1rem 0;padding:1rem;border:1px solid #8d5a39;border-radius:12px;background:#39201555;color:#ffd5b7;font-size:.9rem}
+.license-actions{display:grid;gap:.7rem;margin-top:1.3rem}
+.license-actions .btn{width:100%;text-align:center;cursor:pointer}
+.license-close{position:absolute;top:12px;right:14px;border:0;background:transparent;color:var(--mute);font-size:1.6rem;cursor:pointer}
+.license-secondary{display:block;text-align:center;color:var(--mute);font-size:.85rem;text-decoration:underline;margin-top:.9rem}
+@media(max-width:520px){.license-card{padding:1.5rem}.license-card h2{font-size:1.4rem}}
+
 </style>
 <script src="https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/pixi.js@6.5.10/dist/browser/pixi.min.js"></script>
@@ -347,7 +362,7 @@ body.ty-mode>#thank-you{display:flex!important}
     <li><a href="#faq">FAQ</a></li>
     <li><a href="/blog/">Blog</a></li>
   </ul>
-  <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.3v" target="_blank" rel="noopener noreferrer" class="btn sm">Download</a>
+  <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.3v" data-yuna-download class="btn sm">Download</a>
 </div></nav>
 
 <div class="w">
@@ -683,7 +698,7 @@ body.ty-mode>#thank-you{display:flex!important}
   <h2>Ready to meet Yuna?</h2>
   <p>A voice AI with a living face. Local, and yours forever.</p>
   <div class="row">
-    <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.3v" target="_blank" rel="noopener noreferrer" class="btn">Download YUNA v1.3</a>
+    <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.3v" data-yuna-download class="btn">Download YUNA v1.3</a>
     <a href="https://discord.gg/ARg6yujhdc" target="_blank" rel="noopener noreferrer" class="btn ghost">Join Discord</a>
     <a href="https://code-7x.itch.io/yuna-ai" target="_blank" rel="noopener noreferrer" class="btn ghost">YUNA on itch.io</a>
   </div>
@@ -925,6 +940,43 @@ window.loadPayPal=function(){
 })();
 </script>
 
+<script>
+(function(){
+  var modal=document.getElementById('licenseModal');
+  if(!modal)return;
+  var lastFocus=null;
+  function openModal(e){
+    if(e)e.preventDefault();
+    lastFocus=document.activeElement;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    var close=modal.querySelector('[data-license-close]');
+    if(close)close.focus();
+  }
+  function closeModal(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+    if(lastFocus&&lastFocus.focus)lastFocus.focus();
+  }
+  document.querySelectorAll('[data-yuna-download]').forEach(function(link){
+    link.addEventListener('click',openModal);
+  });
+  modal.querySelectorAll('[data-license-close]').forEach(function(el){
+    el.addEventListener('click',function(e){
+      if(el.tagName==='A'&&el.getAttribute('href')==='#faq'){closeModal();return;}
+      e.preventDefault();closeModal();
+    });
+  });
+  modal.addEventListener('click',function(e){if(e.target===modal)closeModal();});
+  modal.querySelector('[data-license-buy]').addEventListener('click',function(){closeModal();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&modal.classList.contains('open'))closeModal();
+  });
+})();
+</script>
+
 <script src="./reviews.js"></script>
 <script>
 (function(){
@@ -954,6 +1006,21 @@ window.loadPayPal=function(){
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.classList.contains('open'))window.closeShotModal();});
 })();
 </script>
+
+<div class="license-modal" id="licenseModal" role="dialog" aria-modal="true" aria-labelledby="licenseModalTitle" aria-hidden="true">
+  <div class="license-card">
+    <button class="license-close" type="button" aria-label="Close" data-license-close>&times;</button>
+    <div class="license-mark" aria-hidden="true">🔐</div>
+    <h2 id="licenseModalTitle">A license is required to use YUNA</h2>
+    <p>YUNA is a paid software product. Downloading the installer does not grant an activation license.</p>
+    <div class="license-warning"><strong>Important:</strong> You must purchase and activate a valid YUNA license key before you can use the application. YUNA will not run until activation is completed.</div>
+    <div class="license-actions">
+      <a class="btn" href="#pricing" data-license-buy>Get your YUNA license · from $10</a>
+      <a class="btn ghost" href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.3v" target="_blank" rel="noopener noreferrer" data-license-continue>I already have a license — download</a>
+    </div>
+    <a href="#faq" class="license-secondary" data-license-close>Questions? Read the FAQ</a>
+  </div>
+</div>
 
 <div id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" aria-hidden="true" inert>
   <div class="cb-title">🍪 We use cookies</div>
