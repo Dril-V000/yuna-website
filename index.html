@@ -362,7 +362,7 @@ body.ty-mode>#thank-you{display:flex!important}
     <li><a href="#faq">FAQ</a></li>
     <li><a href="/blog/">Blog</a></li>
   </ul>
-  <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.3v" data-yuna-download class="btn sm">Download</a>
+  <button type="button" data-yuna-download class="btn sm">Download</button>
 </div></nav>
 
 <div class="w">
@@ -698,7 +698,7 @@ body.ty-mode>#thank-you{display:flex!important}
   <h2>Ready to meet Yuna?</h2>
   <p>A voice AI with a living face. Local, and yours forever.</p>
   <div class="row">
-    <a href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.3v" data-yuna-download class="btn">Download YUNA v1.3</a>
+    <button type="button" data-yuna-download class="btn">Download YUNA v1.3</button>
     <a href="https://discord.gg/ARg6yujhdc" target="_blank" rel="noopener noreferrer" class="btn ghost">Join Discord</a>
     <a href="https://code-7x.itch.io/yuna-ai" target="_blank" rel="noopener noreferrer" class="btn ghost">YUNA on itch.io</a>
   </div>
@@ -942,12 +942,15 @@ window.loadPayPal=function(){
 
 <script>
 (function(){
-  var modal=document.getElementById('licenseModal');
-  if(!modal)return;
+  // Use delegated events so the dialog is available even though its markup
+  // appears later in the document. Download buttons intentionally have no URL.
   var lastFocus=null;
+  function getModal(){return document.getElementById('licenseModal');}
   function openModal(e){
-    if(e)e.preventDefault();
-    lastFocus=document.activeElement;
+    e.preventDefault();
+    var modal=getModal();
+    if(!modal)return;
+    lastFocus=e.currentTarget;
     modal.classList.add('open');
     modal.setAttribute('aria-hidden','false');
     document.body.style.overflow='hidden';
@@ -955,24 +958,28 @@ window.loadPayPal=function(){
     if(close)close.focus();
   }
   function closeModal(){
+    var modal=getModal();
+    if(!modal)return;
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden','true');
     document.body.style.overflow='';
     if(lastFocus&&lastFocus.focus)lastFocus.focus();
   }
-  document.querySelectorAll('[data-yuna-download]').forEach(function(link){
-    link.addEventListener('click',openModal);
+  document.addEventListener('click',function(e){
+    var download=e.target.closest('[data-yuna-download]');
+    if(download){openModal(e);return;}
+    var close=e.target.closest('[data-license-close]');
+    if(close){e.preventDefault();closeModal();if(close.getAttribute('href')==='#faq')location.hash='#faq';return;}
+    var buy=e.target.closest('[data-license-buy]');
+    if(buy){e.preventDefault();closeModal();location.hash='#pricing';return;}
+    var proceed=e.target.closest('[data-license-continue]');
+    if(proceed){e.preventDefault();closeModal();window.location.href='https://github.com/Dril-V000/yuna-AI/releases/tag/1.3v';return;}
+    var modal=getModal();
+    if(modal&&e.target===modal)closeModal();
   });
-  modal.querySelectorAll('[data-license-close]').forEach(function(el){
-    el.addEventListener('click',function(e){
-      if(el.tagName==='A'&&el.getAttribute('href')==='#faq'){closeModal();return;}
-      e.preventDefault();closeModal();
-    });
-  });
-  modal.addEventListener('click',function(e){if(e.target===modal)closeModal();});
-  modal.querySelector('[data-license-buy]').addEventListener('click',function(){closeModal();});
   document.addEventListener('keydown',function(e){
-    if(e.key==='Escape'&&modal.classList.contains('open'))closeModal();
+    var modal=getModal();
+    if(e.key==='Escape'&&modal&&modal.classList.contains('open'))closeModal();
   });
 })();
 </script>
@@ -1016,7 +1023,7 @@ window.loadPayPal=function(){
     <div class="license-warning"><strong>Important:</strong> You must purchase and activate a valid YUNA license key before you can use the application. YUNA will not run until activation is completed.</div>
     <div class="license-actions">
       <a class="btn" href="#pricing" data-license-buy>Get your YUNA license · from $10</a>
-      <a class="btn ghost" href="https://github.com/Dril-V000/yuna-AI/releases/tag/1.3v" target="_blank" rel="noopener noreferrer" data-license-continue>I already have a license — download</a>
+      <button class="btn ghost" type="button" data-license-continue>I already have a license — download</button>
     </div>
     <a href="#faq" class="license-secondary" data-license-close>Questions? Read the FAQ</a>
   </div>
